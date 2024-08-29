@@ -16,7 +16,7 @@
   "scripts": {
     "test": "./scripts/test",
     "build": "./scripts/build",
-    "prepublishOnly": "echo 'to publish, run yarn build && (cd dist; yarn publish)' && exit 1",
+    "prepublishOnly": "yarn build && (cd dist && yarn publish)",
     "format": "prettier --write --cache --cache-strategy metadata . !dist",
     "prepare": "if ./scripts/utils/check-is-in-git-install.sh; then ./scripts/build; fi",
     "tsn": "ts-node -r tsconfig-paths/register",
