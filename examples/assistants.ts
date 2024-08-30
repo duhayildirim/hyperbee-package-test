@@ -6,10 +6,10 @@ import OpenAI from 'hyperbee-package-test';
  * Example of polling for a complete response from an assistant
  */
 
-const openai = new OpenAI();
+const hyperbee-package-test = new OpenAI();
 
 async function main() {
-  const assistant = await openai.beta.assistants.create({
+  const assistant = await hyperbee-package-test.beta.assistants.create({
     model: 'gpt-4-1106-preview',
     name: 'Math Tutor',
     instructions: 'You are a personal math tutor. Write and run code to answer math questions.',
@@ -19,7 +19,7 @@ async function main() {
   let assistantId = assistant.id;
   console.log('Created Assistant with Id: ' + assistantId);
 
-  const thread = await openai.beta.threads.create({
+  const thread = await hyperbee-package-test.beta.threads.create({
     messages: [
       {
         role: 'user',
@@ -31,7 +31,7 @@ async function main() {
   let threadId = thread.id;
   console.log('Created thread with Id: ' + threadId);
 
-  const run = await openai.beta.threads.runs.createAndPoll(thread.id, {
+  const run = await hyperbee-package-test.beta.threads.runs.createAndPoll(thread.id, {
     assistant_id: assistantId,
     additional_instructions: 'Please address the user as Jane Doe. The user has a premium account.',
   });
@@ -39,7 +39,7 @@ async function main() {
   console.log('Run finished with status: ' + run.status);
 
   if (run.status == 'completed') {
-    const messages = await openai.beta.threads.messages.list(thread.id);
+    const messages = await hyperbee-package-test.beta.threads.messages.list(thread.id);
     for (const message of messages.getPaginatedItems()) {
       console.log(message);
     }

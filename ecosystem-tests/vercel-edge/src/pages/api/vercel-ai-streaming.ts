@@ -11,13 +11,13 @@ export const config = {
 };
 
 export default async (request: NextRequest) => {
-  const openai = new OpenAI();
+  const hyperbee-package-test = new OpenAI();
 
   // Extract the `messages` from the body of the request
   const { messages } = await request.json();
 
   // Ask OpenAI for a streaming chat completion given the prompt
-  const streamResponse = await openai.chat.completions
+  const streamResponse = await hyperbee-package-test.chat.completions
     .create({
       model: 'gpt-3.5-turbo',
       stream: true,

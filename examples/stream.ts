@@ -2,10 +2,10 @@
 
 import OpenAI from 'hyperbee-package-test';
 
-const openai = new OpenAI();
+const hyperbee-package-test = new OpenAI();
 
 async function main() {
-  const runner = openai.beta.chat.completions
+  const runner = hyperbee-package-test.beta.chat.completions
     .stream({
       model: 'gpt-3.5-turbo',
       messages: [{ role: 'user', content: 'Say this is a test' }],

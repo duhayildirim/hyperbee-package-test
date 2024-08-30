@@ -10,5 +10,5 @@ dist
 tmp
 .pack
 ecosystem-tests/deno/package.json
-ecosystem-tests/*/openai.tgz
+ecosystem-tests/*/hyperbee-package-test.tgz
 

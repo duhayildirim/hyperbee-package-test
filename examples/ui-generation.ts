@@ -2,7 +2,7 @@ import OpenAI from 'hyperbee-package-test';
 import { z } from 'zod';
 import { zodResponseFormat } from 'hyperbee-package-test/helpers/zod';
 
-const openai = new OpenAI();
+const hyperbee-package-test = new OpenAI();
 
 // `z.lazy()` can't infer recursive types so we have to explicitly
 // define the type ourselves here
@@ -31,7 +31,7 @@ const UISchema: z.ZodType<UI> = z.lazy(() =>
 );
 
 async function main() {
-  const completion = await openai.beta.chat.completions.parse({
+  const completion = await hyperbee-package-test.beta.chat.completions.parse({
     model: 'gpt-4o-2024-08-06',
     messages: [
       {

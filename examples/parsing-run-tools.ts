@@ -25,10 +25,10 @@ const Condition = z.object({
   value: z.union([z.string(), z.number(), DynamicValue]),
 });
 
-const openai = new OpenAI();
+const hyperbee-package-test = new OpenAI();
 
 async function main() {
-  const runner = openai.beta.chat.completions
+  const runner = hyperbee-package-test.beta.chat.completions
     .runTools({
       model: 'gpt-4o-2024-08-06',
       messages: [{ role: 'user', content: `What are the last 10 orders?` }],

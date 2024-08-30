@@ -4,7 +4,7 @@ import OpenAI from 'hyperbee-package-test';
 import { RunnableToolFunction } from 'hyperbee-package-test/lib/RunnableFunction';
 
 // gets API Key from environment variable OPENAI_API_KEY
-const openai = new OpenAI();
+const hyperbee-package-test = new OpenAI();
 
 /**
  * Note, this will automatically ensure the model returns valid JSON,
@@ -63,7 +63,7 @@ const tools: RunnableToolFunction<any>[] = [
 ];
 
 async function main() {
-  const runner = await openai.beta.chat.completions
+  const runner = await hyperbee-package-test.beta.chat.completions
     .runTools({
       model: 'gpt-4-1106-preview',
       stream: true,

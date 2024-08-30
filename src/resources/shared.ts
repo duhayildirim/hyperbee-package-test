@@ -25,7 +25,7 @@ export interface FunctionDefinition {
 
   /**
    * The parameters the functions accepts, described as a JSON Schema object. See the
-   * [guide](https://platform.openai.com/docs/guides/function-calling) for examples,
+   * [guide](https://platform.hyperbee-package-test.com/docs/guides/function-calling) for examples,
    * and the
    * [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for
    * documentation about the format.
@@ -46,7 +46,7 @@ export interface FunctionDefinition {
 
 /**
  * The parameters the functions accepts, described as a JSON Schema object. See the
- * [guide](https://platform.openai.com/docs/guides/function-calling) for examples,
+ * [guide](https://platform.hyperbee-package-test.com/docs/guides/function-calling) for examples,
  * and the
  * [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for
  * documentation about the format.
@@ -95,7 +95,7 @@ export namespace ResponseFormatJSONSchema {
      * true, the model will always follow the exact schema defined in the `schema`
      * field. Only a subset of JSON Schema is supported when `strict` is `true`. To
      * learn more, read the
-     * [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
+     * [Structured Outputs guide](https://platform.hyperbee-package-test.com/docs/guides/structured-outputs).
      */
     strict?: boolean | null;
   }

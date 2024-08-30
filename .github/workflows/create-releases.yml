@@ -9,7 +9,7 @@ on:
 jobs:
   release:
     name: release
-    if: github.ref == 'refs/heads/master' && github.repository == 'hyperbee-package-test/openai-node'
+    if: github.ref == 'refs/heads/master' && github.repository == 'hyperbee-package-test/hyperbee-package-test-node'
     runs-on: ubuntu-latest
     environment: publish
 
@@ -29,7 +29,7 @@ jobs:
           app-id: ${{ secrets.APP_ID }}
           private-key: ${{ secrets.APP_PRIVATE_KEY }}
           owner: 'hyperbee-package-test'
-          repositories: 'hyperbee-package-test-node,openai-deno-build'
+          repositories: 'hyperbee-package-test-node,hyperbee-package-test-deno-build'
 
       - name: Set up Node
         if: ${{ steps.release.outputs.releases_created }}
@@ -60,6 +60,6 @@ jobs:
         run: |
           bash ./scripts/git-publish-deno.sh
         env:
-          DENO_PUSH_REMOTE_URL: https://username:${{ steps.generate_token.outputs.token }}@github.com/openai/openai-deno-build.git
+          DENO_PUSH_REMOTE_URL: https://username:${{ steps.generate_token.outputs.token }}@github.com/hyperbee-package-test/hyperbee-package-test-deno-build.git
           DENO_PUSH_BRANCH: main
 

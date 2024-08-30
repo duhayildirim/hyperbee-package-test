@@ -6,10 +6,10 @@ import OpenAI from 'hyperbee-package-test';
  * Example of streaming a response from an assistant
  */
 
-const openai = new OpenAI();
+const hyperbee-package-test = new OpenAI();
 
 async function main() {
-  const assistant = await openai.beta.assistants.create({
+  const assistant = await hyperbee-package-test.beta.assistants.create({
     model: 'gpt-4-1106-preview',
     name: 'Math Tutor',
     instructions: 'You are a personal math tutor. Write and run code to answer math questions.',
@@ -18,7 +18,7 @@ async function main() {
   let assistantId = assistant.id;
   console.log('Created Assistant with Id: ' + assistantId);
 
-  const thread = await openai.beta.threads.create({
+  const thread = await hyperbee-package-test.beta.threads.create({
     messages: [
       {
         role: 'user',
@@ -30,7 +30,7 @@ async function main() {
   let threadId = thread.id;
   console.log('Created thread with Id: ' + threadId);
 
-  const run = openai.beta.threads.runs
+  const run = hyperbee-package-test.beta.threads.runs
     .stream(threadId, {
       assistant_id: assistantId,
     })

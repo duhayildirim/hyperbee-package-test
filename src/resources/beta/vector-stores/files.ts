@@ -9,8 +9,8 @@ import { CursorPage, type CursorPageParams } from '../../../pagination';
 export class Files extends APIResource {
   /**
    * Create a vector store file by attaching a
-   * [File](https://platform.openai.com/docs/api-reference/files) to a
-   * [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object).
+   * [File](https://platform.hyperbee-package-test.com/docs/api-reference/files) to a
+   * [vector store](https://platform.hyperbee-package-test.com/docs/api-reference/vector-stores/object).
    */
   create(
     vectorStoreId: string,
@@ -68,7 +68,7 @@ export class Files extends APIResource {
   /**
    * Delete a vector store file. This will remove the file from the vector store but
    * the file itself will not be deleted. To delete the file, use the
-   * [delete file](https://platform.openai.com/docs/api-reference/files/delete)
+   * [delete file](https://platform.hyperbee-package-test.com/docs/api-reference/files/delete)
    * endpoint.
    */
   del(
@@ -211,8 +211,8 @@ export interface VectorStoreFile {
 
   /**
    * The ID of the
-   * [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object)
-   * that the [File](https://platform.openai.com/docs/api-reference/files) is
+   * [vector store](https://platform.hyperbee-package-test.com/docs/api-reference/vector-stores/object)
+   * that the [File](https://platform.hyperbee-package-test.com/docs/api-reference/files) is
    * attached to.
    */
   vector_store_id: string;
@@ -289,7 +289,7 @@ export interface VectorStoreFileDeleted {
 
 export interface FileCreateParams {
   /**
-   * A [File](https://platform.openai.com/docs/api-reference/files) ID that the
+   * A [File](https://platform.hyperbee-package-test.com/docs/api-reference/files) ID that the
    * vector store should use. Useful for tools like `file_search` that can access
    * files.
    */

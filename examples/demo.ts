@@ -3,18 +3,18 @@
 import OpenAI from 'hyperbee-package-test';
 
 // gets API Key from environment variable OPENAI_API_KEY
-const openai = new OpenAI();
+const hyperbee-package-test = new OpenAI();
 
 async function main() {
   // Non-streaming:
-  const completion = await openai.chat.completions.create({
+  const completion = await hyperbee-package-test.chat.completions.create({
     model: 'gpt-4',
     messages: [{ role: 'user', content: 'Say this is a test' }],
   });
   console.log(completion.choices[0]?.message?.content);
 
   // Streaming:
-  const stream = await openai.chat.completions.create({
+  const stream = await hyperbee-package-test.chat.completions.create({
     model: 'gpt-4',
     messages: [{ role: 'user', content: 'Say this is a test' }],
     stream: true,

@@ -42,7 +42,7 @@ export let isFsReadStream: Shims['isFsReadStream'] | undefined = undefined;
 export function setShims(shims: Shims, options: { auto: boolean } = { auto: false }) {
   if (auto) {
     throw new Error(
-      `you must \`import 'hyperbee-package-test/shims/${shims.kind}'\` before importing anything else from openai`,
+      `you must \`import 'hyperbee-package-test/shims/${shims.kind}'\` before importing anything else from hyperbee-package-test`,
     );
   }
   if (kind) {

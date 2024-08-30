@@ -226,11 +226,11 @@ export interface BatchCreateParams {
   /**
    * The ID of an uploaded file that contains requests for the new batch.
    *
-   * See [upload file](https://platform.openai.com/docs/api-reference/files/create)
+   * See [upload file](https://platform.hyperbee-package-test.com/docs/api-reference/files/create)
    * for how to upload a file.
    *
    * Your input file must be formatted as a
-   * [JSONL file](https://platform.openai.com/docs/api-reference/batch/request-input),
+   * [JSONL file](https://platform.hyperbee-package-test.com/docs/api-reference/batch/request-input),
    * and must be uploaded with the purpose `batch`. The file can contain up to 50,000
    * requests, and can be up to 100 MB in size.
    */

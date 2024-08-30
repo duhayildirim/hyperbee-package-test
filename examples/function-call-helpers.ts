@@ -3,7 +3,7 @@
 import OpenAI from 'hyperbee-package-test';
 
 // gets API Key from environment variable OPENAI_API_KEY
-const openai = new OpenAI();
+const hyperbee-package-test = new OpenAI();
 
 const functions = [
   {
@@ -46,7 +46,7 @@ const functions = [
 ];
 
 async function main() {
-  const runner = await openai.beta.chat.completions
+  const runner = await hyperbee-package-test.beta.chat.completions
     .runFunctions({
       model: 'gpt-3.5-turbo',
       messages: [

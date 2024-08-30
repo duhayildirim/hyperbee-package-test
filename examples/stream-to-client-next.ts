@@ -23,9 +23,9 @@ export const runtime = 'edge';
 //
 // See examples/stream-to-client-browser.ts for a more complete example.
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const openai = new OpenAI();
+  const hyperbee-package-test = new OpenAI();
 
-  const stream = openai.beta.chat.completions.stream({
+  const stream = hyperbee-package-test.beta.chat.completions.stream({
     model: 'gpt-3.5-turbo',
     stream: true,
     // @ts-ignore

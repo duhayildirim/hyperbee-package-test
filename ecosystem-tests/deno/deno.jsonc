@@ -6,6 +6,6 @@
   },
   "imports": {
     "hyperbee-package-tests": "../../deno/mod.ts",
-    "openai/": "../../deno/"
+    "hyperbee-package-test/": "../../deno/"
   }
 }

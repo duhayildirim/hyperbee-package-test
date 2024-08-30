@@ -6,7 +6,7 @@ import fs from 'fs';
 import path from 'path';
 
 // gets API Key from environment variable OPENAI_API_KEY
-const openai = new OpenAI();
+const hyperbee-package-test = new OpenAI();
 
 const speechFile = path.resolve(__dirname, './speech.mp3');
 
@@ -17,7 +17,7 @@ async function main() {
 main();
 
 async function streamingDemoNode() {
-  const response = await openai.audio.speech.create({
+  const response = await hyperbee-package-test.audio.speech.create({
     model: 'tts-1',
     voice: 'alloy',
     input: 'the quick brown chicken jumped over the lazy dogs',
@@ -31,7 +31,7 @@ async function streamingDemoNode() {
 }
 
 async function blockingDemo() {
-  const mp3 = await openai.audio.speech.create({
+  const mp3 = await hyperbee-package-test.audio.speech.create({
     model: 'tts-1',
     voice: 'alloy',
     input: 'the quick brown fox jumped over the lazy dogs',
@@ -40,13 +40,13 @@ async function blockingDemo() {
   const buffer = Buffer.from(await mp3.arrayBuffer());
   await fs.promises.writeFile(speechFile, buffer);
 
-  const transcription = await openai.audio.transcriptions.create({
+  const transcription = await hyperbee-package-test.audio.transcriptions.create({
     file: await toFile(buffer, 'speech.mp3'),
     model: 'whisper-1',
   });
   console.log(transcription.text);
 
-  const translation = await openai.audio.translations.create({
+  const translation = await hyperbee-package-test.audio.translations.create({
     file: await toFile(buffer, 'speech.mp3'),
     model: 'whisper-1',
   });

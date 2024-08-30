@@ -10,7 +10,7 @@ import { zodToJsonSchema as _zodToJsonSchema } from '../_vendor/zod-to-json-sche
 
 function zodToJsonSchema(schema: z.ZodType, options: { name: string }): Record<string, unknown> {
   return _zodToJsonSchema(schema, {
-    openaiStrictMode: true,
+    hyperbee-package-testStrictMode: true,
     name: options.name,
     nameStrategy: 'duplicate-ref',
     $refStrategy: 'extract-to-root',

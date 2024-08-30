@@ -3,7 +3,7 @@
 import OpenAI from 'hyperbee-package-test';
 
 // gets API Key from environment variable OPENAI_API_KEY
-const openai = new OpenAI();
+const hyperbee-package-test = new OpenAI();
 
 async function main() {
   // Explicit non streaming params type:
@@ -11,7 +11,7 @@ async function main() {
     model: 'gpt-4',
     messages: [{ role: 'user', content: 'Say this is a test!' }],
   };
-  const completion = await openai.chat.completions.create(params);
+  const completion = await hyperbee-package-test.chat.completions.create(params);
   console.log(completion.choices[0]?.message?.content);
 
   // Explicit streaming params type:
@@ -21,7 +21,7 @@ async function main() {
     stream: true,
   };
 
-  const stream = await openai.chat.completions.create(streaming_params);
+  const stream = await hyperbee-package-test.chat.completions.create(streaming_params);
   for await (const chunk of stream) {
     process.stdout.write(chunk.choices[0]?.delta?.content || '');
   }

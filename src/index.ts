@@ -102,7 +102,7 @@ export class OpenAI extends Core.APIClient {
    * @param {string | undefined} [opts.apiKey=process.env['hyperbee-package-test_API_KEY'] ?? undefined]
    * @param {string | null | undefined} [opts.organization=process.env['hyperbee-package-test_ORG_ID'] ?? null]
    * @param {string | null | undefined} [opts.project=process.env['hyperbee-package-test_PROJECT_ID'] ?? null]
-   * @param {string} [opts.baseURL=process.env['hyperbee-package-test_BASE_URL'] ?? https://api.openai.com/v1] - Override the default base URL for the API.
+   * @param {string} [opts.baseURL=process.env['hyperbee-package-test_BASE_URL'] ?? https://api.hyperbee-package-test.com/v1] - Override the default base URL for the API.
    * @param {number} [opts.timeout=10 minutes] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
    * @param {Core.Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -129,12 +129,12 @@ export class OpenAI extends Core.APIClient {
       organization,
       project,
       ...opts,
-      baseURL: baseURL || `https://api.openai.com/v1`,
+      baseURL: baseURL || `https://api.hyperbee-package-test.com/v1`,
     };
 
     if (!options.dangerouslyAllowBrowser && Core.isRunningInBrowser()) {
       throw new Errors.OpenAIError(
-        "It looks like you're running in a browser-like environment.\n\nThis is disabled by default, as it risks exposing your secret API credentials to attackers.\nIf you understand the risks and have appropriate mitigations in place,\nyou can set the `dangerouslyAllowBrowser` option to `true`, e.g.,\n\nnew OpenAI({ apiKey, dangerouslyAllowBrowser: true });\n\nhttps://help.openai.com/en/articles/5112595-best-practices-for-api-key-safety\n",
+        "It looks like you're running in a browser-like environment.\n\nThis is disabled by default, as it risks exposing your secret API credentials to attackers.\nIf you understand the risks and have appropriate mitigations in place,\nyou can set the `dangerouslyAllowBrowser` option to `true`, e.g.,\n\nnew OpenAI({ apiKey, dangerouslyAllowBrowser: true });\n\nhttps://help.hyperbee-package-test.com/en/articles/5112595-best-practices-for-api-key-safety\n",
       );
     }
 
@@ -339,7 +339,7 @@ export interface AzureClientOptions extends ClientOptions {
   apiVersion?: string | undefined;
 
   /**
-   * Your Azure endpoint, including the resource, e.g. `https://example-resource.azure.openai.com/`
+   * Your Azure endpoint, including the resource, e.g. `https://example-resource.azure.hyperbee-package-test.com/`
    */
   endpoint?: string | undefined;
 
@@ -370,7 +370,7 @@ export class AzureOpenAI extends OpenAI {
    * API Client for interfacing with the Azure OpenAI API.
    *
    * @param {string | undefined} [opts.apiVersion=process.env['hyperbee-package-test_API_VERSION'] ?? undefined]
-   * @param {string | undefined} [opts.endpoint=process.env['AZURE_OPENAI_ENDPOINT'] ?? undefined] - Your Azure endpoint, including the resource, e.g. `https://example-resource.azure.openai.com/`
+   * @param {string | undefined} [opts.endpoint=process.env['AZURE_OPENAI_ENDPOINT'] ?? undefined] - Your Azure endpoint, including the resource, e.g. `https://example-resource.azure.hyperbee-package-test.com/`
    * @param {string | undefined} [opts.apiKey=process.env['AZURE_OPENAI_API_KEY'] ?? undefined]
    * @param {string | undefined} opts.deployment - A model deployment, if given, sets the base client URL to include `/deployments/{deployment}`.
    * @param {string | null | undefined} [opts.organization=process.env['hyperbee-package-test_ORG_ID'] ?? null]
@@ -431,7 +431,7 @@ export class AzureOpenAI extends OpenAI {
         );
       }
 
-      baseURL = `${endpoint}/openai`;
+      baseURL = `${endpoint}/hyperbee-package-test`;
     } else {
       if (endpoint) {
         throw new Errors.OpenAIError('baseURL and endpoint are mutually exclusive');

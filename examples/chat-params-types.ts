@@ -4,7 +4,7 @@ import OpenAI from 'hyperbee-package-test';
 import { Stream } from 'hyperbee-package-test/streaming';
 
 // gets API Key from environment variable OPENAI_API_KEY
-const openai = new OpenAI();
+const hyperbee-package-test = new OpenAI();
 
 async function main() {
   // ---------------- Explicit non-streaming params ------------
@@ -13,7 +13,7 @@ async function main() {
     model: 'gpt-4',
     messages: [{ role: 'user', content: 'Say this is a test!' }],
   };
-  const completion = await openai.chat.completions.create(params);
+  const completion = await hyperbee-package-test.chat.completions.create(params);
   console.log(completion.choices[0]?.message?.content);
 
   // ---------------- Explicit streaming params ----------------
@@ -24,7 +24,7 @@ async function main() {
     stream: true,
   };
 
-  const stream = await openai.chat.completions.create(streamingParams);
+  const stream = await hyperbee-package-test.chat.completions.create(streamingParams);
   for await (const chunk of stream) {
     process.stdout.write(chunk.choices[0]?.delta?.content || '');
   }
@@ -57,7 +57,7 @@ async function main() {
   };
 
   // TS knows this is a Stream instance.
-  const stream2 = await openai.chat.completions.create(streamingParams2);
+  const stream2 = await hyperbee-package-test.chat.completions.create(streamingParams2);
   for await (const chunk of stream2) {
     process.stdout.write(chunk.choices[0]?.delta?.content || '');
   }
@@ -71,7 +71,7 @@ async function main() {
   };
 
   // TS doesn't know if this is a `Stream` or a direct response
-  const response = await openai.chat.completions.create(streamingParams3);
+  const response = await hyperbee-package-test.chat.completions.create(streamingParams3);
   if (response instanceof Stream) {
     // here TS knows the response type is a `Stream`
   } else {
@@ -82,12 +82,12 @@ async function main() {
 
   // TS knows this is a `Stream`
   const streamParamsFromFn = await createCompletionParams(true);
-  const streamFromFn = await openai.chat.completions.create(streamParamsFromFn);
+  const streamFromFn = await hyperbee-package-test.chat.completions.create(streamParamsFromFn);
   console.log(streamFromFn);
 
   // TS knows this is a `ChatCompletion`
   const paramsFromFn = await createCompletionParams(false);
-  const completionFromFn = await openai.chat.completions.create(paramsFromFn);
+  const completionFromFn = await hyperbee-package-test.chat.completions.create(paramsFromFn);
   console.log(completionFromFn);
 }
 

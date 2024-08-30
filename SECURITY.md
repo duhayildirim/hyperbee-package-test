@@ -20,9 +20,9 @@ or products provided by OpenAI please follow the respective company's security r
 
 ### OpenAI Terms and Policies
 
-Our Security Policy can be found at [Security Policy URL](https://openai.com/policies/coordinated-vulnerability-disclosure-policy).
+Our Security Policy can be found at [Security Policy URL](https://hyperbee-package-test.com/policies/coordinated-vulnerability-disclosure-policy).
 
-Please contact disclosure@openai.com for any questions or concerns regarding security of our services.
+Please contact disclosure@hyperbee-package-test.com for any questions or concerns regarding security of our services.
 
 ---
 

@@ -109,7 +109,7 @@ export class Runs extends APIResource {
   /**
    * A helper to create a run an poll for a terminal state. More information on Run
    * lifecycles can be found here:
-   * https://platform.openai.com/docs/assistants/how-it-works/runs-and-run-steps
+   * https://platform.hyperbee-package-test.com/docs/assistants/how-it-works/runs-and-run-steps
    */
   async createAndPoll(
     threadId: string,
@@ -136,7 +136,7 @@ export class Runs extends APIResource {
   /**
    * A helper to poll a run status until it reaches a terminal state. More
    * information on Run lifecycles can be found here:
-   * https://platform.openai.com/docs/assistants/how-it-works/runs-and-run-steps
+   * https://platform.hyperbee-package-test.com/docs/assistants/how-it-works/runs-and-run-steps
    */
   async poll(
     threadId: string,
@@ -235,7 +235,7 @@ export class Runs extends APIResource {
   /**
    * A helper to submit a tool output to a run and poll for a terminal run state.
    * More information on Run lifecycles can be found here:
-   * https://platform.openai.com/docs/assistants/how-it-works/runs-and-run-steps
+   * https://platform.hyperbee-package-test.com/docs/assistants/how-it-works/runs-and-run-steps
    */
   async submitToolOutputsAndPoll(
     threadId: string,
@@ -250,7 +250,7 @@ export class Runs extends APIResource {
   /**
    * Submit the tool outputs from a previous run and stream the run to a terminal
    * state. More information on Run lifecycles can be found here:
-   * https://platform.openai.com/docs/assistants/how-it-works/runs-and-run-steps
+   * https://platform.hyperbee-package-test.com/docs/assistants/how-it-works/runs-and-run-steps
    */
   submitToolOutputsStream(
     threadId: string,
@@ -277,7 +277,7 @@ export interface RequiredActionFunctionToolCall {
   /**
    * The ID of the tool call. This ID must be referenced when you submit the tool
    * outputs in using the
-   * [Submit tool outputs to run](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs)
+   * [Submit tool outputs to run](https://platform.hyperbee-package-test.com/docs/api-reference/runs/submitToolOutputs)
    * endpoint.
    */
   id: string;
@@ -313,7 +313,7 @@ export namespace RequiredActionFunctionToolCall {
 
 /**
  * Represents an execution run on a
- * [thread](https://platform.openai.com/docs/api-reference/threads).
+ * [thread](https://platform.hyperbee-package-test.com/docs/api-reference/threads).
  */
 export interface Run {
   /**
@@ -323,7 +323,7 @@ export interface Run {
 
   /**
    * The ID of the
-   * [assistant](https://platform.openai.com/docs/api-reference/assistants) used for
+   * [assistant](https://platform.hyperbee-package-test.com/docs/api-reference/assistants) used for
    * execution of this run.
    */
   assistant_id: string;
@@ -361,7 +361,7 @@ export interface Run {
 
   /**
    * The instructions that the
-   * [assistant](https://platform.openai.com/docs/api-reference/assistants) used for
+   * [assistant](https://platform.hyperbee-package-test.com/docs/api-reference/assistants) used for
    * this run.
    */
   instructions: string;
@@ -393,7 +393,7 @@ export interface Run {
 
   /**
    * The model that the
-   * [assistant](https://platform.openai.com/docs/api-reference/assistants) used for
+   * [assistant](https://platform.hyperbee-package-test.com/docs/api-reference/assistants) used for
    * this run.
    */
   model: string;
@@ -405,7 +405,7 @@ export interface Run {
 
   /**
    * Whether to enable
-   * [parallel function calling](https://platform.openai.com/docs/guides/function-calling/parallel-function-calling)
+   * [parallel function calling](https://platform.hyperbee-package-test.com/docs/guides/function-calling/parallel-function-calling)
    * during tool use.
    */
   parallel_tool_calls: boolean;
@@ -418,14 +418,14 @@ export interface Run {
 
   /**
    * Specifies the format that the model must output. Compatible with
-   * [GPT-4o](https://platform.openai.com/docs/models/gpt-4o),
-   * [GPT-4 Turbo](https://platform.openai.com/docs/models/gpt-4-turbo-and-gpt-4),
+   * [GPT-4o](https://platform.hyperbee-package-test.com/docs/models/gpt-4o),
+   * [GPT-4 Turbo](https://platform.hyperbee-package-test.com/docs/models/gpt-4-turbo-and-gpt-4),
    * and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
    *
    * Setting to `{ "type": "json_schema", "json_schema": {...} }` enables Structured
    * Outputs which guarantees the model will match your supplied JSON schema. Learn
    * more in the
-   * [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
+   * [Structured Outputs guide](https://platform.hyperbee-package-test.com/docs/guides/structured-outputs).
    *
    * Setting to `{ "type": "json_object" }` enables JSON mode, which guarantees the
    * message the model generates is valid JSON.
@@ -453,7 +453,7 @@ export interface Run {
   status: RunStatus;
 
   /**
-   * The ID of the [thread](https://platform.openai.com/docs/api-reference/threads)
+   * The ID of the [thread](https://platform.hyperbee-package-test.com/docs/api-reference/threads)
    * that was executed on as a part of this run.
    */
   thread_id: string;
@@ -471,7 +471,7 @@ export interface Run {
 
   /**
    * The list of tools that the
-   * [assistant](https://platform.openai.com/docs/api-reference/assistants) used for
+   * [assistant](https://platform.hyperbee-package-test.com/docs/api-reference/assistants) used for
    * this run.
    */
   tools: Array<AssistantsAPI.AssistantTool>;
@@ -618,7 +618,7 @@ export type RunCreateParams = RunCreateParamsNonStreaming | RunCreateParamsStrea
 export interface RunCreateParamsBase {
   /**
    * The ID of the
-   * [assistant](https://platform.openai.com/docs/api-reference/assistants) to use to
+   * [assistant](https://platform.hyperbee-package-test.com/docs/api-reference/assistants) to use to
    * execute this run.
    */
   assistant_id: string;
@@ -637,7 +637,7 @@ export interface RunCreateParamsBase {
 
   /**
    * Overrides the
-   * [instructions](https://platform.openai.com/docs/api-reference/assistants/createAssistant)
+   * [instructions](https://platform.hyperbee-package-test.com/docs/api-reference/assistants/createAssistant)
    * of the assistant. This is useful for modifying the behavior on a per-run basis.
    */
   instructions?: string | null;
@@ -669,7 +669,7 @@ export interface RunCreateParamsBase {
   metadata?: unknown | null;
 
   /**
-   * The ID of the [Model](https://platform.openai.com/docs/api-reference/models) to
+   * The ID of the [Model](https://platform.hyperbee-package-test.com/docs/api-reference/models) to
    * be used to execute this run. If a value is provided here, it will override the
    * model associated with the assistant. If not, the model associated with the
    * assistant will be used.
@@ -678,21 +678,21 @@ export interface RunCreateParamsBase {
 
   /**
    * Whether to enable
-   * [parallel function calling](https://platform.openai.com/docs/guides/function-calling/parallel-function-calling)
+   * [parallel function calling](https://platform.hyperbee-package-test.com/docs/guides/function-calling/parallel-function-calling)
    * during tool use.
    */
   parallel_tool_calls?: boolean;
 
   /**
    * Specifies the format that the model must output. Compatible with
-   * [GPT-4o](https://platform.openai.com/docs/models/gpt-4o),
-   * [GPT-4 Turbo](https://platform.openai.com/docs/models/gpt-4-turbo-and-gpt-4),
+   * [GPT-4o](https://platform.hyperbee-package-test.com/docs/models/gpt-4o),
+   * [GPT-4 Turbo](https://platform.hyperbee-package-test.com/docs/models/gpt-4-turbo-and-gpt-4),
    * and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
    *
    * Setting to `{ "type": "json_schema", "json_schema": {...} }` enables Structured
    * Outputs which guarantees the model will match your supplied JSON schema. Learn
    * more in the
-   * [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
+   * [Structured Outputs guide](https://platform.hyperbee-package-test.com/docs/guides/structured-outputs).
    *
    * Setting to `{ "type": "json_object" }` enables JSON mode, which guarantees the
    * message the model generates is valid JSON.
@@ -879,7 +879,7 @@ export interface RunListParams extends CursorPageParams {
 export interface RunCreateAndPollParams {
   /**
    * The ID of the
-   * [assistant](https://platform.openai.com/docs/api-reference/assistants) to use to
+   * [assistant](https://platform.hyperbee-package-test.com/docs/api-reference/assistants) to use to
    * execute this run.
    */
   assistant_id: string;
@@ -898,7 +898,7 @@ export interface RunCreateAndPollParams {
 
   /**
    * Overrides the
-   * [instructions](https://platform.openai.com/docs/api-reference/assistants/createAssistant)
+   * [instructions](https://platform.hyperbee-package-test.com/docs/api-reference/assistants/createAssistant)
    * of the assistant. This is useful for modifying the behavior on a per-run basis.
    */
   instructions?: string | null;
@@ -930,7 +930,7 @@ export interface RunCreateAndPollParams {
   metadata?: unknown | null;
 
   /**
-   * The ID of the [Model](https://platform.openai.com/docs/api-reference/models) to
+   * The ID of the [Model](https://platform.hyperbee-package-test.com/docs/api-reference/models) to
    * be used to execute this run. If a value is provided here, it will override the
    * model associated with the assistant. If not, the model associated with the
    * assistant will be used.
@@ -961,8 +961,8 @@ export interface RunCreateAndPollParams {
 
   /**
    * Specifies the format that the model must output. Compatible with
-   * [GPT-4o](https://platform.openai.com/docs/models/gpt-4o),
-   * [GPT-4 Turbo](https://platform.openai.com/docs/models/gpt-4-turbo-and-gpt-4),
+   * [GPT-4o](https://platform.hyperbee-package-test.com/docs/models/gpt-4o),
+   * [GPT-4 Turbo](https://platform.hyperbee-package-test.com/docs/models/gpt-4-turbo-and-gpt-4),
    * and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
    *
    * Setting to `{ "type": "json_object" }` enables JSON mode, which guarantees the
@@ -1087,7 +1087,7 @@ export namespace RunCreateAndPollParams {
 export interface RunCreateAndStreamParams {
   /**
    * The ID of the
-   * [assistant](https://platform.openai.com/docs/api-reference/assistants) to use to
+   * [assistant](https://platform.hyperbee-package-test.com/docs/api-reference/assistants) to use to
    * execute this run.
    */
   assistant_id: string;
@@ -1106,7 +1106,7 @@ export interface RunCreateAndStreamParams {
 
   /**
    * Overrides the
-   * [instructions](https://platform.openai.com/docs/api-reference/assistants/createAssistant)
+   * [instructions](https://platform.hyperbee-package-test.com/docs/api-reference/assistants/createAssistant)
    * of the assistant. This is useful for modifying the behavior on a per-run basis.
    */
   instructions?: string | null;
@@ -1138,7 +1138,7 @@ export interface RunCreateAndStreamParams {
   metadata?: unknown | null;
 
   /**
-   * The ID of the [Model](https://platform.openai.com/docs/api-reference/models) to
+   * The ID of the [Model](https://platform.hyperbee-package-test.com/docs/api-reference/models) to
    * be used to execute this run. If a value is provided here, it will override the
    * model associated with the assistant. If not, the model associated with the
    * assistant will be used.
@@ -1169,8 +1169,8 @@ export interface RunCreateAndStreamParams {
 
   /**
    * Specifies the format that the model must output. Compatible with
-   * [GPT-4o](https://platform.openai.com/docs/models/gpt-4o),
-   * [GPT-4 Turbo](https://platform.openai.com/docs/models/gpt-4-turbo-and-gpt-4),
+   * [GPT-4o](https://platform.hyperbee-package-test.com/docs/models/gpt-4o),
+   * [GPT-4 Turbo](https://platform.hyperbee-package-test.com/docs/models/gpt-4-turbo-and-gpt-4),
    * and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
    *
    * Setting to `{ "type": "json_object" }` enables JSON mode, which guarantees the
@@ -1295,7 +1295,7 @@ export namespace RunCreateAndStreamParams {
 export interface RunStreamParams {
   /**
    * The ID of the
-   * [assistant](https://platform.openai.com/docs/api-reference/assistants) to use to
+   * [assistant](https://platform.hyperbee-package-test.com/docs/api-reference/assistants) to use to
    * execute this run.
    */
   assistant_id: string;
@@ -1314,7 +1314,7 @@ export interface RunStreamParams {
 
   /**
    * Overrides the
-   * [instructions](https://platform.openai.com/docs/api-reference/assistants/createAssistant)
+   * [instructions](https://platform.hyperbee-package-test.com/docs/api-reference/assistants/createAssistant)
    * of the assistant. This is useful for modifying the behavior on a per-run basis.
    */
   instructions?: string | null;
@@ -1346,7 +1346,7 @@ export interface RunStreamParams {
   metadata?: unknown | null;
 
   /**
-   * The ID of the [Model](https://platform.openai.com/docs/api-reference/models) to
+   * The ID of the [Model](https://platform.hyperbee-package-test.com/docs/api-reference/models) to
    * be used to execute this run. If a value is provided here, it will override the
    * model associated with the assistant. If not, the model associated with the
    * assistant will be used.
@@ -1377,8 +1377,8 @@ export interface RunStreamParams {
 
   /**
    * Specifies the format that the model must output. Compatible with
-   * [GPT-4o](https://platform.openai.com/docs/models/gpt-4o),
-   * [GPT-4 Turbo](https://platform.openai.com/docs/models/gpt-4-turbo-and-gpt-4),
+   * [GPT-4o](https://platform.hyperbee-package-test.com/docs/models/gpt-4o),
+   * [GPT-4 Turbo](https://platform.hyperbee-package-test.com/docs/models/gpt-4-turbo-and-gpt-4),
    * and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
    *
    * Setting to `{ "type": "json_object" }` enables JSON mode, which guarantees the

@@ -17,20 +17,20 @@ export class Files extends APIResource {
    *
    * The Assistants API supports files up to 2 million tokens and of specific file
    * types. See the
-   * [Assistants Tools guide](https://platform.openai.com/docs/assistants/tools) for
+   * [Assistants Tools guide](https://platform.hyperbee-package-test.com/docs/assistants/tools) for
    * details.
    *
    * The Fine-tuning API only supports `.jsonl` files. The input also has certain
    * required formats for fine-tuning
-   * [chat](https://platform.openai.com/docs/api-reference/fine-tuning/chat-input) or
-   * [completions](https://platform.openai.com/docs/api-reference/fine-tuning/completions-input)
+   * [chat](https://platform.hyperbee-package-test.com/docs/api-reference/fine-tuning/chat-input) or
+   * [completions](https://platform.hyperbee-package-test.com/docs/api-reference/fine-tuning/completions-input)
    * models.
    *
    * The Batch API only supports `.jsonl` files up to 100 MB in size. The input also
    * has a specific required
-   * [format](https://platform.openai.com/docs/api-reference/batch/request-input).
+   * [format](https://platform.hyperbee-package-test.com/docs/api-reference/batch/request-input).
    *
-   * Please [contact us](https://help.openai.com/) if you need to increase these
+   * Please [contact us](https://help.hyperbee-package-test.com/) if you need to increase these
    * storage limits.
    */
   create(body: FileCreateParams, options?: Core.RequestOptions): Core.APIPromise<FileObject> {
@@ -187,11 +187,11 @@ export interface FileObject {
  * The intended purpose of the uploaded file.
  *
  * Use "assistants" for
- * [Assistants](https://platform.openai.com/docs/api-reference/assistants) and
- * [Message](https://platform.openai.com/docs/api-reference/messages) files,
+ * [Assistants](https://platform.hyperbee-package-test.com/docs/api-reference/assistants) and
+ * [Message](https://platform.hyperbee-package-test.com/docs/api-reference/messages) files,
  * "vision" for Assistants image file inputs, "batch" for
- * [Batch API](https://platform.openai.com/docs/guides/batch), and "fine-tune" for
- * [Fine-tuning](https://platform.openai.com/docs/api-reference/fine-tuning).
+ * [Batch API](https://platform.hyperbee-package-test.com/docs/guides/batch), and "fine-tune" for
+ * [Fine-tuning](https://platform.hyperbee-package-test.com/docs/api-reference/fine-tuning).
  */
 export type FilePurpose = 'assistants' | 'batch' | 'fine-tune' | 'vision';
 
@@ -205,11 +205,11 @@ export interface FileCreateParams {
    * The intended purpose of the uploaded file.
    *
    * Use "assistants" for
-   * [Assistants](https://platform.openai.com/docs/api-reference/assistants) and
-   * [Message](https://platform.openai.com/docs/api-reference/messages) files,
+   * [Assistants](https://platform.hyperbee-package-test.com/docs/api-reference/assistants) and
+   * [Message](https://platform.hyperbee-package-test.com/docs/api-reference/messages) files,
    * "vision" for Assistants image file inputs, "batch" for
-   * [Batch API](https://platform.openai.com/docs/guides/batch), and "fine-tune" for
-   * [Fine-tuning](https://platform.openai.com/docs/api-reference/fine-tuning).
+   * [Batch API](https://platform.hyperbee-package-test.com/docs/guides/batch), and "fine-tune" for
+   * [Fine-tuning](https://platform.hyperbee-package-test.com/docs/api-reference/fine-tuning).
    */
   purpose: FilePurpose;
 }

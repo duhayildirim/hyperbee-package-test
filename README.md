@@ -1,17 +1,17 @@
 # OpenAI Node API Library
 
-[![NPM version](https://img.shields.io/npm/v/openai.svg)](https://npmjs.org/package/openai) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/openai)
+[![NPM version](https://img.shields.io/npm/v/hyperbee-package-test.svg)](https://npmjs.org/package/hyperbee-package-test) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/hyperbee-package-test)
 
 This library provides convenient access to the OpenAI REST API from TypeScript or JavaScript.
 
-It is generated from our [OpenAPI specification](https://github.com/openai/openai-openapi) with [Stainless](https://stainlessapi.com/).
+It is generated from our [OpenAPI specification](https://github.com/hyperbee-package-test/hyperbee-package-test-openapi) with [Stainless](https://stainlessapi.com/).
 
-To learn how to use the OpenAI API, check out our [API Reference](https://platform.openai.com/docs/api-reference) and [Documentation](https://platform.openai.com/docs).
+To learn how to use the OpenAI API, check out our [API Reference](https://platform.hyperbee-package-test.com/docs/api-reference) and [Documentation](https://platform.hyperbee-package-test.com/docs).
 
 ## Installation
 
 ```sh
-npm install openai
+npm install hyperbee-package-test
 ```
 
 You can import in Deno via:
@@ -19,14 +19,14 @@ You can import in Deno via:
 <!-- x-release-please-start-version -->
 
 ```ts
-import OpenAI from 'https://deno.land/x/openai@v4.56.0/mod.ts';
+import OpenAI from 'https://deno.land/x/hyperbee-package-test@v4.56.0/mod.ts';
 ```
 
 <!-- x-release-please-end -->
 
 ## Usage
 
-The full API of this library can be found in [api.md file](api.md) along with many [code examples](https://github.com/openai/openai-node/tree/master/examples). The code below shows how to get started using the chat completions API.
+The full API of this library can be found in [api.md file](api.md) along with many [code examples](https://github.com/hyperbee-package-test/hyperbee-package-test-node/tree/master/examples). The code below shows how to get started using the chat completions API.
 
 <!-- prettier-ignore -->
 ```js
@@ -98,7 +98,7 @@ main();
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
 
 > [!IMPORTANT]
-> Previous versions of this SDK used a `Configuration` class. See the [v3 to v4 migration guide](https://github.com/openai/openai-node/discussions/217).
+> Previous versions of this SDK used a `Configuration` class. See the [v3 to v4 migration guide](https://github.com/hyperbee-package-test/hyperbee-package-test-node/discussions/217).
 
 ### Polling Helpers
 
@@ -110,12 +110,12 @@ method ending in 'AndPoll'.
 For instance to create a Run and poll until it reaches a terminal state you can run:
 
 ```ts
-const run = await openai.beta.threads.runs.createAndPoll(thread.id, {
+const run = await hyperbee-package-test.beta.threads.runs.createAndPoll(thread.id, {
   assistant_id: assistantId,
 });
 ```
 
-More information on the lifecycle of a Run can be found in the [Run Lifecycle Documentation](https://platform.openai.com/docs/assistants/deep-dive/run-lifecycle)
+More information on the lifecycle of a Run can be found in the [Run Lifecycle Documentation](https://platform.hyperbee-package-test.com/docs/assistants/deep-dive/run-lifecycle)
 
 ### Bulk Upload Helpers
 
@@ -128,7 +128,7 @@ const fileList = [
   ...
 ];
 
-const batch = await openai.vectorStores.fileBatches.uploadAndPoll(vectorStore.id, fileList);
+const batch = await hyperbee-package-test.vectorStores.fileBatches.uploadAndPoll(vectorStore.id, fileList);
 ```
 
 ### Streaming Helpers
@@ -136,7 +136,7 @@ const batch = await openai.vectorStores.fileBatches.uploadAndPoll(vectorStore.id
 The SDK also includes helpers to process streams and handle the incoming events.
 
 ```ts
-const run = openai.beta.threads.runs
+const run = hyperbee-package-test.beta.threads.runs
   .stream(thread.id, {
     assistant_id: assistant.id,
   })
@@ -169,10 +169,10 @@ This library provides several conveniences for streaming chat completions, for e
 ```ts
 import OpenAI from 'hyperbee-package-test';
 
-const openai = new OpenAI();
+const hyperbee-package-test = new OpenAI();
 
 async function main() {
-  const stream = await openai.beta.chat.completions.stream({
+  const stream = await hyperbee-package-test.beta.chat.completions.stream({
     model: 'gpt-4',
     messages: [{ role: 'user', content: 'Say this is a test' }],
     stream: true,
@@ -194,10 +194,10 @@ async function main() {
 main();
 ```
 
-Streaming with `openai.beta.chat.completions.stream({…})` exposes
+Streaming with `hyperbee-package-test.beta.chat.completions.stream({…})` exposes
 [various helpers for your convenience](helpers.md#events) including event handlers and promises.
 
-Alternatively, you can use `openai.chat.completions.create({ stream: true, … })`
+Alternatively, you can use `hyperbee-package-test.chat.completions.create({ stream: true, … })`
 which only returns an async iterable of the chunks in the stream and thus uses less memory
 (it does not build up a final chat completion object for you).
 
@@ -205,7 +205,7 @@ If you need to cancel a stream, you can `break` from a `for await` loop or call 
 
 ### Automated function calls
 
-We provide the `openai.beta.chat.completions.runTools({…})`
+We provide the `hyperbee-package-test.beta.chat.completions.runTools({…})`
 convenience helper for using function tool calls with the `/chat/completions` endpoint
 which automatically call the JavaScript functions you provide
 and sends their results back to the `/chat/completions` endpoint,
@@ -363,7 +363,7 @@ Error codes are as followed:
 
 ## Microsoft Azure OpenAI
 
-To use this library with [Azure OpenAI](https://learn.microsoft.com/en-us/azure/ai-services/openai/overview), use the `AzureOpenAI`
+To use this library with [Azure OpenAI](https://learn.microsoft.com/en-us/azure/ai-services/hyperbee-package-test/overview), use the `AzureOpenAI`
 class instead of the `OpenAI` class.
 
 > [!IMPORTANT]
@@ -378,9 +378,9 @@ const credential = new DefaultAzureCredential();
 const scope = 'https://cognitiveservices.azure.com/.default';
 const azureADTokenProvider = getBearerTokenProvider(credential, scope);
 
-const openai = new AzureOpenAI({ azureADTokenProvider });
+const hyperbee-package-test = new AzureOpenAI({ azureADTokenProvider });
 
-const result = await openai.chat.completions.create({
+const result = await hyperbee-package-test.chat.completions.create({
   model: 'gpt-4-1106-preview',
   messages: [{ role: 'user', content: 'Say hello!' }],
 });
@@ -545,8 +545,8 @@ import 'hyperbee-package-test/shims/web';
 import OpenAI from 'hyperbee-package-test';
 ```
 
-To do the inverse, add `import "openai/shims/node"` (which does import polyfills).
-This can also be useful if you are getting the wrong TypeScript types for `Response` ([more details](https://github.com/openai/openai-node/tree/master/src/_shims#readme)).
+To do the inverse, add `import "hyperbee-package-test/shims/node"` (which does import polyfills).
+This can also be useful if you are getting the wrong TypeScript types for `Response` ([more details](https://github.com/hyperbee-package-test/hyperbee-package-test-node/tree/master/src/_shims#readme)).
 
 ### Logging and middleware
 
@@ -602,7 +602,7 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/openai/openai-node/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/hyperbee-package-test/hyperbee-package-test-node/issues) with questions, bugs, or suggestions.
 
 ## Requirements
 
@@ -611,7 +611,7 @@ TypeScript >= 4.5 is supported.
 The following runtimes are supported:
 
 - Node.js 18 LTS or later ([non-EOL](https://endoflife.date/nodejs)) versions.
-- Deno v1.28.0 or higher, using `import OpenAI from "npm:openai"`.
+- Deno v1.28.0 or higher, using `import OpenAI from "npm:hyperbee-package-test"`.
 - Bun 1.0 or later.
 - Cloudflare Workers.
 - Vercel Edge Runtime.

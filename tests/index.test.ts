@@ -151,13 +151,13 @@ describe('instantiate client', () => {
     test('empty env variable', () => {
       process.env['hyperbee-package-test_BASE_URL'] = ''; // empty
       const client = new OpenAI({ apiKey: 'My API Key' });
-      expect(client.baseURL).toEqual('https://api.openai.com/v1');
+      expect(client.baseURL).toEqual('https://api.hyperbee-package-test.com/v1');
     });
 
     test('blank env variable', () => {
       process.env['hyperbee-package-test_BASE_URL'] = '  '; // blank
       const client = new OpenAI({ apiKey: 'My API Key' });
-      expect(client.baseURL).toEqual('https://api.openai.com/v1');
+      expect(client.baseURL).toEqual('https://api.hyperbee-package-test.com/v1');
     });
   });
 

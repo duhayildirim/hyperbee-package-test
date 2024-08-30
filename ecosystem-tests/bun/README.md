@@ -1,4 +1,4 @@
-# openai-bun-test
+# hyperbee-package-test-bun-test
 
 To install dependencies:
 

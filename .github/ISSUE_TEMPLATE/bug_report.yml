@@ -10,7 +10,7 @@ body:
     id: non_api
     attributes:
       label: Confirm this is a Node library issue and not an underlying OpenAI API issue
-      description: Issues with the underlying OpenAI API should be reported on our [Developer Community](https://community.openai.com/c/api/7)
+      description: Issues with the underlying OpenAI API should be reported on our [Developer Community](https://community.hyperbee-package-test.com/c/api/7)
       options:
         - label: This is an issue with the Node library
           required: true
@@ -59,6 +59,6 @@ body:
     id: lib-version
     attributes:
       label: Library version
-      placeholder: openai v3.0.1
+      placeholder: hyperbee-package-test v3.0.1
     validations:
       required: true

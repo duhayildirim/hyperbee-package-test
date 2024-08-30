@@ -4,7 +4,7 @@ import OpenAI from 'hyperbee-package-test';
 import { ZodSchema, z } from 'zod';
 import { zodToJsonSchema } from 'zod-to-json-schema';
 
-const openai = new OpenAI();
+const hyperbee-package-test = new OpenAI();
 
 const ListParams = z.object({
   genre: z.enum(['mystery', 'nonfiction', 'memoir', 'romance', 'historical']),
@@ -44,7 +44,7 @@ const functions = [
 ] as const;
 
 async function main() {
-  const runner = await openai.beta.chat.completions
+  const runner = await hyperbee-package-test.beta.chat.completions
     .runFunctions({
       model: 'gpt-3.5-turbo',
       messages: [

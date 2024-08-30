@@ -2,16 +2,16 @@
 
 import OpenAI from 'hyperbee-package-test';
 
-const openai = new OpenAI();
+const hyperbee-package-test = new OpenAI();
 
 async function main() {
-  const assistant = await openai.beta.assistants.create({
+  const assistant = await hyperbee-package-test.beta.assistants.create({
     model: 'gpt-4-1106-preview',
     name: 'Math Tutor',
     instructions: 'You are a personal math tutor. Write and run code to answer math questions.',
   });
 
-  const thread = await openai.beta.threads.create({
+  const thread = await hyperbee-package-test.beta.threads.create({
     messages: [
       {
         role: 'user',
@@ -20,7 +20,7 @@ async function main() {
     ],
   });
 
-  const stream = await openai.beta.threads.runs.create(thread.id, {
+  const stream = await hyperbee-package-test.beta.threads.runs.create(thread.id, {
     assistant_id: assistant.id,
     additional_instructions: 'Please address the user as Jane Doe. The user has a premium account.',
     stream: true,

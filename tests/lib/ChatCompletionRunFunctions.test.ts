@@ -338,9 +338,9 @@ class StreamingRunnerListener {
 }
 
 function _typeTests() {
-  const openai = new OpenAI();
+  const hyperbee-package-test = new OpenAI();
 
-  openai.beta.chat.completions.runTools({
+  hyperbee-package-test.beta.chat.completions.runTools({
     messages: [
       { role: 'user', content: 'can you tell me how many properties are in {"a": 1, "b": 2, "c": 3}' },
     ],
@@ -381,7 +381,7 @@ function _typeTests() {
       },
     ],
   });
-  openai.beta.chat.completions.runTools({
+  hyperbee-package-test.beta.chat.completions.runTools({
     messages: [
       { role: 'user', content: 'can you tell me how many properties are in {"a": 1, "b": 2, "c": 3}' },
     ],
@@ -397,7 +397,7 @@ function _typeTests() {
       }),
     ],
   });
-  openai.beta.chat.completions.runTools({
+  hyperbee-package-test.beta.chat.completions.runTools({
     messages: [
       { role: 'user', content: 'can you tell me how many properties are in {"a": 1, "b": 2, "c": 3}' },
     ],
@@ -439,7 +439,7 @@ function _typeTests() {
       }),
     ],
   });
-  openai.beta.chat.completions.runTools({
+  hyperbee-package-test.beta.chat.completions.runTools({
     messages: [
       { role: 'user', content: 'can you tell me how many properties are in {"a": 1, "b": 2, "c": 3}' },
     ],
@@ -499,9 +499,9 @@ describe('resource completions', () => {
     test('successful flow', async () => {
       const { fetch, handleRequest } = mockChatCompletionFetch();
 
-      const openai = new OpenAI({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010', fetch });
+      const hyperbee-package-test = new OpenAI({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010', fetch });
 
-      const runner = openai.beta.chat.completions.runTools({
+      const runner = hyperbee-package-test.beta.chat.completions.runTools({
         messages: [{ role: 'user', content: 'tell me what the weather is like' }],
         model: 'gpt-3.5-turbo',
         tools: [
@@ -638,10 +638,10 @@ describe('resource completions', () => {
     test('flow with abort', async () => {
       const { fetch, handleRequest } = mockChatCompletionFetch();
 
-      const openai = new OpenAI({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010', fetch });
+      const hyperbee-package-test = new OpenAI({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010', fetch });
 
       const controller = new AbortController();
-      const runner = openai.beta.chat.completions.runTools(
+      const runner = hyperbee-package-test.beta.chat.completions.runTools(
         {
           messages: [{ role: 'user', content: 'tell me what the weather is like' }],
           model: 'gpt-3.5-turbo',
@@ -727,9 +727,9 @@ describe('resource completions', () => {
     test('successful flow with parse', async () => {
       const { fetch, handleRequest } = mockChatCompletionFetch();
 
-      const openai = new OpenAI({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010', fetch });
+      const hyperbee-package-test = new OpenAI({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010', fetch });
 
-      const runner = openai.beta.chat.completions.runTools({
+      const runner = hyperbee-package-test.beta.chat.completions.runTools({
         messages: [
           {
             role: 'user',
@@ -891,9 +891,9 @@ describe('resource completions', () => {
     test('flow with parse error', async () => {
       const { fetch, handleRequest } = mockChatCompletionFetch();
 
-      const openai = new OpenAI({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010', fetch });
+      const hyperbee-package-test = new OpenAI({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010', fetch });
 
-      const runner = openai.beta.chat.completions.runTools({
+      const runner = hyperbee-package-test.beta.chat.completions.runTools({
         messages: [
           {
             role: 'user',
@@ -1144,9 +1144,9 @@ describe('resource completions', () => {
     test('single function call', async () => {
       const { fetch, handleRequest } = mockChatCompletionFetch();
 
-      const openai = new OpenAI({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010', fetch });
+      const hyperbee-package-test = new OpenAI({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010', fetch });
 
-      const runner = openai.beta.chat.completions.runTools({
+      const runner = hyperbee-package-test.beta.chat.completions.runTools({
         messages: [{ role: 'user', content: 'tell me what the weather is like' }],
         model: 'gpt-3.5-turbo',
         tool_choice: {
@@ -1233,9 +1233,9 @@ describe('resource completions', () => {
     test('wrong function name', async () => {
       const { fetch, handleRequest } = mockChatCompletionFetch();
 
-      const openai = new OpenAI({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010', fetch });
+      const hyperbee-package-test = new OpenAI({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010', fetch });
 
-      const runner = openai.beta.chat.completions.runTools({
+      const runner = hyperbee-package-test.beta.chat.completions.runTools({
         messages: [{ role: 'user', content: 'tell me what the weather is like' }],
         model: 'gpt-3.5-turbo',
         tools: [
@@ -1470,9 +1470,9 @@ describe('resource completions', () => {
     test('successful flow', async () => {
       const { fetch, handleRequest } = mockStreamingChatCompletionFetch();
 
-      const openai = new OpenAI({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010', fetch });
+      const hyperbee-package-test = new OpenAI({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010', fetch });
 
-      const runner = openai.beta.chat.completions.runTools({
+      const runner = hyperbee-package-test.beta.chat.completions.runTools({
         stream: true,
         messages: [{ role: 'user', content: 'tell me what the weather is like' }],
         model: 'gpt-3.5-turbo',
@@ -1593,10 +1593,10 @@ describe('resource completions', () => {
     test('flow with abort', async () => {
       const { fetch, handleRequest } = mockStreamingChatCompletionFetch();
 
-      const openai = new OpenAI({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010', fetch });
+      const hyperbee-package-test = new OpenAI({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010', fetch });
 
       const controller = new AbortController();
-      const runner = openai.beta.chat.completions.runTools(
+      const runner = hyperbee-package-test.beta.chat.completions.runTools(
         {
           stream: true,
           messages: [{ role: 'user', content: 'tell me what the weather is like' }],
@@ -1678,9 +1678,9 @@ describe('resource completions', () => {
     test('successful flow with parse', async () => {
       const { fetch, handleRequest } = mockStreamingChatCompletionFetch();
 
-      const openai = new OpenAI({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010', fetch });
+      const hyperbee-package-test = new OpenAI({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010', fetch });
 
-      const runner = openai.beta.chat.completions.runTools({
+      const runner = hyperbee-package-test.beta.chat.completions.runTools({
         stream: true,
         messages: [
           {
@@ -1816,9 +1816,9 @@ describe('resource completions', () => {
     test('flow with parse error', async () => {
       const { fetch, handleRequest } = mockStreamingChatCompletionFetch();
 
-      const openai = new OpenAI({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010', fetch });
+      const hyperbee-package-test = new OpenAI({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010', fetch });
 
-      const runner = openai.beta.chat.completions.runTools({
+      const runner = hyperbee-package-test.beta.chat.completions.runTools({
         stream: true,
         messages: [
           {
@@ -2018,9 +2018,9 @@ describe('resource completions', () => {
     test('single function call', async () => {
       const { fetch, handleRequest } = mockStreamingChatCompletionFetch();
 
-      const openai = new OpenAI({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010', fetch });
+      const hyperbee-package-test = new OpenAI({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010', fetch });
 
-      const runner = openai.beta.chat.completions.runTools({
+      const runner = hyperbee-package-test.beta.chat.completions.runTools({
         stream: true,
         messages: [{ role: 'user', content: 'tell me what the weather is like' }],
         model: 'gpt-3.5-turbo',
@@ -2104,9 +2104,9 @@ describe('resource completions', () => {
     test('wrong function name', async () => {
       const { fetch, handleRequest } = mockStreamingChatCompletionFetch();
 
-      const openai = new OpenAI({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010', fetch });
+      const hyperbee-package-test = new OpenAI({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010', fetch });
 
-      const runner = openai.beta.chat.completions.runTools({
+      const runner = hyperbee-package-test.beta.chat.completions.runTools({
         stream: true,
         messages: [{ role: 'user', content: 'tell me what the weather is like' }],
         model: 'gpt-3.5-turbo',
@@ -2328,9 +2328,9 @@ describe('resource completions', () => {
     test('successful flow', async () => {
       const { fetch, handleRequest } = mockStreamingChatCompletionFetch();
 
-      const openai = new OpenAI({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010', fetch });
+      const hyperbee-package-test = new OpenAI({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010', fetch });
 
-      const runner = openai.beta.chat.completions.stream({
+      const runner = hyperbee-package-test.beta.chat.completions.stream({
         stream: true,
         messages: [{ role: 'user', content: 'tell me what the weather is like' }],
         model: 'gpt-3.5-turbo',
@@ -2366,9 +2366,9 @@ describe('resource completions', () => {
     test('toReadableStream and fromReadableStream', async () => {
       const { fetch, handleRequest } = mockStreamingChatCompletionFetch();
 
-      const openai = new OpenAI({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010', fetch });
+      const hyperbee-package-test = new OpenAI({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010', fetch });
 
-      const runner = openai.beta.chat.completions.stream({
+      const runner = hyperbee-package-test.beta.chat.completions.stream({
         stream: true,
         messages: [{ role: 'user', content: 'tell me what the weather is like' }],
         model: 'gpt-3.5-turbo',
@@ -2405,9 +2405,9 @@ describe('resource completions', () => {
     test('handles network errors', async () => {
       const { fetch, handleRequest } = mockFetch();
 
-      const openai = new OpenAI({ apiKey: '...', fetch });
+      const hyperbee-package-test = new OpenAI({ apiKey: '...', fetch });
 
-      const stream = openai.beta.chat.completions.stream(
+      const stream = hyperbee-package-test.beta.chat.completions.stream(
         {
           max_tokens: 1024,
           model: 'gpt-3.5-turbo',
@@ -2429,9 +2429,9 @@ describe('resource completions', () => {
     test('handles network errors on async iterator', async () => {
       const { fetch, handleRequest } = mockFetch();
 
-      const openai = new OpenAI({ apiKey: '...', fetch });
+      const hyperbee-package-test = new OpenAI({ apiKey: '...', fetch });
 
-      const stream = openai.beta.chat.completions.stream(
+      const stream = hyperbee-package-test.beta.chat.completions.stream(
         {
           max_tokens: 1024,
           model: 'gpt-3.5-turbo',

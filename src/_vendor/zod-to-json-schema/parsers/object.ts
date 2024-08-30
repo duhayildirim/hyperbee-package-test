@@ -51,7 +51,7 @@ export function parseObjectDef(def: ZodObjectDef, refs: Refs) {
             [propName]: parsedDef,
           },
           required:
-            propDef.isOptional() && !refs.openaiStrictMode ? acc.required : [...acc.required, propName],
+            propDef.isOptional() && !refs.hyperbee-package-testStrictMode ? acc.required : [...acc.required, propName],
         };
       },
       { properties: {}, required: [] },

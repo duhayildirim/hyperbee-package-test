@@ -18,9 +18,9 @@ export async function makeSnapshotRequest<T>(
       return new Response(capturedResponseContent, response);
     }
 
-    const openai = new OpenAI({ fetch });
+    const hyperbee-package-test = new OpenAI({ fetch });
 
-    const result = await requestFn(openai);
+    const result = await requestFn(hyperbee-package-test);
     if (!capturedResponseContent) {
       throw new Error('did not capture a response');
     }
@@ -45,8 +45,8 @@ export async function makeSnapshotRequest<T>(
 
   const { fetch, handleRequest } = mockFetch();
 
-  const openai = new OpenAI({ fetch, apiKey: 'My API Key' });
-  const requestPromise = requestFn(openai);
+  const hyperbee-package-test = new OpenAI({ fetch, apiKey: 'My API Key' });
+  const requestPromise = requestFn(hyperbee-package-test);
 
   await handleRequest(() =>
     Promise.resolve(
@@ -76,9 +76,9 @@ export async function makeStreamSnapshotRequest<T extends AsyncIterable<any>>(
       return new Response(Readable.from(capturedResponseContent), response);
     }
 
-    const openai = new OpenAI({ fetch });
+    const hyperbee-package-test = new OpenAI({ fetch });
 
-    const iterator = requestFn(openai);
+    const iterator = requestFn(hyperbee-package-test);
     for await (const _ of iterator) {
       // consume iterator
     }
@@ -107,8 +107,8 @@ export async function makeStreamSnapshotRequest<T extends AsyncIterable<any>>(
 
   const { fetch, handleRequest } = mockFetch();
 
-  const openai = new OpenAI({ fetch, apiKey: 'My API Key' });
-  const requestPromise = requestFn(openai);
+  const hyperbee-package-test = new OpenAI({ fetch, apiKey: 'My API Key' });
+  const requestPromise = requestFn(hyperbee-package-test);
 
   await handleRequest(() =>
     Promise.resolve(

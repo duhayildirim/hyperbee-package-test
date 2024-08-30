@@ -1,5 +1,5 @@
 {
-  "name": "openai-examples",
+  "name": "hyperbee-package-test-examples",
   "version": "1.0.0",
   "description": "Usage examples for the OpenAI Node.js SDK.",
   "main": "index.js",

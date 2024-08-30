@@ -7,7 +7,7 @@ import { ZodSchema, z } from 'zod';
 import { zodToJsonSchema } from 'zod-to-json-schema';
 
 // gets API Key from environment variable OPENAI_API_KEY
-const openai = new OpenAI();
+const hyperbee-package-test = new OpenAI();
 
 // Define your functions, alongside zod schemas.
 
@@ -36,7 +36,7 @@ async function getBook({ id }: GetParams) {
 }
 
 async function main() {
-  const runner = openai.beta.chat.completions
+  const runner = hyperbee-package-test.beta.chat.completions
     .runTools({
       model: 'gpt-4-1106-preview',
       stream: true,

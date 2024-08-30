@@ -4,7 +4,7 @@ import OpenAI from 'hyperbee-package-test';
 import { ChatCompletionMessage, ChatCompletionMessageParam } from 'hyperbee-package-test/resources/chat';
 
 // gets API Key from environment variable OPENAI_API_KEY
-const openai = new OpenAI();
+const hyperbee-package-test = new OpenAI();
 
 const functions: OpenAI.Chat.ChatCompletionCreateParams.Function[] = [
   {
@@ -75,7 +75,7 @@ async function main() {
   console.log();
 
   while (true) {
-    const completion = await openai.chat.completions.create({
+    const completion = await hyperbee-package-test.chat.completions.create({
       model: 'gpt-3.5-turbo',
       messages,
       functions: functions,

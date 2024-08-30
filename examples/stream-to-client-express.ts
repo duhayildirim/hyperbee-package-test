@@ -6,7 +6,7 @@
 import OpenAI from 'hyperbee-package-test';
 import express, { Request, Response } from 'express';
 
-const openai = new OpenAI();
+const hyperbee-package-test = new OpenAI();
 const app = express();
 
 app.use(express.text());
@@ -30,7 +30,7 @@ app.post('/', async (req: Request, res: Response) => {
   try {
     console.log('Received request:', req.body);
 
-    const stream = openai.beta.chat.completions.stream({
+    const stream = hyperbee-package-test.beta.chat.completions.stream({
       model: 'gpt-3.5-turbo',
       stream: true,
       messages: [{ role: 'user', content: req.body }],

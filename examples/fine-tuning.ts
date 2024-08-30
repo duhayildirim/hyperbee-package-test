@@ -4,7 +4,7 @@
  * Fine-tuning allows you to train models on your own data.
  *
  * See this guide for more information:
- * - https://platform.openai.com/docs/guides/fine-tuning
+ * - https://platform.hyperbee-package-test.com/docs/guides/fine-tuning
  */
 
 import fs from 'fs';

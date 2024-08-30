@@ -119,9 +119,9 @@ export interface Assistant {
 
   /**
    * ID of the model to use. You can use the
-   * [List models](https://platform.openai.com/docs/api-reference/models/list) API to
+   * [List models](https://platform.hyperbee-package-test.com/docs/api-reference/models/list) API to
    * see all of your available models, or see our
-   * [Model overview](https://platform.openai.com/docs/models/overview) for
+   * [Model overview](https://platform.hyperbee-package-test.com/docs/models/overview) for
    * descriptions of them.
    */
   model: string;
@@ -145,14 +145,14 @@ export interface Assistant {
 
   /**
    * Specifies the format that the model must output. Compatible with
-   * [GPT-4o](https://platform.openai.com/docs/models/gpt-4o),
-   * [GPT-4 Turbo](https://platform.openai.com/docs/models/gpt-4-turbo-and-gpt-4),
+   * [GPT-4o](https://platform.hyperbee-package-test.com/docs/models/gpt-4o),
+   * [GPT-4 Turbo](https://platform.hyperbee-package-test.com/docs/models/gpt-4-turbo-and-gpt-4),
    * and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
    *
    * Setting to `{ "type": "json_schema", "json_schema": {...} }` enables Structured
    * Outputs which guarantees the model will match your supplied JSON schema. Learn
    * more in the
-   * [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
+   * [Structured Outputs guide](https://platform.hyperbee-package-test.com/docs/guides/structured-outputs).
    *
    * Setting to `{ "type": "json_object" }` enables JSON mode, which guarantees the
    * message the model generates is valid JSON.
@@ -208,7 +208,7 @@ export namespace Assistant {
   export namespace ToolResources {
     export interface CodeInterpreter {
       /**
-       * A list of [file](https://platform.openai.com/docs/api-reference/files) IDs made
+       * A list of [file](https://platform.hyperbee-package-test.com/docs/api-reference/files) IDs made
        * available to the `code_interpreter`` tool. There can be a maximum of 20 files
        * associated with the tool.
        */
@@ -218,7 +218,7 @@ export namespace Assistant {
     export interface FileSearch {
       /**
        * The ID of the
-       * [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object)
+       * [vector store](https://platform.hyperbee-package-test.com/docs/api-reference/vector-stores/object)
        * attached to this assistant. There can be a maximum of 1 vector store attached to
        * the assistant.
        */
@@ -254,7 +254,7 @@ export interface AssistantDeleted {
  *
  * We may add additional events over time, so we recommend handling unknown events
  * gracefully in your code. See the
- * [Assistants API quickstart](https://platform.openai.com/docs/assistants/overview)
+ * [Assistants API quickstart](https://platform.hyperbee-package-test.com/docs/assistants/overview)
  * to learn how to integrate the Assistants API with streaming.
  */
 export type AssistantStreamEvent =
@@ -286,13 +286,13 @@ export type AssistantStreamEvent =
 export namespace AssistantStreamEvent {
   /**
    * Occurs when a new
-   * [thread](https://platform.openai.com/docs/api-reference/threads/object) is
+   * [thread](https://platform.hyperbee-package-test.com/docs/api-reference/threads/object) is
    * created.
    */
   export interface ThreadCreated {
     /**
      * Represents a thread that contains
-     * [messages](https://platform.openai.com/docs/api-reference/messages).
+     * [messages](https://platform.hyperbee-package-test.com/docs/api-reference/messages).
      */
     data: ThreadsAPI.Thread;
 
@@ -301,12 +301,12 @@ export namespace AssistantStreamEvent {
 
   /**
    * Occurs when a new
-   * [run](https://platform.openai.com/docs/api-reference/runs/object) is created.
+   * [run](https://platform.hyperbee-package-test.com/docs/api-reference/runs/object) is created.
    */
   export interface ThreadRunCreated {
     /**
      * Represents an execution run on a
-     * [thread](https://platform.openai.com/docs/api-reference/threads).
+     * [thread](https://platform.hyperbee-package-test.com/docs/api-reference/threads).
      */
     data: RunsAPI.Run;
 
@@ -314,13 +314,13 @@ export namespace AssistantStreamEvent {
   }
 
   /**
-   * Occurs when a [run](https://platform.openai.com/docs/api-reference/runs/object)
+   * Occurs when a [run](https://platform.hyperbee-package-test.com/docs/api-reference/runs/object)
    * moves to a `queued` status.
    */
   export interface ThreadRunQueued {
     /**
      * Represents an execution run on a
-     * [thread](https://platform.openai.com/docs/api-reference/threads).
+     * [thread](https://platform.hyperbee-package-test.com/docs/api-reference/threads).
      */
     data: RunsAPI.Run;
 
@@ -328,13 +328,13 @@ export namespace AssistantStreamEvent {
   }
 
   /**
-   * Occurs when a [run](https://platform.openai.com/docs/api-reference/runs/object)
+   * Occurs when a [run](https://platform.hyperbee-package-test.com/docs/api-reference/runs/object)
    * moves to an `in_progress` status.
    */
   export interface ThreadRunInProgress {
     /**
      * Represents an execution run on a
-     * [thread](https://platform.openai.com/docs/api-reference/threads).
+     * [thread](https://platform.hyperbee-package-test.com/docs/api-reference/threads).
      */
     data: RunsAPI.Run;
 
@@ -342,13 +342,13 @@ export namespace AssistantStreamEvent {
   }
 
   /**
-   * Occurs when a [run](https://platform.openai.com/docs/api-reference/runs/object)
+   * Occurs when a [run](https://platform.hyperbee-package-test.com/docs/api-reference/runs/object)
    * moves to a `requires_action` status.
    */
   export interface ThreadRunRequiresAction {
     /**
      * Represents an execution run on a
-     * [thread](https://platform.openai.com/docs/api-reference/threads).
+     * [thread](https://platform.hyperbee-package-test.com/docs/api-reference/threads).
      */
     data: RunsAPI.Run;
 
@@ -356,13 +356,13 @@ export namespace AssistantStreamEvent {
   }
 
   /**
-   * Occurs when a [run](https://platform.openai.com/docs/api-reference/runs/object)
+   * Occurs when a [run](https://platform.hyperbee-package-test.com/docs/api-reference/runs/object)
    * is completed.
    */
   export interface ThreadRunCompleted {
     /**
      * Represents an execution run on a
-     * [thread](https://platform.openai.com/docs/api-reference/threads).
+     * [thread](https://platform.hyperbee-package-test.com/docs/api-reference/threads).
      */
     data: RunsAPI.Run;
 
@@ -370,13 +370,13 @@ export namespace AssistantStreamEvent {
   }
 
   /**
-   * Occurs when a [run](https://platform.openai.com/docs/api-reference/runs/object)
+   * Occurs when a [run](https://platform.hyperbee-package-test.com/docs/api-reference/runs/object)
    * ends with status `incomplete`.
    */
   export interface ThreadRunIncomplete {
     /**
      * Represents an execution run on a
-     * [thread](https://platform.openai.com/docs/api-reference/threads).
+     * [thread](https://platform.hyperbee-package-test.com/docs/api-reference/threads).
      */
     data: RunsAPI.Run;
 
@@ -384,13 +384,13 @@ export namespace AssistantStreamEvent {
   }
 
   /**
-   * Occurs when a [run](https://platform.openai.com/docs/api-reference/runs/object)
+   * Occurs when a [run](https://platform.hyperbee-package-test.com/docs/api-reference/runs/object)
    * fails.
    */
   export interface ThreadRunFailed {
     /**
      * Represents an execution run on a
-     * [thread](https://platform.openai.com/docs/api-reference/threads).
+     * [thread](https://platform.hyperbee-package-test.com/docs/api-reference/threads).
      */
     data: RunsAPI.Run;
 
@@ -398,13 +398,13 @@ export namespace AssistantStreamEvent {
   }
 
   /**
-   * Occurs when a [run](https://platform.openai.com/docs/api-reference/runs/object)
+   * Occurs when a [run](https://platform.hyperbee-package-test.com/docs/api-reference/runs/object)
    * moves to a `cancelling` status.
    */
   export interface ThreadRunCancelling {
     /**
      * Represents an execution run on a
-     * [thread](https://platform.openai.com/docs/api-reference/threads).
+     * [thread](https://platform.hyperbee-package-test.com/docs/api-reference/threads).
      */
     data: RunsAPI.Run;
 
@@ -412,13 +412,13 @@ export namespace AssistantStreamEvent {
   }
 
   /**
-   * Occurs when a [run](https://platform.openai.com/docs/api-reference/runs/object)
+   * Occurs when a [run](https://platform.hyperbee-package-test.com/docs/api-reference/runs/object)
    * is cancelled.
    */
   export interface ThreadRunCancelled {
     /**
      * Represents an execution run on a
-     * [thread](https://platform.openai.com/docs/api-reference/threads).
+     * [thread](https://platform.hyperbee-package-test.com/docs/api-reference/threads).
      */
     data: RunsAPI.Run;
 
@@ -426,13 +426,13 @@ export namespace AssistantStreamEvent {
   }
 
   /**
-   * Occurs when a [run](https://platform.openai.com/docs/api-reference/runs/object)
+   * Occurs when a [run](https://platform.hyperbee-package-test.com/docs/api-reference/runs/object)
    * expires.
    */
   export interface ThreadRunExpired {
     /**
      * Represents an execution run on a
-     * [thread](https://platform.openai.com/docs/api-reference/threads).
+     * [thread](https://platform.hyperbee-package-test.com/docs/api-reference/threads).
      */
     data: RunsAPI.Run;
 
@@ -441,7 +441,7 @@ export namespace AssistantStreamEvent {
 
   /**
    * Occurs when a
-   * [run step](https://platform.openai.com/docs/api-reference/runs/step-object) is
+   * [run step](https://platform.hyperbee-package-test.com/docs/api-reference/runs/step-object) is
    * created.
    */
   export interface ThreadRunStepCreated {
@@ -455,7 +455,7 @@ export namespace AssistantStreamEvent {
 
   /**
    * Occurs when a
-   * [run step](https://platform.openai.com/docs/api-reference/runs/step-object)
+   * [run step](https://platform.hyperbee-package-test.com/docs/api-reference/runs/step-object)
    * moves to an `in_progress` state.
    */
   export interface ThreadRunStepInProgress {
@@ -469,7 +469,7 @@ export namespace AssistantStreamEvent {
 
   /**
    * Occurs when parts of a
-   * [run step](https://platform.openai.com/docs/api-reference/runs/step-object) are
+   * [run step](https://platform.hyperbee-package-test.com/docs/api-reference/runs/step-object) are
    * being streamed.
    */
   export interface ThreadRunStepDelta {
@@ -484,7 +484,7 @@ export namespace AssistantStreamEvent {
 
   /**
    * Occurs when a
-   * [run step](https://platform.openai.com/docs/api-reference/runs/step-object) is
+   * [run step](https://platform.hyperbee-package-test.com/docs/api-reference/runs/step-object) is
    * completed.
    */
   export interface ThreadRunStepCompleted {
@@ -498,7 +498,7 @@ export namespace AssistantStreamEvent {
 
   /**
    * Occurs when a
-   * [run step](https://platform.openai.com/docs/api-reference/runs/step-object)
+   * [run step](https://platform.hyperbee-package-test.com/docs/api-reference/runs/step-object)
    * fails.
    */
   export interface ThreadRunStepFailed {
@@ -512,7 +512,7 @@ export namespace AssistantStreamEvent {
 
   /**
    * Occurs when a
-   * [run step](https://platform.openai.com/docs/api-reference/runs/step-object) is
+   * [run step](https://platform.hyperbee-package-test.com/docs/api-reference/runs/step-object) is
    * cancelled.
    */
   export interface ThreadRunStepCancelled {
@@ -526,7 +526,7 @@ export namespace AssistantStreamEvent {
 
   /**
    * Occurs when a
-   * [run step](https://platform.openai.com/docs/api-reference/runs/step-object)
+   * [run step](https://platform.hyperbee-package-test.com/docs/api-reference/runs/step-object)
    * expires.
    */
   export interface ThreadRunStepExpired {
@@ -540,13 +540,13 @@ export namespace AssistantStreamEvent {
 
   /**
    * Occurs when a
-   * [message](https://platform.openai.com/docs/api-reference/messages/object) is
+   * [message](https://platform.hyperbee-package-test.com/docs/api-reference/messages/object) is
    * created.
    */
   export interface ThreadMessageCreated {
     /**
      * Represents a message within a
-     * [thread](https://platform.openai.com/docs/api-reference/threads).
+     * [thread](https://platform.hyperbee-package-test.com/docs/api-reference/threads).
      */
     data: MessagesAPI.Message;
 
@@ -555,13 +555,13 @@ export namespace AssistantStreamEvent {
 
   /**
    * Occurs when a
-   * [message](https://platform.openai.com/docs/api-reference/messages/object) moves
+   * [message](https://platform.hyperbee-package-test.com/docs/api-reference/messages/object) moves
    * to an `in_progress` state.
    */
   export interface ThreadMessageInProgress {
     /**
      * Represents a message within a
-     * [thread](https://platform.openai.com/docs/api-reference/threads).
+     * [thread](https://platform.hyperbee-package-test.com/docs/api-reference/threads).
      */
     data: MessagesAPI.Message;
 
@@ -570,7 +570,7 @@ export namespace AssistantStreamEvent {
 
   /**
    * Occurs when parts of a
-   * [Message](https://platform.openai.com/docs/api-reference/messages/object) are
+   * [Message](https://platform.hyperbee-package-test.com/docs/api-reference/messages/object) are
    * being streamed.
    */
   export interface ThreadMessageDelta {
@@ -585,13 +585,13 @@ export namespace AssistantStreamEvent {
 
   /**
    * Occurs when a
-   * [message](https://platform.openai.com/docs/api-reference/messages/object) is
+   * [message](https://platform.hyperbee-package-test.com/docs/api-reference/messages/object) is
    * completed.
    */
   export interface ThreadMessageCompleted {
     /**
      * Represents a message within a
-     * [thread](https://platform.openai.com/docs/api-reference/threads).
+     * [thread](https://platform.hyperbee-package-test.com/docs/api-reference/threads).
      */
     data: MessagesAPI.Message;
 
@@ -600,13 +600,13 @@ export namespace AssistantStreamEvent {
 
   /**
    * Occurs when a
-   * [message](https://platform.openai.com/docs/api-reference/messages/object) ends
+   * [message](https://platform.hyperbee-package-test.com/docs/api-reference/messages/object) ends
    * before it is completed.
    */
   export interface ThreadMessageIncomplete {
     /**
      * Represents a message within a
-     * [thread](https://platform.openai.com/docs/api-reference/threads).
+     * [thread](https://platform.hyperbee-package-test.com/docs/api-reference/threads).
      */
     data: MessagesAPI.Message;
 
@@ -615,7 +615,7 @@ export namespace AssistantStreamEvent {
 
   /**
    * Occurs when an
-   * [error](https://platform.openai.com/docs/guides/error-codes/api-errors) occurs.
+   * [error](https://platform.hyperbee-package-test.com/docs/guides/error-codes/api-errors) occurs.
    * This can happen due to an internal server error or a timeout.
    */
   export interface ErrorEvent {
@@ -658,7 +658,7 @@ export namespace FileSearchTool {
      *
      * Note that the file search tool may output fewer than `max_num_results` results.
      * See the
-     * [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search/number-of-chunks-returned)
+     * [file search tool documentation](https://platform.hyperbee-package-test.com/docs/assistants/tools/file-search/number-of-chunks-returned)
      * for more information.
      */
     max_num_results?: number;
@@ -676,7 +676,7 @@ export interface FunctionTool {
 
 /**
  * Occurs when a
- * [message](https://platform.openai.com/docs/api-reference/messages/object) is
+ * [message](https://platform.hyperbee-package-test.com/docs/api-reference/messages/object) is
  * created.
  */
 export type MessageStreamEvent =
@@ -689,13 +689,13 @@ export type MessageStreamEvent =
 export namespace MessageStreamEvent {
   /**
    * Occurs when a
-   * [message](https://platform.openai.com/docs/api-reference/messages/object) is
+   * [message](https://platform.hyperbee-package-test.com/docs/api-reference/messages/object) is
    * created.
    */
   export interface ThreadMessageCreated {
     /**
      * Represents a message within a
-     * [thread](https://platform.openai.com/docs/api-reference/threads).
+     * [thread](https://platform.hyperbee-package-test.com/docs/api-reference/threads).
      */
     data: MessagesAPI.Message;
 
@@ -704,13 +704,13 @@ export namespace MessageStreamEvent {
 
   /**
    * Occurs when a
-   * [message](https://platform.openai.com/docs/api-reference/messages/object) moves
+   * [message](https://platform.hyperbee-package-test.com/docs/api-reference/messages/object) moves
    * to an `in_progress` state.
    */
   export interface ThreadMessageInProgress {
     /**
      * Represents a message within a
-     * [thread](https://platform.openai.com/docs/api-reference/threads).
+     * [thread](https://platform.hyperbee-package-test.com/docs/api-reference/threads).
      */
     data: MessagesAPI.Message;
 
@@ -719,7 +719,7 @@ export namespace MessageStreamEvent {
 
   /**
    * Occurs when parts of a
-   * [Message](https://platform.openai.com/docs/api-reference/messages/object) are
+   * [Message](https://platform.hyperbee-package-test.com/docs/api-reference/messages/object) are
    * being streamed.
    */
   export interface ThreadMessageDelta {
@@ -734,13 +734,13 @@ export namespace MessageStreamEvent {
 
   /**
    * Occurs when a
-   * [message](https://platform.openai.com/docs/api-reference/messages/object) is
+   * [message](https://platform.hyperbee-package-test.com/docs/api-reference/messages/object) is
    * completed.
    */
   export interface ThreadMessageCompleted {
     /**
      * Represents a message within a
-     * [thread](https://platform.openai.com/docs/api-reference/threads).
+     * [thread](https://platform.hyperbee-package-test.com/docs/api-reference/threads).
      */
     data: MessagesAPI.Message;
 
@@ -749,13 +749,13 @@ export namespace MessageStreamEvent {
 
   /**
    * Occurs when a
-   * [message](https://platform.openai.com/docs/api-reference/messages/object) ends
+   * [message](https://platform.hyperbee-package-test.com/docs/api-reference/messages/object) ends
    * before it is completed.
    */
   export interface ThreadMessageIncomplete {
     /**
      * Represents a message within a
-     * [thread](https://platform.openai.com/docs/api-reference/threads).
+     * [thread](https://platform.hyperbee-package-test.com/docs/api-reference/threads).
      */
     data: MessagesAPI.Message;
 
@@ -765,7 +765,7 @@ export namespace MessageStreamEvent {
 
 /**
  * Occurs when a
- * [run step](https://platform.openai.com/docs/api-reference/runs/step-object) is
+ * [run step](https://platform.hyperbee-package-test.com/docs/api-reference/runs/step-object) is
  * created.
  */
 export type RunStepStreamEvent =
@@ -780,7 +780,7 @@ export type RunStepStreamEvent =
 export namespace RunStepStreamEvent {
   /**
    * Occurs when a
-   * [run step](https://platform.openai.com/docs/api-reference/runs/step-object) is
+   * [run step](https://platform.hyperbee-package-test.com/docs/api-reference/runs/step-object) is
    * created.
    */
   export interface ThreadRunStepCreated {
@@ -794,7 +794,7 @@ export namespace RunStepStreamEvent {
 
   /**
    * Occurs when a
-   * [run step](https://platform.openai.com/docs/api-reference/runs/step-object)
+   * [run step](https://platform.hyperbee-package-test.com/docs/api-reference/runs/step-object)
    * moves to an `in_progress` state.
    */
   export interface ThreadRunStepInProgress {
@@ -808,7 +808,7 @@ export namespace RunStepStreamEvent {
 
   /**
    * Occurs when parts of a
-   * [run step](https://platform.openai.com/docs/api-reference/runs/step-object) are
+   * [run step](https://platform.hyperbee-package-test.com/docs/api-reference/runs/step-object) are
    * being streamed.
    */
   export interface ThreadRunStepDelta {
@@ -823,7 +823,7 @@ export namespace RunStepStreamEvent {
 
   /**
    * Occurs when a
-   * [run step](https://platform.openai.com/docs/api-reference/runs/step-object) is
+   * [run step](https://platform.hyperbee-package-test.com/docs/api-reference/runs/step-object) is
    * completed.
    */
   export interface ThreadRunStepCompleted {
@@ -837,7 +837,7 @@ export namespace RunStepStreamEvent {
 
   /**
    * Occurs when a
-   * [run step](https://platform.openai.com/docs/api-reference/runs/step-object)
+   * [run step](https://platform.hyperbee-package-test.com/docs/api-reference/runs/step-object)
    * fails.
    */
   export interface ThreadRunStepFailed {
@@ -851,7 +851,7 @@ export namespace RunStepStreamEvent {
 
   /**
    * Occurs when a
-   * [run step](https://platform.openai.com/docs/api-reference/runs/step-object) is
+   * [run step](https://platform.hyperbee-package-test.com/docs/api-reference/runs/step-object) is
    * cancelled.
    */
   export interface ThreadRunStepCancelled {
@@ -865,7 +865,7 @@ export namespace RunStepStreamEvent {
 
   /**
    * Occurs when a
-   * [run step](https://platform.openai.com/docs/api-reference/runs/step-object)
+   * [run step](https://platform.hyperbee-package-test.com/docs/api-reference/runs/step-object)
    * expires.
    */
   export interface ThreadRunStepExpired {
@@ -880,7 +880,7 @@ export namespace RunStepStreamEvent {
 
 /**
  * Occurs when a new
- * [run](https://platform.openai.com/docs/api-reference/runs/object) is created.
+ * [run](https://platform.hyperbee-package-test.com/docs/api-reference/runs/object) is created.
  */
 export type RunStreamEvent =
   | RunStreamEvent.ThreadRunCreated
@@ -897,12 +897,12 @@ export type RunStreamEvent =
 export namespace RunStreamEvent {
   /**
    * Occurs when a new
-   * [run](https://platform.openai.com/docs/api-reference/runs/object) is created.
+   * [run](https://platform.hyperbee-package-test.com/docs/api-reference/runs/object) is created.
    */
   export interface ThreadRunCreated {
     /**
      * Represents an execution run on a
-     * [thread](https://platform.openai.com/docs/api-reference/threads).
+     * [thread](https://platform.hyperbee-package-test.com/docs/api-reference/threads).
      */
     data: RunsAPI.Run;
 
@@ -910,13 +910,13 @@ export namespace RunStreamEvent {
   }
 
   /**
-   * Occurs when a [run](https://platform.openai.com/docs/api-reference/runs/object)
+   * Occurs when a [run](https://platform.hyperbee-package-test.com/docs/api-reference/runs/object)
    * moves to a `queued` status.
    */
   export interface ThreadRunQueued {
     /**
      * Represents an execution run on a
-     * [thread](https://platform.openai.com/docs/api-reference/threads).
+     * [thread](https://platform.hyperbee-package-test.com/docs/api-reference/threads).
      */
     data: RunsAPI.Run;
 
@@ -924,13 +924,13 @@ export namespace RunStreamEvent {
   }
 
   /**
-   * Occurs when a [run](https://platform.openai.com/docs/api-reference/runs/object)
+   * Occurs when a [run](https://platform.hyperbee-package-test.com/docs/api-reference/runs/object)
    * moves to an `in_progress` status.
    */
   export interface ThreadRunInProgress {
     /**
      * Represents an execution run on a
-     * [thread](https://platform.openai.com/docs/api-reference/threads).
+     * [thread](https://platform.hyperbee-package-test.com/docs/api-reference/threads).
      */
     data: RunsAPI.Run;
 
@@ -938,13 +938,13 @@ export namespace RunStreamEvent {
   }
 
   /**
-   * Occurs when a [run](https://platform.openai.com/docs/api-reference/runs/object)
+   * Occurs when a [run](https://platform.hyperbee-package-test.com/docs/api-reference/runs/object)
    * moves to a `requires_action` status.
    */
   export interface ThreadRunRequiresAction {
     /**
      * Represents an execution run on a
-     * [thread](https://platform.openai.com/docs/api-reference/threads).
+     * [thread](https://platform.hyperbee-package-test.com/docs/api-reference/threads).
      */
     data: RunsAPI.Run;
 
@@ -952,13 +952,13 @@ export namespace RunStreamEvent {
   }
 
   /**
-   * Occurs when a [run](https://platform.openai.com/docs/api-reference/runs/object)
+   * Occurs when a [run](https://platform.hyperbee-package-test.com/docs/api-reference/runs/object)
    * is completed.
    */
   export interface ThreadRunCompleted {
     /**
      * Represents an execution run on a
-     * [thread](https://platform.openai.com/docs/api-reference/threads).
+     * [thread](https://platform.hyperbee-package-test.com/docs/api-reference/threads).
      */
     data: RunsAPI.Run;
 
@@ -966,13 +966,13 @@ export namespace RunStreamEvent {
   }
 
   /**
-   * Occurs when a [run](https://platform.openai.com/docs/api-reference/runs/object)
+   * Occurs when a [run](https://platform.hyperbee-package-test.com/docs/api-reference/runs/object)
    * ends with status `incomplete`.
    */
   export interface ThreadRunIncomplete {
     /**
      * Represents an execution run on a
-     * [thread](https://platform.openai.com/docs/api-reference/threads).
+     * [thread](https://platform.hyperbee-package-test.com/docs/api-reference/threads).
      */
     data: RunsAPI.Run;
 
@@ -980,13 +980,13 @@ export namespace RunStreamEvent {
   }
 
   /**
-   * Occurs when a [run](https://platform.openai.com/docs/api-reference/runs/object)
+   * Occurs when a [run](https://platform.hyperbee-package-test.com/docs/api-reference/runs/object)
    * fails.
    */
   export interface ThreadRunFailed {
     /**
      * Represents an execution run on a
-     * [thread](https://platform.openai.com/docs/api-reference/threads).
+     * [thread](https://platform.hyperbee-package-test.com/docs/api-reference/threads).
      */
     data: RunsAPI.Run;
 
@@ -994,13 +994,13 @@ export namespace RunStreamEvent {
   }
 
   /**
-   * Occurs when a [run](https://platform.openai.com/docs/api-reference/runs/object)
+   * Occurs when a [run](https://platform.hyperbee-package-test.com/docs/api-reference/runs/object)
    * moves to a `cancelling` status.
    */
   export interface ThreadRunCancelling {
     /**
      * Represents an execution run on a
-     * [thread](https://platform.openai.com/docs/api-reference/threads).
+     * [thread](https://platform.hyperbee-package-test.com/docs/api-reference/threads).
      */
     data: RunsAPI.Run;
 
@@ -1008,13 +1008,13 @@ export namespace RunStreamEvent {
   }
 
   /**
-   * Occurs when a [run](https://platform.openai.com/docs/api-reference/runs/object)
+   * Occurs when a [run](https://platform.hyperbee-package-test.com/docs/api-reference/runs/object)
    * is cancelled.
    */
   export interface ThreadRunCancelled {
     /**
      * Represents an execution run on a
-     * [thread](https://platform.openai.com/docs/api-reference/threads).
+     * [thread](https://platform.hyperbee-package-test.com/docs/api-reference/threads).
      */
     data: RunsAPI.Run;
 
@@ -1022,13 +1022,13 @@ export namespace RunStreamEvent {
   }
 
   /**
-   * Occurs when a [run](https://platform.openai.com/docs/api-reference/runs/object)
+   * Occurs when a [run](https://platform.hyperbee-package-test.com/docs/api-reference/runs/object)
    * expires.
    */
   export interface ThreadRunExpired {
     /**
      * Represents an execution run on a
-     * [thread](https://platform.openai.com/docs/api-reference/threads).
+     * [thread](https://platform.hyperbee-package-test.com/docs/api-reference/threads).
      */
     data: RunsAPI.Run;
 
@@ -1038,13 +1038,13 @@ export namespace RunStreamEvent {
 
 /**
  * Occurs when a new
- * [thread](https://platform.openai.com/docs/api-reference/threads/object) is
+ * [thread](https://platform.hyperbee-package-test.com/docs/api-reference/threads/object) is
  * created.
  */
 export interface ThreadStreamEvent {
   /**
    * Represents a thread that contains
-   * [messages](https://platform.openai.com/docs/api-reference/messages).
+   * [messages](https://platform.hyperbee-package-test.com/docs/api-reference/messages).
    */
   data: ThreadsAPI.Thread;
 
@@ -1054,9 +1054,9 @@ export interface ThreadStreamEvent {
 export interface AssistantCreateParams {
   /**
    * ID of the model to use. You can use the
-   * [List models](https://platform.openai.com/docs/api-reference/models/list) API to
+   * [List models](https://platform.hyperbee-package-test.com/docs/api-reference/models/list) API to
    * see all of your available models, or see our
-   * [Model overview](https://platform.openai.com/docs/models/overview) for
+   * [Model overview](https://platform.hyperbee-package-test.com/docs/models/overview) for
    * descriptions of them.
    */
   model: (string & {}) | ChatAPI.ChatModel;
@@ -1087,14 +1087,14 @@ export interface AssistantCreateParams {
 
   /**
    * Specifies the format that the model must output. Compatible with
-   * [GPT-4o](https://platform.openai.com/docs/models/gpt-4o),
-   * [GPT-4 Turbo](https://platform.openai.com/docs/models/gpt-4-turbo-and-gpt-4),
+   * [GPT-4o](https://platform.hyperbee-package-test.com/docs/models/gpt-4o),
+   * [GPT-4 Turbo](https://platform.hyperbee-package-test.com/docs/models/gpt-4-turbo-and-gpt-4),
    * and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
    *
    * Setting to `{ "type": "json_schema", "json_schema": {...} }` enables Structured
    * Outputs which guarantees the model will match your supplied JSON schema. Learn
    * more in the
-   * [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
+   * [Structured Outputs guide](https://platform.hyperbee-package-test.com/docs/guides/structured-outputs).
    *
    * Setting to `{ "type": "json_object" }` enables JSON mode, which guarantees the
    * message the model generates is valid JSON.
@@ -1157,7 +1157,7 @@ export namespace AssistantCreateParams {
   export namespace ToolResources {
     export interface CodeInterpreter {
       /**
-       * A list of [file](https://platform.openai.com/docs/api-reference/files) IDs made
+       * A list of [file](https://platform.hyperbee-package-test.com/docs/api-reference/files) IDs made
        * available to the `code_interpreter` tool. There can be a maximum of 20 files
        * associated with the tool.
        */
@@ -1167,7 +1167,7 @@ export namespace AssistantCreateParams {
     export interface FileSearch {
       /**
        * The
-       * [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object)
+       * [vector store](https://platform.hyperbee-package-test.com/docs/api-reference/vector-stores/object)
        * attached to this assistant. There can be a maximum of 1 vector store attached to
        * the assistant.
        */
@@ -1175,7 +1175,7 @@ export namespace AssistantCreateParams {
 
       /**
        * A helper to create a
-       * [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object)
+       * [vector store](https://platform.hyperbee-package-test.com/docs/api-reference/vector-stores/object)
        * with file_ids and attach it to this assistant. There can be a maximum of 1
        * vector store attached to the assistant.
        */
@@ -1191,7 +1191,7 @@ export namespace AssistantCreateParams {
         chunking_strategy?: VectorStore.Auto | VectorStore.Static;
 
         /**
-         * A list of [file](https://platform.openai.com/docs/api-reference/files) IDs to
+         * A list of [file](https://platform.hyperbee-package-test.com/docs/api-reference/files) IDs to
          * add to the vector store. There can be a maximum of 10000 files in a vector
          * store.
          */
@@ -1270,9 +1270,9 @@ export interface AssistantUpdateParams {
 
   /**
    * ID of the model to use. You can use the
-   * [List models](https://platform.openai.com/docs/api-reference/models/list) API to
+   * [List models](https://platform.hyperbee-package-test.com/docs/api-reference/models/list) API to
    * see all of your available models, or see our
-   * [Model overview](https://platform.openai.com/docs/models/overview) for
+   * [Model overview](https://platform.hyperbee-package-test.com/docs/models/overview) for
    * descriptions of them.
    */
   model?: string;
@@ -1284,14 +1284,14 @@ export interface AssistantUpdateParams {
 
   /**
    * Specifies the format that the model must output. Compatible with
-   * [GPT-4o](https://platform.openai.com/docs/models/gpt-4o),
-   * [GPT-4 Turbo](https://platform.openai.com/docs/models/gpt-4-turbo-and-gpt-4),
+   * [GPT-4o](https://platform.hyperbee-package-test.com/docs/models/gpt-4o),
+   * [GPT-4 Turbo](https://platform.hyperbee-package-test.com/docs/models/gpt-4-turbo-and-gpt-4),
    * and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
    *
    * Setting to `{ "type": "json_schema", "json_schema": {...} }` enables Structured
    * Outputs which guarantees the model will match your supplied JSON schema. Learn
    * more in the
-   * [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
+   * [Structured Outputs guide](https://platform.hyperbee-package-test.com/docs/guides/structured-outputs).
    *
    * Setting to `{ "type": "json_object" }` enables JSON mode, which guarantees the
    * message the model generates is valid JSON.
@@ -1355,7 +1355,7 @@ export namespace AssistantUpdateParams {
     export interface CodeInterpreter {
       /**
        * Overrides the list of
-       * [file](https://platform.openai.com/docs/api-reference/files) IDs made available
+       * [file](https://platform.hyperbee-package-test.com/docs/api-reference/files) IDs made available
        * to the `code_interpreter` tool. There can be a maximum of 20 files associated
        * with the tool.
        */
@@ -1365,7 +1365,7 @@ export namespace AssistantUpdateParams {
     export interface FileSearch {
       /**
        * Overrides the
-       * [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object)
+       * [vector store](https://platform.hyperbee-package-test.com/docs/api-reference/vector-stores/object)
        * attached to this assistant. There can be a maximum of 1 vector store attached to
        * the assistant.
        */

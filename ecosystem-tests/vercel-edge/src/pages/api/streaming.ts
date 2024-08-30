@@ -12,11 +12,11 @@ export const config = {
 };
 
 export default async (request: NextRequest) => {
-  const openai = new OpenAI();
+  const hyperbee-package-test = new OpenAI();
 
   const text: string[] = [];
 
-  const stream = await openai.completions.create({
+  const stream = await hyperbee-package-test.completions.create({
     prompt: 'Say this is a test',
     model: 'gpt-3.5-turbo-instruct',
     stream: true,

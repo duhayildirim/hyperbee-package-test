@@ -1,5 +1,5 @@
 {
-  "name": "openai-bun-test",
+  "name": "hyperbee-package-test-bun-test",
   "module": "index.ts",
   "type": "module",
   "engines": {

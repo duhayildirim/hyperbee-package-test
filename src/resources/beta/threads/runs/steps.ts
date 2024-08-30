@@ -92,7 +92,7 @@ export interface CodeInterpreterOutputImage {
 export namespace CodeInterpreterOutputImage {
   export interface Image {
     /**
-     * The [file](https://platform.openai.com/docs/api-reference/files) ID of the
+     * The [file](https://platform.hyperbee-package-test.com/docs/api-reference/files) ID of the
      * image.
      */
     file_id?: string;
@@ -166,7 +166,7 @@ export namespace CodeInterpreterToolCall {
     export namespace Image {
       export interface Image {
         /**
-         * The [file](https://platform.openai.com/docs/api-reference/files) ID of the
+         * The [file](https://platform.hyperbee-package-test.com/docs/api-reference/files) ID of the
          * image.
          */
         file_id: string;
@@ -296,7 +296,7 @@ export namespace FunctionToolCall {
 
     /**
      * The output of the function. This will be `null` if the outputs have not been
-     * [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs)
+     * [submitted](https://platform.hyperbee-package-test.com/docs/api-reference/runs/submitToolOutputs)
      * yet.
      */
     output: string | null;
@@ -343,7 +343,7 @@ export namespace FunctionToolCallDelta {
 
     /**
      * The output of the function. This will be `null` if the outputs have not been
-     * [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs)
+     * [submitted](https://platform.hyperbee-package-test.com/docs/api-reference/runs/submitToolOutputs)
      * yet.
      */
     output?: string | null;
@@ -382,7 +382,7 @@ export interface RunStep {
 
   /**
    * The ID of the
-   * [assistant](https://platform.openai.com/docs/api-reference/assistants)
+   * [assistant](https://platform.hyperbee-package-test.com/docs/api-reference/assistants)
    * associated with the run step.
    */
   assistant_id: string;
@@ -433,7 +433,7 @@ export interface RunStep {
   object: 'thread.run.step';
 
   /**
-   * The ID of the [run](https://platform.openai.com/docs/api-reference/runs) that
+   * The ID of the [run](https://platform.hyperbee-package-test.com/docs/api-reference/runs) that
    * this run step is a part of.
    */
   run_id: string;
@@ -450,7 +450,7 @@ export interface RunStep {
   step_details: MessageCreationStepDetails | ToolCallsStepDetails;
 
   /**
-   * The ID of the [thread](https://platform.openai.com/docs/api-reference/threads)
+   * The ID of the [thread](https://platform.hyperbee-package-test.com/docs/api-reference/threads)
    * that was run.
    */
   thread_id: string;

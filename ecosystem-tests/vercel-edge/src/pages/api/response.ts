@@ -12,9 +12,9 @@ export const config = {
 };
 
 export default async (request: NextRequest) => {
-  const openai = new OpenAI();
+  const hyperbee-package-test = new OpenAI();
 
-  const result = await openai.completions.create({
+  const result = await hyperbee-package-test.completions.create({
     prompt: 'Say this is a test',
     model: 'gpt-3.5-turbo-instruct',
   });

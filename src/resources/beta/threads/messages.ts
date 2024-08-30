@@ -243,7 +243,7 @@ export namespace FilePathDeltaAnnotation {
 
 export interface ImageFile {
   /**
-   * The [File](https://platform.openai.com/docs/api-reference/files) ID of the image
+   * The [File](https://platform.hyperbee-package-test.com/docs/api-reference/files) ID of the image
    * in the message content. Set `purpose="vision"` when uploading the File if you
    * need to later display the file content.
    */
@@ -257,7 +257,7 @@ export interface ImageFile {
 }
 
 /**
- * References an image [File](https://platform.openai.com/docs/api-reference/files)
+ * References an image [File](https://platform.hyperbee-package-test.com/docs/api-reference/files)
  * in the content of a message.
  */
 export interface ImageFileContentBlock {
@@ -277,7 +277,7 @@ export interface ImageFileDelta {
   detail?: 'auto' | 'low' | 'high';
 
   /**
-   * The [File](https://platform.openai.com/docs/api-reference/files) ID of the image
+   * The [File](https://platform.hyperbee-package-test.com/docs/api-reference/files) ID of the image
    * in the message content. Set `purpose="vision"` when uploading the File if you
    * need to later display the file content.
    */
@@ -285,7 +285,7 @@ export interface ImageFileDelta {
 }
 
 /**
- * References an image [File](https://platform.openai.com/docs/api-reference/files)
+ * References an image [File](https://platform.hyperbee-package-test.com/docs/api-reference/files)
  * in the content of a message.
  */
 export interface ImageFileDeltaBlock {
@@ -361,7 +361,7 @@ export interface ImageURLDeltaBlock {
 
 /**
  * Represents a message within a
- * [thread](https://platform.openai.com/docs/api-reference/threads).
+ * [thread](https://platform.hyperbee-package-test.com/docs/api-reference/threads).
  */
 export interface Message {
   /**
@@ -371,7 +371,7 @@ export interface Message {
 
   /**
    * If applicable, the ID of the
-   * [assistant](https://platform.openai.com/docs/api-reference/assistants) that
+   * [assistant](https://platform.hyperbee-package-test.com/docs/api-reference/assistants) that
    * authored this message.
    */
   assistant_id: string | null;
@@ -425,7 +425,7 @@ export interface Message {
   role: 'user' | 'assistant';
 
   /**
-   * The ID of the [run](https://platform.openai.com/docs/api-reference/runs)
+   * The ID of the [run](https://platform.hyperbee-package-test.com/docs/api-reference/runs)
    * associated with the creation of this message. Value is `null` when messages are
    * created manually using the create message or create thread endpoints.
    */
@@ -438,7 +438,7 @@ export interface Message {
   status: 'in_progress' | 'incomplete' | 'completed';
 
   /**
-   * The [thread](https://platform.openai.com/docs/api-reference/threads) ID that
+   * The [thread](https://platform.hyperbee-package-test.com/docs/api-reference/threads) ID that
    * this message belongs to.
    */
   thread_id: string;
@@ -478,7 +478,7 @@ export namespace Message {
 }
 
 /**
- * References an image [File](https://platform.openai.com/docs/api-reference/files)
+ * References an image [File](https://platform.hyperbee-package-test.com/docs/api-reference/files)
  * in the content of a message.
  */
 export type MessageContent =
@@ -488,7 +488,7 @@ export type MessageContent =
   | RefusalContentBlock;
 
 /**
- * References an image [File](https://platform.openai.com/docs/api-reference/files)
+ * References an image [File](https://platform.hyperbee-package-test.com/docs/api-reference/files)
  * in the content of a message.
  */
 export type MessageContentDelta =
@@ -498,7 +498,7 @@ export type MessageContentDelta =
   | ImageURLDeltaBlock;
 
 /**
- * References an image [File](https://platform.openai.com/docs/api-reference/files)
+ * References an image [File](https://platform.hyperbee-package-test.com/docs/api-reference/files)
  * in the content of a message.
  */
 export type MessageContentPartParam = ImageFileContentBlock | ImageURLContentBlock | TextContentBlockParam;

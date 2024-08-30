@@ -13,11 +13,11 @@ const azureADTokenProvider = getBearerTokenProvider(credential, scope);
 
 // Make sure to set AZURE_OPENAI_ENDPOINT with the endpoint of your Azure resource.
 // You can find it in the Azure Portal.
-const openai = new AzureOpenAI({ azureADTokenProvider });
+const hyperbee-package-test = new AzureOpenAI({ azureADTokenProvider });
 
 async function main() {
   console.log('Non-streaming:');
-  const result = await openai.chat.completions.create({
+  const result = await hyperbee-package-test.chat.completions.create({
     model: deployment,
     messages: [{ role: 'user', content: 'Say hello!' }],
   });
@@ -25,7 +25,7 @@ async function main() {
 
   console.log();
   console.log('Streaming:');
-  const stream = await openai.chat.completions.create({
+  const stream = await hyperbee-package-test.chat.completions.create({
     model: deployment,
     messages: [{ role: 'user', content: 'Say hello!' }],
     stream: true,

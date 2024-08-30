@@ -11,12 +11,12 @@ cp -rp src/* deno
 cat << EOF > deno/README.md
 # OpenAI Node API Library - Deno build
 
-This is a build produced from https://github.com/openai/openai-node – please go there to read the source and docs, file issues, etc.
+This is a build produced from https://github.com/hyperbee-package-test/hyperbee-package-test-node – please go there to read the source and docs, file issues, etc.
 
 Usage:
 
 \`\`\`ts
-import OpenAI from "https://deno.land/x/openai@v4.56.0/mod.ts";
+import OpenAI from "https://deno.land/x/hyperbee-package-test@v4.56.0/mod.ts";
 
 const client = new OpenAI();
 \`\`\`
@@ -24,7 +24,7 @@ const client = new OpenAI();
 Note that in most Deno environments, you can also do this:
 
 \`\`\`ts
-import OpenAI from "npm:openai";
+import OpenAI from "npm:hyperbee-package-test";
 \`\`\`
 EOF
 # x-release-please-end

@@ -1,6 +1,6 @@
 # Structured Outputs Parsing Helpers
 
-The OpenAI API supports extracting JSON from the model with the `response_format` request param, for more details on the API, see [this guide](https://platform.openai.com/docs/guides/structured-outputs).
+The OpenAI API supports extracting JSON from the model with the `response_format` request param, for more details on the API, see [this guide](https://platform.hyperbee-package-test.com/docs/guides/structured-outputs).
 
 The SDK provides a `client.beta.chat.completions.parse()` method which is a wrapper over the `client.chat.completions.create()` that
 provides richer integrations with TS specific types & returns a `ParsedChatCompletion` object, which is an extension of the standard `ChatCompletion` type.
@@ -136,12 +136,12 @@ OpenAI supports streaming responses when interacting with the [Chat](#chat-strea
 OpenAI supports streaming responses from Assistants. The SDK provides convenience wrappers around the API
 so you can subscribe to the types of events you are interested in as well as receive accumulated responses.
 
-More information can be found in the documentation: [Assistant Streaming](https://platform.openai.com/docs/assistants/overview?lang=node.js)
+More information can be found in the documentation: [Assistant Streaming](https://platform.hyperbee-package-test.com/docs/assistants/overview?lang=node.js)
 
 #### An example of creating a run and subscribing to some events
 
 ```ts
-const run = openai.beta.threads.runs
+const run = hyperbee-package-test.beta.threads.runs
   .stream(thread.id, {
     assistant_id: assistant.id,
   })
@@ -170,20 +170,20 @@ const run = openai.beta.threads.runs
 There are three helper methods for creating streams:
 
 ```ts
-openai.beta.threads.runs.stream();
+hyperbee-package-test.beta.threads.runs.stream();
 ```
 
 This method can be used to start and stream the response to an existing run with an associated thread
 that is already populated with messages.
 
 ```ts
-openai.beta.threads.createAndRunStream();
+hyperbee-package-test.beta.threads.createAndRunStream();
 ```
 
 This method can be used to add a message to a thread, start a run and then stream the response.
 
 ```ts
-openai.beta.threads.runs.submitToolOutputsStream();
+hyperbee-package-test.beta.threads.runs.submitToolOutputsStream();
 ```
 
 This method can be used to submit a tool output to a run waiting on the output and start a stream.
@@ -199,7 +199,7 @@ The assistant API provides events you can subscribe to for the following events.
 This allows you to subscribe to all the possible raw events sent by the OpenAI streaming API.
 In many cases it will be more convenient to subscribe to a more specific set of events for your use case.
 
-More information on the types of events can be found here: [Events](https://platform.openai.com/docs/api-reference/assistants-streaming/events)
+More information on the types of events can be found here: [Events](https://platform.hyperbee-package-test.com/docs/api-reference/assistants-streaming/events)
 
 ```ts
 .on('runStepCreated', (runStep: RunStep) => ...)
@@ -209,7 +209,7 @@ More information on the types of events can be found here: [Events](https://plat
 
 These events allow you to subscribe to the creation, delta and completion of a RunStep.
 
-For more information on how Runs and RunSteps work see the documentation [Runs and RunSteps](https://platform.openai.com/docs/assistants/how-it-works/runs-and-run-steps)
+For more information on how Runs and RunSteps work see the documentation [Runs and RunSteps](https://platform.hyperbee-package-test.com/docs/assistants/how-it-works/runs-and-run-steps)
 
 ```ts
 .on('messageCreated', (message: Message) => ...)
@@ -222,7 +222,7 @@ different types of content that can be sent from a model (and events are availab
 For convenience, the delta event includes both the incremental update and an accumulated snapshot of the content.
 
 More information on messages can be found
-on in the documentation page [Message](https://platform.openai.com/docs/api-reference/messages/object).
+on in the documentation page [Message](https://platform.hyperbee-package-test.com/docs/api-reference/messages/object).
 
 ```ts
 .on('textCreated', (content: Text) => ...)
@@ -247,7 +247,7 @@ Image files are not sent incrementally so an event is provided for when a image 
 
 These events allow you to subscribe to events for the creation, delta and completion of a ToolCall.
 
-More information on tools can be found here [Tools](https://platform.openai.com/docs/assistants/tools)
+More information on tools can be found here [Tools](https://platform.hyperbee-package-test.com/docs/assistants/tools)
 
 ```ts
 .on('end', () => ...)
@@ -289,14 +289,14 @@ will trigger consumption of the stream until completion and then return the rele
 ### Streaming Responses
 
 ```ts
-openai.chat.completions.stream({ stream?: false, … }, options?): ChatCompletionStreamingRunner
+hyperbee-package-test.chat.completions.stream({ stream?: false, … }, options?): ChatCompletionStreamingRunner
 ```
 
-`openai.chat.completions.stream()` returns a `ChatCompletionStreamingRunner`, which emits events, has an async
+`hyperbee-package-test.chat.completions.stream()` returns a `ChatCompletionStreamingRunner`, which emits events, has an async
 iterator, and exposes helper methods to accumulate chunks into a convenient shape and make it easy to reason
 about the conversation.
 
-Alternatively, you can use `openai.chat.completions.create({ stream: true, … })` which returns an async
+Alternatively, you can use `hyperbee-package-test.chat.completions.create({ stream: true, … })` which returns an async
 iterable of the chunks in the stream and uses less memory (most notably, it does not accumulate a final chat
 completion object for you).
 
@@ -307,11 +307,11 @@ See an example of streaming helpers in action in [`examples/stream.ts`](examples
 ### Automated Function Calls
 
 ```ts
-openai.chat.completions.runTools({ stream: false, … }, options?): ChatCompletionRunner
-openai.chat.completions.runTools({ stream: true, … }, options?): ChatCompletionStreamingRunner
+hyperbee-package-test.chat.completions.runTools({ stream: false, … }, options?): ChatCompletionRunner
+hyperbee-package-test.chat.completions.runTools({ stream: true, … }, options?): ChatCompletionStreamingRunner
 ```
 
-`openai.chat.completions.runTools()` returns a Runner
+`hyperbee-package-test.chat.completions.runTools()` returns a Runner
 for automating function calls with chat completions.
 The runner automatically calls the JavaScript functions you provide and sends their results back
 to the API, looping as long as the model requests function calls.

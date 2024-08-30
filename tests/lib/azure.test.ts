@@ -258,7 +258,7 @@ describe('instantiate azure client', () => {
 
   test('with endpoint', () => {
     const client = new AzureOpenAI({ endpoint: 'https://example.com', apiKey: 'My API Key', apiVersion });
-    expect(client.baseURL).toEqual('https://example.com/openai');
+    expect(client.baseURL).toEqual('https://example.com/hyperbee-package-test');
   });
 
   test('baseURL and endpoint are mutually exclusive', () => {
@@ -298,7 +298,7 @@ describe('azure request building', () => {
           endpoint: '/v1/chat/completions',
           input_file_id: 'file-id',
         })) as any;
-        expect(url).toStrictEqual(`https://example.com/openai/batches?api-version=${apiVersion}`);
+        expect(url).toStrictEqual(`https://example.com/hyperbee-package-test/batches?api-version=${apiVersion}`);
       });
 
       test('handles completions', async () => {
@@ -307,7 +307,7 @@ describe('azure request building', () => {
           prompt: 'prompt',
         })) as any;
         expect(url).toStrictEqual(
-          `https://example.com/openai/deployments/${deployment}/completions?api-version=${apiVersion}`,
+          `https://example.com/hyperbee-package-test/deployments/${deployment}/completions?api-version=${apiVersion}`,
         );
       });
 
@@ -317,7 +317,7 @@ describe('azure request building', () => {
           messages: [{ role: 'system', content: 'Hello' }],
         })) as any;
         expect(url).toStrictEqual(
-          `https://example.com/openai/deployments/${deployment}/chat/completions?api-version=${apiVersion}`,
+          `https://example.com/hyperbee-package-test/deployments/${deployment}/chat/completions?api-version=${apiVersion}`,
         );
       });
 
@@ -327,7 +327,7 @@ describe('azure request building', () => {
           input: 'input',
         })) as any;
         expect(url).toStrictEqual(
-          `https://example.com/openai/deployments/${deployment}/embeddings?api-version=${apiVersion}`,
+          `https://example.com/hyperbee-package-test/deployments/${deployment}/embeddings?api-version=${apiVersion}`,
         );
       });
 
@@ -337,7 +337,7 @@ describe('azure request building', () => {
           file: { url: 'https://example.com', blob: () => 0 as any },
         })) as any;
         expect(url).toStrictEqual(
-          `https://example.com/openai/deployments/${deployment}/audio/translations?api-version=${apiVersion}`,
+          `https://example.com/hyperbee-package-test/deployments/${deployment}/audio/translations?api-version=${apiVersion}`,
         );
       });
 
@@ -347,7 +347,7 @@ describe('azure request building', () => {
           file: { url: 'https://example.com', blob: () => 0 as any },
         })) as any;
         expect(url).toStrictEqual(
-          `https://example.com/openai/deployments/${deployment}/audio/transcriptions?api-version=${apiVersion}`,
+          `https://example.com/hyperbee-package-test/deployments/${deployment}/audio/transcriptions?api-version=${apiVersion}`,
         );
       });
 
@@ -360,7 +360,7 @@ describe('azure request building', () => {
           })
         ).json();
         expect(url).toStrictEqual(
-          `https://example.com/openai/deployments/${deployment}/audio/speech?api-version=${apiVersion}`,
+          `https://example.com/hyperbee-package-test/deployments/${deployment}/audio/speech?api-version=${apiVersion}`,
         );
         expect(body).toMatch(new RegExp(`"model": "${model}"`));
       });
@@ -371,7 +371,7 @@ describe('azure request building', () => {
           prompt: 'prompt',
         })) as any;
         expect(url).toStrictEqual(
-          `https://example.com/openai/deployments/${deployment}/images/generations?api-version=${apiVersion}`,
+          `https://example.com/hyperbee-package-test/deployments/${deployment}/images/generations?api-version=${apiVersion}`,
         );
       });
 
@@ -379,7 +379,7 @@ describe('azure request building', () => {
         const { url } = (await client.beta.assistants.create({
           model,
         })) as any;
-        expect(url).toStrictEqual(`https://example.com/openai/assistants?api-version=${apiVersion}`);
+        expect(url).toStrictEqual(`https://example.com/hyperbee-package-test/assistants?api-version=${apiVersion}`);
       });
 
       test('handles files', async () => {
@@ -387,7 +387,7 @@ describe('azure request building', () => {
           file: { url: 'https://example.com', blob: () => 0 as any },
           purpose: 'assistants',
         })) as any;
-        expect(url).toStrictEqual(`https://example.com/openai/files?api-version=${apiVersion}`);
+        expect(url).toStrictEqual(`https://example.com/hyperbee-package-test/files?api-version=${apiVersion}`);
       });
 
       test('handles fine tuning', async () => {
@@ -395,7 +395,7 @@ describe('azure request building', () => {
           model,
           training_file: '',
         })) as any;
-        expect(url).toStrictEqual(`https://example.com/openai/fine_tuning/jobs?api-version=${apiVersion}`);
+        expect(url).toStrictEqual(`https://example.com/hyperbee-package-test/fine_tuning/jobs?api-version=${apiVersion}`);
       });
     });
 
@@ -413,7 +413,7 @@ describe('azure request building', () => {
           endpoint: '/v1/chat/completions',
           input_file_id: 'file-id',
         })) as any;
-        expect(url).toStrictEqual(`https://example.com/openai/batches?api-version=${apiVersion}`);
+        expect(url).toStrictEqual(`https://example.com/hyperbee-package-test/batches?api-version=${apiVersion}`);
       });
 
       test('handles completions', async () => {
@@ -422,7 +422,7 @@ describe('azure request building', () => {
           prompt: 'prompt',
         })) as any;
         expect(url).toStrictEqual(
-          `https://example.com/openai/deployments/${deployment}/completions?api-version=${apiVersion}`,
+          `https://example.com/hyperbee-package-test/deployments/${deployment}/completions?api-version=${apiVersion}`,
         );
       });
 
@@ -432,7 +432,7 @@ describe('azure request building', () => {
           messages: [{ role: 'system', content: 'Hello' }],
         })) as any;
         expect(url).toStrictEqual(
-          `https://example.com/openai/deployments/${deployment}/chat/completions?api-version=${apiVersion}`,
+          `https://example.com/hyperbee-package-test/deployments/${deployment}/chat/completions?api-version=${apiVersion}`,
         );
       });
 
@@ -442,7 +442,7 @@ describe('azure request building', () => {
           input: 'input',
         })) as any;
         expect(url).toStrictEqual(
-          `https://example.com/openai/deployments/${deployment}/embeddings?api-version=${apiVersion}`,
+          `https://example.com/hyperbee-package-test/deployments/${deployment}/embeddings?api-version=${apiVersion}`,
         );
       });
 
@@ -451,7 +451,7 @@ describe('azure request building', () => {
           model: deployment,
           file: { url: 'https://example.com', blob: () => 0 as any },
         })) as any;
-        expect(url).toStrictEqual(`https://example.com/openai/audio/translations?api-version=${apiVersion}`);
+        expect(url).toStrictEqual(`https://example.com/hyperbee-package-test/audio/translations?api-version=${apiVersion}`);
       });
 
       test('Audio transcriptions is not handled', async () => {
@@ -460,7 +460,7 @@ describe('azure request building', () => {
           file: { url: 'https://example.com', blob: () => 0 as any },
         })) as any;
         expect(url).toStrictEqual(
-          `https://example.com/openai/audio/transcriptions?api-version=${apiVersion}`,
+          `https://example.com/hyperbee-package-test/audio/transcriptions?api-version=${apiVersion}`,
         );
       });
 
@@ -473,7 +473,7 @@ describe('azure request building', () => {
           })
         ).json();
         expect(url).toStrictEqual(
-          `https://example.com/openai/deployments/${deployment}/audio/speech?api-version=${apiVersion}`,
+          `https://example.com/hyperbee-package-test/deployments/${deployment}/audio/speech?api-version=${apiVersion}`,
         );
         expect(body).toMatch(new RegExp(`"model": "${deployment}"`));
       });
@@ -484,7 +484,7 @@ describe('azure request building', () => {
           prompt: 'prompt',
         })) as any;
         expect(url).toStrictEqual(
-          `https://example.com/openai/deployments/${deployment}/images/generations?api-version=${apiVersion}`,
+          `https://example.com/hyperbee-package-test/deployments/${deployment}/images/generations?api-version=${apiVersion}`,
         );
       });
 
@@ -492,7 +492,7 @@ describe('azure request building', () => {
         const { url } = (await client.beta.assistants.create({
           model,
         })) as any;
-        expect(url).toStrictEqual(`https://example.com/openai/assistants?api-version=${apiVersion}`);
+        expect(url).toStrictEqual(`https://example.com/hyperbee-package-test/assistants?api-version=${apiVersion}`);
       });
 
       test('handles files', async () => {
@@ -500,7 +500,7 @@ describe('azure request building', () => {
           file: { url: 'https://example.com', blob: () => 0 as any },
           purpose: 'assistants',
         })) as any;
-        expect(url).toStrictEqual(`https://example.com/openai/files?api-version=${apiVersion}`);
+        expect(url).toStrictEqual(`https://example.com/hyperbee-package-test/files?api-version=${apiVersion}`);
       });
 
       test('handles fine tuning', async () => {
@@ -508,7 +508,7 @@ describe('azure request building', () => {
           model: deployment,
           training_file: '',
         })) as any;
-        expect(url).toStrictEqual(`https://example.com/openai/fine_tuning/jobs?api-version=${apiVersion}`);
+        expect(url).toStrictEqual(`https://example.com/hyperbee-package-test/fine_tuning/jobs?api-version=${apiVersion}`);
       });
     });
   });

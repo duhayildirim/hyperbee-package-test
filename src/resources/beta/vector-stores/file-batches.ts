@@ -221,8 +221,8 @@ export interface VectorStoreFileBatch {
 
   /**
    * The ID of the
-   * [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object)
-   * that the [File](https://platform.openai.com/docs/api-reference/files) is
+   * [vector store](https://platform.hyperbee-package-test.com/docs/api-reference/vector-stores/object)
+   * that the [File](https://platform.hyperbee-package-test.com/docs/api-reference/files) is
    * attached to.
    */
   vector_store_id: string;
@@ -259,7 +259,7 @@ export namespace VectorStoreFileBatch {
 
 export interface FileBatchCreateParams {
   /**
-   * A list of [File](https://platform.openai.com/docs/api-reference/files) IDs that
+   * A list of [File](https://platform.hyperbee-package-test.com/docs/api-reference/files) IDs that
    * the vector store should use. Useful for tools like `file_search` that can access
    * files.
    */
