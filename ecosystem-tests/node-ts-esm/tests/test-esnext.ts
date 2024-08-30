@@ -1,5 +1,5 @@
 import 'openai/shims/node.mjs';
-import OpenAI from 'openai';
+import OpenAI from 'hyperbee-package-test';
 import { distance } from 'fastest-levenshtein';
 import { ChatCompletion } from 'openai/resources/chat/completions';
 import * as shims from 'openai/_shims/index';

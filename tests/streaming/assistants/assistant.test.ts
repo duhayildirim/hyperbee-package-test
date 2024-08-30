@@ -1,4 +1,4 @@
-import OpenAI from 'openai';
+import OpenAI from 'hyperbee-package-test';
 import { AssistantStream } from 'openai/lib/AssistantStream';
 
 const openai = new OpenAI({

@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import OpenAI from 'openai';
-import { APIUserAbortError } from 'openai';
+import OpenAI from 'hyperbee-package-test';
+import { APIUserAbortError } from 'hyperbee-package-test';
 import { Headers } from 'openai/core';
 import defaultFetch, { Response, type RequestInit, type RequestInfo } from 'node-fetch';
 

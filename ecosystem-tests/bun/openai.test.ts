@@ -1,4 +1,4 @@
-import OpenAI, { toFile } from 'openai';
+import OpenAI, { toFile } from 'hyperbee-package-test';
 import fs from 'fs';
 import { distance } from 'fastest-levenshtein';
 import { test, expect } from 'bun:test';

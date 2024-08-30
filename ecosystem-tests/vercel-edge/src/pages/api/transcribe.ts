@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import OpenAI, { toFile } from 'openai';
+import OpenAI, { toFile } from 'hyperbee-package-test';
 import { TranscriptionCreateParams } from 'openai/resources/audio';
 
 export const config = {

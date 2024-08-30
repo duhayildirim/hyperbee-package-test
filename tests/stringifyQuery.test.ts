@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { OpenAI } from 'openai';
+import { OpenAI } from 'hyperbee-package-test';
 
 const { stringifyQuery } = OpenAI.prototype as any;
 

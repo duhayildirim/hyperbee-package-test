@@ -8,7 +8,7 @@
  */
 
 import fs from 'fs';
-import OpenAI from 'openai';
+import OpenAI from 'hyperbee-package-test';
 import { FineTuningJobEvent } from 'openai/resources/fine-tuning';
 
 // Gets the API Key from the environment variable `OPENAI_API_KEY`

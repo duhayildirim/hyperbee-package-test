@@ -1,4 +1,4 @@
-import OpenAI from 'openai';
+import OpenAI from 'hyperbee-package-test';
 import { z } from 'zod';
 import { zodResponseFormat } from 'openai/helpers/zod';
 

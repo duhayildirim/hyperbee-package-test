@@ -1,5 +1,5 @@
-import { AzureOpenAI } from 'openai';
-import { APIUserAbortError } from 'openai';
+import { AzureOpenAI } from 'hyperbee-package-test';
+import { APIUserAbortError } from 'hyperbee-package-test';
 import { Headers } from 'openai/core';
 import defaultFetch, { Response, type RequestInit, type RequestInfo } from 'node-fetch';
 

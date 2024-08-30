@@ -1,6 +1,6 @@
 // shouldn't need extension, but Jest's ESM module resolution is broken
 import 'openai/shims/node.mjs';
-import OpenAI, { toFile } from 'openai';
+import OpenAI, { toFile } from 'hyperbee-package-test';
 import { TranscriptionCreateParams } from 'openai/resources/audio/transcriptions';
 import fetch from 'node-fetch';
 import { File as FormDataFile, Blob as FormDataBlob } from 'formdata-node';

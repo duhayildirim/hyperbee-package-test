@@ -20,7 +20,7 @@
 //
 
 import util from 'util';
-import OpenAI from 'openai';
+import OpenAI from 'hyperbee-package-test';
 import {
   ChatCompletionMessage,
   ChatCompletionChunk,

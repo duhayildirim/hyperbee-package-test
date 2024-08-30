@@ -1,6 +1,6 @@
 // shouldn't need extension, but Jest's ESM module resolution is broken
 import 'openai/shims/web.mjs';
-import OpenAI, { toFile } from 'openai';
+import OpenAI, { toFile } from 'hyperbee-package-test';
 import { distance } from 'fastest-levenshtein';
 import { ChatCompletion } from 'openai/resources/chat/completions';
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env -S npm run tsn -T
 
-import OpenAI from 'openai';
+import OpenAI from 'hyperbee-package-test';
 import { RunnableToolFunction } from 'openai/lib/RunnableFunction';
 
 // gets API Key from environment variable OPENAI_API_KEY

@@ -555,7 +555,7 @@ If you have a function call flow which you intend to _end_ with a certain functi
 argument `runner` given to the function to either mutate `runner.messages` or call `runner.abort()`.
 
 ```ts
-import OpenAI from 'openai';
+import OpenAI from 'hyperbee-package-test';
 
 const client = new OpenAI();
 
@@ -591,7 +591,7 @@ main();
 assistant's response to make sure it conforms to a schema. Paired with [`zod-to-json-schema`](https://www.npmjs.com/package/zod-to-json-schema), the validation schema also acts as the `parameters` JSON Schema passed to the API.
 
 ```ts
-import OpenAI from 'openai';
+import OpenAI from 'hyperbee-package-test';
 import { z } from 'zod';
 import { zodToJsonSchema } from 'zod-to-json-schema';
 

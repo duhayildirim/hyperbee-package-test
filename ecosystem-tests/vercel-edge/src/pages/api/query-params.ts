@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import OpenAI from 'openai';
+import OpenAI from 'hyperbee-package-test';
 
 export const config = {
   runtime: 'edge',

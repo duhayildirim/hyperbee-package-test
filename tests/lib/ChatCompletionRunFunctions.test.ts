@@ -1,4 +1,4 @@
-import OpenAI from 'openai';
+import OpenAI from 'hyperbee-package-test';
 import { OpenAIError, APIConnectionError } from 'openai/error';
 import { PassThrough } from 'stream';
 import {

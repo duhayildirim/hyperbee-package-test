@@ -1,7 +1,7 @@
 #!/usr/bin/env -S npm run tsn -T
 
 import util from 'util';
-import OpenAI from 'openai';
+import OpenAI from 'hyperbee-package-test';
 import {
   ChatCompletionMessage,
   ChatCompletionChunk,

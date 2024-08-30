@@ -1,5 +1,5 @@
 import 'openai/shims/web';
-import OpenAI, { toFile } from 'openai';
+import OpenAI, { toFile } from 'hyperbee-package-test';
 import { distance } from 'fastest-levenshtein';
 import { ChatCompletion } from 'openai/resources/chat/completions';
 

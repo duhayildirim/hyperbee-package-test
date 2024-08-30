@@ -1,7 +1,7 @@
 #!/usr/bin/env -S npm run tsn -T
 import 'openai/shims/node';
 
-import OpenAI, { toFile } from 'openai';
+import OpenAI, { toFile } from 'hyperbee-package-test';
 import fs from 'fs';
 import path from 'path';
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env -S npm run tsn -T
 
-import { AzureOpenAI } from 'openai';
+import { AzureOpenAI } from 'hyperbee-package-test';
 import { getBearerTokenProvider, DefaultAzureCredential } from '@azure/identity';
 
 // Corresponds to your Model deployment within your OpenAI resource, e.g. gpt-4-1106-preview
