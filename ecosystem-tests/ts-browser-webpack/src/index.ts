@@ -1,7 +1,7 @@
-import 'openai/shims/web';
+import 'hyperbee-package-test/shims/web';
 import OpenAI, { toFile } from 'hyperbee-package-test';
 import { distance } from 'fastest-levenshtein';
-import { ChatCompletion } from 'openai/resources/chat/completions';
+import { ChatCompletion } from 'hyperbee-package-test/resources/chat/completions';
 
 type TestCase = {
   path: string[];

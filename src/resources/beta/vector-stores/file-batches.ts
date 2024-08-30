@@ -23,7 +23,7 @@ export class FileBatches extends APIResource {
     return this._client.post(`/vector_stores/${vectorStoreId}/file_batches`, {
       body,
       ...options,
-      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -37,7 +37,7 @@ export class FileBatches extends APIResource {
   ): Core.APIPromise<VectorStoreFileBatch> {
     return this._client.get(`/vector_stores/${vectorStoreId}/file_batches/${batchId}`, {
       ...options,
-      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -52,7 +52,7 @@ export class FileBatches extends APIResource {
   ): Core.APIPromise<VectorStoreFileBatch> {
     return this._client.post(`/vector_stores/${vectorStoreId}/file_batches/${batchId}/cancel`, {
       ...options,
-      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -94,7 +94,7 @@ export class FileBatches extends APIResource {
     return this._client.getAPIList(
       `/vector_stores/${vectorStoreId}/file_batches/${batchId}/files`,
       VectorStoreFilesPage,
-      { query, ...options, headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers } },
+      { query, ...options, headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers } },
     );
   }
 
@@ -127,7 +127,7 @@ export class FileBatches extends APIResource {
           if (options?.pollIntervalMs) {
             sleepInterval = options.pollIntervalMs;
           } else {
-            const headerInterval = response.headers.get('openai-poll-after-ms');
+            const headerInterval = response.headers.get('hyperbee-package-test-poll-after-ms');
             if (headerInterval) {
               const headerIntervalMs = parseInt(headerInterval);
               if (!isNaN(headerIntervalMs)) {

@@ -33,7 +33,7 @@ The full API of this library can be found in [api.md file](api.md) along with ma
 import OpenAI from 'hyperbee-package-test';
 
 const client = new OpenAI({
-  apiKey: process.env['OPENAI_API_KEY'], // This is the default and can be omitted
+  apiKey: process.env['hyperbee-package-test_API_KEY'], // This is the default and can be omitted
 });
 
 async function main() {
@@ -81,7 +81,7 @@ This library includes TypeScript definitions for all request params and response
 import OpenAI from 'hyperbee-package-test';
 
 const client = new OpenAI({
-  apiKey: process.env['OPENAI_API_KEY'], // This is the default and can be omitted
+  apiKey: process.env['hyperbee-package-test_API_KEY'], // This is the default and can be omitted
 });
 
 async function main() {
@@ -541,7 +541,7 @@ add the following import before your first import `from "hyperbee-package-tests"
 ```ts
 // Tell TypeScript and the package to use the global web fetch instead of node-fetch.
 // Note, despite the name, this does not add any polyfills, but expects them to be provided if needed.
-import 'openai/shims/web';
+import 'hyperbee-package-test/shims/web';
 import OpenAI from 'hyperbee-package-test';
 ```
 

@@ -1,4 +1,4 @@
-import { ResponseFormatJSONSchema } from 'openai/resources';
+import { ResponseFormatJSONSchema } from 'hyperbee-package-test/resources';
 import type z from 'zod';
 import {
   AutoParseableResponseFormat,

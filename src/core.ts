@@ -112,8 +112,8 @@ export class APIPromise<T> extends Promise<T> {
    * 👋 Getting the wrong TypeScript type for `Response`?
    * Try setting `"moduleResolution": "NodeNext"` if you can,
    * or add one of these imports before your first `import … from 'hyperbee-package-test'`:
-   * - `import 'openai/shims/node'` (if you're running on Node)
-   * - `import 'openai/shims/web'` (otherwise)
+   * - `import 'hyperbee-package-test/shims/node'` (if you're running on Node)
+   * - `import 'hyperbee-package-test/shims/web'` (otherwise)
    */
   asResponse(): Promise<Response> {
     return this.responsePromise.then((p) => p.response);
@@ -128,8 +128,8 @@ export class APIPromise<T> extends Promise<T> {
    * 👋 Getting the wrong TypeScript type for `Response`?
    * Try setting `"moduleResolution": "NodeNext"` if you can,
    * or add one of these imports before your first `import … from 'hyperbee-package-test'`:
-   * - `import 'openai/shims/node'` (if you're running on Node)
-   * - `import 'openai/shims/web'` (otherwise)
+   * - `import 'hyperbee-package-test/shims/node'` (if you're running on Node)
+   * - `import 'hyperbee-package-test/shims/web'` (otherwise)
    */
   async withResponse(): Promise<{ data: T; response: Response }> {
     const [data, response] = await Promise.all([this.parse(), this.asResponse()]);

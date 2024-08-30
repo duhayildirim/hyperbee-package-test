@@ -1,8 +1,8 @@
-import 'openai/shims/node.mjs';
+import 'hyperbee-package-test/shims/node.mjs';
 import OpenAI from 'hyperbee-package-test';
 import { distance } from 'fastest-levenshtein';
-import { ChatCompletion } from 'openai/resources/chat/completions';
-import * as shims from 'openai/_shims/index';
+import { ChatCompletion } from 'hyperbee-package-test/resources/chat/completions';
+import * as shims from 'hyperbee-package-test/_shims/index';
 
 // The tests in this file don't typecheck with "moduleResolution": "node"
 

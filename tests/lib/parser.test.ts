@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { zodResponseFormat } from 'openai/helpers/zod';
+import { zodResponseFormat } from 'hyperbee-package-test/helpers/zod';
 import { makeSnapshotRequest } from '../utils/mock-snapshots';
 
 jest.setTimeout(1000 * 30);

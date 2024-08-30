@@ -1,6 +1,6 @@
 import OpenAI from 'hyperbee-package-test';
 import z from 'zod';
-import { zodFunction } from 'openai/helpers/zod';
+import { zodFunction } from 'hyperbee-package-test/helpers/zod';
 
 const Table = z.enum(['orders', 'customers', 'products']);
 const Column = z.enum([

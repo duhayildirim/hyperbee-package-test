@@ -1,5 +1,5 @@
-import { createResponseHeaders } from 'openai/core';
-import { Headers } from 'openai/_shims/index';
+import { createResponseHeaders } from 'hyperbee-package-test/core';
+import { Headers } from 'hyperbee-package-test/_shims/index';
 
 describe('response parsing', () => {
   // TODO: test unicode characters

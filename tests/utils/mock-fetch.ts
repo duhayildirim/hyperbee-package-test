@@ -1,4 +1,4 @@
-import { type RequestInfo, type RequestInit } from 'openai/_shims/index';
+import { type RequestInfo, type RequestInit } from 'hyperbee-package-test/_shims/index';
 import { Response } from 'node-fetch';
 
 type Fetch = (req: string | RequestInfo, init?: RequestInit) => Promise<Response>;

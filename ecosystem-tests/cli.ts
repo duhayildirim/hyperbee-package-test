@@ -4,7 +4,7 @@ import yargs from 'yargs';
 import assert from 'assert';
 import path from 'path';
 
-const TAR_NAME = 'openai.tgz';
+const TAR_NAME = 'hyperbee-package-test.tgz';
 const PACK_FOLDER = '.pack';
 const PACK_FILE = `${PACK_FOLDER}/${TAR_NAME}`;
 const IS_CI = Boolean(process.env['CI'] && process.env['CI'] !== 'false');
@@ -168,9 +168,9 @@ type Args = Awaited<ReturnType<typeof parseArgs>>;
 let state: Args & { rootDir: string };
 
 async function main() {
-  if (!process.env['OPENAI_API_KEY']) {
+  if (!process.env['hyperbee-package-test_API_KEY']) {
     console.error(`Error: The environment variable OPENAI_API_KEY must be set. Run the command
-  $echo 'OPENAI_API_KEY = "'"\${OPENAI_API_KEY}"'"' >> ecosystem-tests/cloudflare-worker/wrangler.toml`);
+  $echo 'hyperbee-package-test_API_KEY = "'"\${OPENAI_API_KEY}"'"' >> ecosystem-tests/cloudflare-worker/wrangler.toml`);
     process.exit(0);
   }
 

@@ -19,7 +19,7 @@ export class VectorStores extends APIResource {
     return this._client.post('/vector_stores', {
       body,
       ...options,
-      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -29,7 +29,7 @@ export class VectorStores extends APIResource {
   retrieve(vectorStoreId: string, options?: Core.RequestOptions): Core.APIPromise<VectorStore> {
     return this._client.get(`/vector_stores/${vectorStoreId}`, {
       ...options,
-      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -44,7 +44,7 @@ export class VectorStores extends APIResource {
     return this._client.post(`/vector_stores/${vectorStoreId}`, {
       body,
       ...options,
-      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -66,7 +66,7 @@ export class VectorStores extends APIResource {
     return this._client.getAPIList('/vector_stores', VectorStoresPage, {
       query,
       ...options,
-      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -76,7 +76,7 @@ export class VectorStores extends APIResource {
   del(vectorStoreId: string, options?: Core.RequestOptions): Core.APIPromise<VectorStoreDeleted> {
     return this._client.delete(`/vector_stores/${vectorStoreId}`, {
       ...options,
-      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 }

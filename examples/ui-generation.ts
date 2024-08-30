@@ -1,6 +1,6 @@
 import OpenAI from 'hyperbee-package-test';
 import { z } from 'zod';
-import { zodResponseFormat } from 'openai/helpers/zod';
+import { zodResponseFormat } from 'hyperbee-package-test/helpers/zod';
 
 const openai = new OpenAI();
 

@@ -10,8 +10,8 @@ export function getRuntime({ manuallyImported }: { manuallyImported?: boolean } 
     manuallyImported ?
       `You may need to use polyfills`
     : `Add one of these imports before your first \`import … from 'hyperbee-package-test'\`:
-- \`import 'openai/shims/node'\` (if you're running on Node)
-- \`import 'openai/shims/web'\` (otherwise)
+- \`import 'hyperbee-package-test/shims/node'\` (if you're running on Node)
+- \`import 'hyperbee-package-test/shims/web'\` (otherwise)
 `;
 
   let _fetch, _Request, _Response, _Headers;

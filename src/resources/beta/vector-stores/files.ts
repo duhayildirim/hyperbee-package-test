@@ -20,7 +20,7 @@ export class Files extends APIResource {
     return this._client.post(`/vector_stores/${vectorStoreId}/files`, {
       body,
       ...options,
-      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -34,7 +34,7 @@ export class Files extends APIResource {
   ): Core.APIPromise<VectorStoreFile> {
     return this._client.get(`/vector_stores/${vectorStoreId}/files/${fileId}`, {
       ...options,
-      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -61,7 +61,7 @@ export class Files extends APIResource {
     return this._client.getAPIList(`/vector_stores/${vectorStoreId}/files`, VectorStoreFilesPage, {
       query,
       ...options,
-      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -78,7 +78,7 @@ export class Files extends APIResource {
   ): Core.APIPromise<VectorStoreFileDeleted> {
     return this._client.delete(`/vector_stores/${vectorStoreId}/files/${fileId}`, {
       ...options,
-      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -124,7 +124,7 @@ export class Files extends APIResource {
           if (options?.pollIntervalMs) {
             sleepInterval = options.pollIntervalMs;
           } else {
-            const headerInterval = fileResponse.response.headers.get('openai-poll-after-ms');
+            const headerInterval = fileResponse.response.headers.get('hyperbee-package-test-poll-after-ms');
             if (headerInterval) {
               const headerIntervalMs = parseInt(headerInterval);
               if (!isNaN(headerIntervalMs)) {

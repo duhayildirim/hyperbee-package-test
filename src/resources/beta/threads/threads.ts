@@ -32,7 +32,7 @@ export class Threads extends APIResource {
     return this._client.post('/threads', {
       body,
       ...options,
-      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -42,7 +42,7 @@ export class Threads extends APIResource {
   retrieve(threadId: string, options?: Core.RequestOptions): Core.APIPromise<Thread> {
     return this._client.get(`/threads/${threadId}`, {
       ...options,
-      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -53,7 +53,7 @@ export class Threads extends APIResource {
     return this._client.post(`/threads/${threadId}`, {
       body,
       ...options,
-      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -63,7 +63,7 @@ export class Threads extends APIResource {
   del(threadId: string, options?: Core.RequestOptions): Core.APIPromise<ThreadDeleted> {
     return this._client.delete(`/threads/${threadId}`, {
       ...options,
-      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -89,7 +89,7 @@ export class Threads extends APIResource {
     return this._client.post('/threads/runs', {
       body,
       ...options,
-      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
       stream: body.stream ?? false,
     }) as APIPromise<RunsAPI.Run> | APIPromise<Stream<AssistantsAPI.AssistantStreamEvent>>;
   }

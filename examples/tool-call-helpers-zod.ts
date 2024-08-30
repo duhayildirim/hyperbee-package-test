@@ -1,8 +1,8 @@
 #!/usr/bin/env -S npm run tsn -T
 
 import OpenAI from 'hyperbee-package-test';
-import { RunnableToolFunctionWithParse } from 'openai/lib/RunnableFunction';
-import { JSONSchema } from 'openai/lib/jsonschema';
+import { RunnableToolFunctionWithParse } from 'hyperbee-package-test/lib/RunnableFunction';
+import { JSONSchema } from 'hyperbee-package-test/lib/jsonschema';
 import { ZodSchema, z } from 'zod';
 import { zodToJsonSchema } from 'zod-to-json-schema';
 

@@ -41,7 +41,7 @@ export class Runs extends APIResource {
     return this._client.post(`/threads/${threadId}/runs`, {
       body,
       ...options,
-      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
       stream: body.stream ?? false,
     }) as APIPromise<Run> | APIPromise<Stream<AssistantsAPI.AssistantStreamEvent>>;
   }
@@ -52,7 +52,7 @@ export class Runs extends APIResource {
   retrieve(threadId: string, runId: string, options?: Core.RequestOptions): Core.APIPromise<Run> {
     return this._client.get(`/threads/${threadId}/runs/${runId}`, {
       ...options,
-      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -68,7 +68,7 @@ export class Runs extends APIResource {
     return this._client.post(`/threads/${threadId}/runs/${runId}`, {
       body,
       ...options,
-      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -92,7 +92,7 @@ export class Runs extends APIResource {
     return this._client.getAPIList(`/threads/${threadId}/runs`, RunsPage, {
       query,
       ...options,
-      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -102,7 +102,7 @@ export class Runs extends APIResource {
   cancel(threadId: string, runId: string, options?: Core.RequestOptions): Core.APIPromise<Run> {
     return this._client.post(`/threads/${threadId}/runs/${runId}/cancel`, {
       ...options,
-      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -165,7 +165,7 @@ export class Runs extends APIResource {
           if (options?.pollIntervalMs) {
             sleepInterval = options.pollIntervalMs;
           } else {
-            const headerInterval = response.headers.get('openai-poll-after-ms');
+            const headerInterval = response.headers.get('hyperbee-package-test-poll-after-ms');
             if (headerInterval) {
               const headerIntervalMs = parseInt(headerInterval);
               if (!isNaN(headerIntervalMs)) {
@@ -227,7 +227,7 @@ export class Runs extends APIResource {
     return this._client.post(`/threads/${threadId}/runs/${runId}/submit_tool_outputs`, {
       body,
       ...options,
-      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
       stream: body.stream ?? false,
     }) as APIPromise<Run> | APIPromise<Stream<AssistantsAPI.AssistantStreamEvent>>;
   }

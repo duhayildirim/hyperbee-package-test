@@ -2,7 +2,7 @@
 
 import OpenAI from 'hyperbee-package-test';
 import { APIUserAbortError } from 'hyperbee-package-test';
-import { Headers } from 'openai/core';
+import { Headers } from 'hyperbee-package-test/core';
 import defaultFetch, { Response, type RequestInit, type RequestInfo } from 'node-fetch';
 
 describe('instantiate client', () => {
@@ -134,7 +134,7 @@ describe('instantiate client', () => {
     });
 
     afterEach(() => {
-      process.env['OPENAI_BASE_URL'] = undefined;
+      process.env['hyperbee-package-test_BASE_URL'] = undefined;
     });
 
     test('explicit option', () => {
@@ -143,19 +143,19 @@ describe('instantiate client', () => {
     });
 
     test('env variable', () => {
-      process.env['OPENAI_BASE_URL'] = 'https://example.com/from_env';
+      process.env['hyperbee-package-test_BASE_URL'] = 'https://example.com/from_env';
       const client = new OpenAI({ apiKey: 'My API Key' });
       expect(client.baseURL).toEqual('https://example.com/from_env');
     });
 
     test('empty env variable', () => {
-      process.env['OPENAI_BASE_URL'] = ''; // empty
+      process.env['hyperbee-package-test_BASE_URL'] = ''; // empty
       const client = new OpenAI({ apiKey: 'My API Key' });
       expect(client.baseURL).toEqual('https://api.openai.com/v1');
     });
 
     test('blank env variable', () => {
-      process.env['OPENAI_BASE_URL'] = '  '; // blank
+      process.env['hyperbee-package-test_BASE_URL'] = '  '; // blank
       const client = new OpenAI({ apiKey: 'My API Key' });
       expect(client.baseURL).toEqual('https://api.openai.com/v1');
     });
@@ -172,14 +172,14 @@ describe('instantiate client', () => {
 
   test('with environment variable arguments', () => {
     // set options via env var
-    process.env['OPENAI_API_KEY'] = 'My API Key';
+    process.env['hyperbee-package-test_API_KEY'] = 'My API Key';
     const client = new OpenAI();
     expect(client.apiKey).toBe('My API Key');
   });
 
   test('with overriden environment variable arguments', () => {
     // set options via env var
-    process.env['OPENAI_API_KEY'] = 'another My API Key';
+    process.env['hyperbee-package-test_API_KEY'] = 'another My API Key';
     const client = new OpenAI({ apiKey: 'My API Key' });
     expect(client.apiKey).toBe('My API Key');
   });

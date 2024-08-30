@@ -11,7 +11,7 @@ const commands = {
 
       const result = spawnSync(
         'npx',
-        ['-y', '@getgrit/launcher', 'apply', 'openai_v4', ...process.argv.slice(3)],
+        ['-y', '@getgrit/launcher', 'apply', 'hyperbee-package-test_v4', ...process.argv.slice(3)],
         { stdio: 'inherit' },
       );
       if (result.status !== 0) {

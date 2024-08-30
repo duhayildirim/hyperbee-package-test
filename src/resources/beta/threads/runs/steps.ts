@@ -18,7 +18,7 @@ export class Steps extends APIResource {
   ): Core.APIPromise<RunStep> {
     return this._client.get(`/threads/${threadId}/runs/${runId}/steps/${stepId}`, {
       ...options,
-      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -48,7 +48,7 @@ export class Steps extends APIResource {
     return this._client.getAPIList(`/threads/${threadId}/runs/${runId}/steps`, RunStepsPage, {
       query,
       ...options,
-      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 }

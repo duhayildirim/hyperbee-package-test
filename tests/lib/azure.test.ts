@@ -1,6 +1,6 @@
 import { AzureOpenAI } from 'hyperbee-package-test';
 import { APIUserAbortError } from 'hyperbee-package-test';
-import { Headers } from 'openai/core';
+import { Headers } from 'hyperbee-package-test/core';
 import defaultFetch, { Response, type RequestInit, type RequestInfo } from 'node-fetch';
 
 const apiVersion = '2024-02-15-preview';
@@ -160,7 +160,7 @@ describe('instantiate azure client', () => {
     });
 
     afterEach(() => {
-      process.env['OPENAI_BASE_URL'] = undefined;
+      process.env['hyperbee-package-test_BASE_URL'] = undefined;
     });
 
     test('explicit option', () => {
@@ -169,20 +169,20 @@ describe('instantiate azure client', () => {
     });
 
     test('env variable', () => {
-      process.env['OPENAI_BASE_URL'] = 'https://example.com/from_env';
+      process.env['hyperbee-package-test_BASE_URL'] = 'https://example.com/from_env';
       const client = new AzureOpenAI({ apiKey: 'My API Key', apiVersion });
       expect(client.baseURL).toEqual('https://example.com/from_env');
     });
 
     test('empty baseUrl/endpoint env variable', () => {
-      process.env['OPENAI_BASE_URL'] = ''; // empty
+      process.env['hyperbee-package-test_BASE_URL'] = ''; // empty
       expect(() => new AzureOpenAI({ apiKey: 'My API Key', apiVersion })).toThrow(
         /Must provide one of the `baseURL` or `endpoint` arguments, or the `AZURE_OPENAI_ENDPOINT` environment variable/,
       );
     });
 
     test('blank baseUrl/endpoint env variable', () => {
-      process.env['OPENAI_BASE_URL'] = '  '; // blank
+      process.env['hyperbee-package-test_BASE_URL'] = '  '; // blank
       expect(() => new AzureOpenAI({ apiKey: 'My API Key', apiVersion })).toThrow(
         /Must provide one of the `baseURL` or `endpoint` arguments, or the `AZURE_OPENAI_ENDPOINT` environment variable/,
       );
@@ -205,9 +205,9 @@ describe('instantiate azure client', () => {
 
   test('with environment variable arguments', () => {
     // set options via env var
-    process.env['OPENAI_BASE_URL'] = 'https://example.com';
+    process.env['hyperbee-package-test_BASE_URL'] = 'https://example.com';
     process.env['AZURE_OPENAI_API_KEY'] = 'My API Key';
-    process.env['OPENAI_API_VERSION'] = 'My API Version';
+    process.env['hyperbee-package-test_API_VERSION'] = 'My API Version';
     const client = new AzureOpenAI();
     expect(client.baseURL).toBe('https://example.com');
     expect(client.apiKey).toBe('My API Key');
@@ -217,7 +217,7 @@ describe('instantiate azure client', () => {
   test('with overriden environment variable arguments', () => {
     // set options via env var
     process.env['AZURE_OPENAI_API_KEY'] = 'another My API Key';
-    process.env['OPENAI_API_VERSION'] = 'another My API Version';
+    process.env['hyperbee-package-test_API_VERSION'] = 'another My API Version';
     const client = new AzureOpenAI({ baseURL: 'https://example.com', apiKey: 'My API Key', apiVersion });
     expect(client.apiKey).toBe('My API Key');
     expect(client.apiVersion).toBe(apiVersion);

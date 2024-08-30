@@ -1,5 +1,5 @@
-import { zodResponseFormat } from 'openai/helpers/zod';
-import { ChatCompletionTokenLogprob } from 'openai/resources';
+import { zodResponseFormat } from 'hyperbee-package-test/helpers/zod';
+import { ChatCompletionTokenLogprob } from 'hyperbee-package-test/resources';
 import { z } from 'zod';
 import { makeStreamSnapshotRequest } from '../utils/mock-snapshots';
 

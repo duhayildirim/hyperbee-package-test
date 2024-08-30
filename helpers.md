@@ -11,8 +11,8 @@ You can pass zod schemas wrapped with `zodResponseFormat()` to the `.parse()` me
 into a JSON schema, send it to the API and parse the response content back using the given zod schema.
 
 ```ts
-import { zodResponseFormat } from 'openai/helpers/zod';
-import OpenAI from 'openai/index';
+import { zodResponseFormat } from 'hyperbee-package-test/helpers/zod';
+import OpenAI from 'hyperbee-package-test/index';
 import { z } from 'zod';
 
 const Step = z.object({
@@ -55,8 +55,8 @@ The `.parse()` method will also automatically parse `function` tool calls if:
 For example:
 
 ```ts
-import { zodFunction } from 'openai/helpers/zod';
-import OpenAI from 'openai/index';
+import { zodFunction } from 'hyperbee-package-test/helpers/zod';
+import OpenAI from 'hyperbee-package-test/index';
 import { z } from 'zod';
 
 const Table = z.enum(['orders', 'customers', 'products']);

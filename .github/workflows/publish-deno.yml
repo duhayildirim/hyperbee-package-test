@@ -20,7 +20,7 @@ jobs:
           app-id: ${{ secrets.APP_ID }}
           private-key: ${{ secrets.APP_PRIVATE_KEY }}
           owner: 'hyperbee-package-test'
-          repositories: 'openai-node,openai-deno-build'
+          repositories: 'hyperbee-package-test-node,openai-deno-build'
 
       - name: Set up Node
         uses: actions/setup-node@v3

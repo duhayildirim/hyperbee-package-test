@@ -1,5 +1,5 @@
 import OpenAI, { APIUserAbortError, toFile } from 'hyperbee-package-test';
-import { TranscriptionCreateParams } from 'openai/resources/audio/transcriptions';
+import { TranscriptionCreateParams } from 'hyperbee-package-test/resources/audio/transcriptions';
 import fetch from 'node-fetch';
 import { File as FormDataFile, Blob as FormDataBlob } from 'formdata-node';
 import * as fs from 'fs';

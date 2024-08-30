@@ -19,7 +19,7 @@ export class Messages extends APIResource {
     return this._client.post(`/threads/${threadId}/messages`, {
       body,
       ...options,
-      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -29,7 +29,7 @@ export class Messages extends APIResource {
   retrieve(threadId: string, messageId: string, options?: Core.RequestOptions): Core.APIPromise<Message> {
     return this._client.get(`/threads/${threadId}/messages/${messageId}`, {
       ...options,
-      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -45,7 +45,7 @@ export class Messages extends APIResource {
     return this._client.post(`/threads/${threadId}/messages/${messageId}`, {
       body,
       ...options,
-      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -69,7 +69,7 @@ export class Messages extends APIResource {
     return this._client.getAPIList(`/threads/${threadId}/messages`, MessagesPage, {
       query,
       ...options,
-      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -79,7 +79,7 @@ export class Messages extends APIResource {
   del(threadId: string, messageId: string, options?: Core.RequestOptions): Core.APIPromise<MessageDeleted> {
     return this._client.delete(`/threads/${threadId}/messages/${messageId}`, {
       ...options,
-      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 }

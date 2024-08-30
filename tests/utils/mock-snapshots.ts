@@ -1,7 +1,7 @@
 import defaultFetch, { Response } from 'node-fetch';
-import OpenAI from 'openai/index';
-import { RequestInit } from 'openai/_shims/auto/types';
-import { RequestInfo } from 'openai/_shims/auto/types';
+import OpenAI from 'hyperbee-package-test/index';
+import { RequestInit } from 'hyperbee-package-test/_shims/auto/types';
+import { RequestInfo } from 'hyperbee-package-test/_shims/auto/types';
 import { mockFetch } from './mock-fetch';
 import { Readable } from 'stream';
 

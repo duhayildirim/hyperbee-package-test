@@ -1,10 +1,10 @@
-import * as Core from 'openai/core';
+import * as Core from 'hyperbee-package-test/core';
 import {
   OpenAIError,
   APIUserAbortError,
   LengthFinishReasonError,
   ContentFilterFinishReasonError,
-} from 'openai/error';
+} from 'hyperbee-package-test/error';
 import {
   ChatCompletionTokenLogprob,
   type ChatCompletion,
@@ -12,15 +12,15 @@ import {
   type ChatCompletionCreateParams,
   type ChatCompletionCreateParamsStreaming,
   type ChatCompletionCreateParamsBase,
-} from 'openai/resources/chat/completions';
+} from 'hyperbee-package-test/resources/chat/completions';
 import {
   AbstractChatCompletionRunner,
   type AbstractChatCompletionRunnerEvents,
 } from './AbstractChatCompletionRunner';
-import { type ReadableStream } from 'openai/_shims/index';
-import { Stream } from 'openai/streaming';
-import OpenAI from 'openai/index';
-import { ParsedChatCompletion } from 'openai/resources/beta/chat/completions';
+import { type ReadableStream } from 'hyperbee-package-test/_shims/index';
+import { Stream } from 'hyperbee-package-test/streaming';
+import OpenAI from 'hyperbee-package-test/index';
+import { ParsedChatCompletion } from 'hyperbee-package-test/resources/beta/chat/completions';
 import {
   AutoParseableResponseFormat,
   hasAutoParseableInput,
@@ -28,7 +28,7 @@ import {
   isAutoParsableTool,
   maybeParseChatCompletion,
   shouldParseToolCall,
-} from 'openai/lib/parser';
+} from 'hyperbee-package-test/lib/parser';
 import { partialParse } from '../_vendor/partial-json-parser/parser';
 
 export interface ContentDeltaEvent {

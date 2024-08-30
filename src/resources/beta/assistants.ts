@@ -20,7 +20,7 @@ export class Assistants extends APIResource {
     return this._client.post('/assistants', {
       body,
       ...options,
-      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -30,7 +30,7 @@ export class Assistants extends APIResource {
   retrieve(assistantId: string, options?: Core.RequestOptions): Core.APIPromise<Assistant> {
     return this._client.get(`/assistants/${assistantId}`, {
       ...options,
-      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -45,7 +45,7 @@ export class Assistants extends APIResource {
     return this._client.post(`/assistants/${assistantId}`, {
       body,
       ...options,
-      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -67,7 +67,7 @@ export class Assistants extends APIResource {
     return this._client.getAPIList('/assistants', AssistantsPage, {
       query,
       ...options,
-      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -77,7 +77,7 @@ export class Assistants extends APIResource {
   del(assistantId: string, options?: Core.RequestOptions): Core.APIPromise<AssistantDeleted> {
     return this._client.delete(`/assistants/${assistantId}`, {
       ...options,
-      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 }

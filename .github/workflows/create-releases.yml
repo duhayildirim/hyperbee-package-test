@@ -9,7 +9,7 @@ on:
 jobs:
   release:
     name: release
-    if: github.ref == 'refs/heads/master' && github.repository == 'openai/openai-node'
+    if: github.ref == 'refs/heads/master' && github.repository == 'hyperbee-package-test/openai-node'
     runs-on: ubuntu-latest
     environment: publish
 
@@ -29,7 +29,7 @@ jobs:
           app-id: ${{ secrets.APP_ID }}
           private-key: ${{ secrets.APP_PRIVATE_KEY }}
           owner: 'hyperbee-package-test'
-          repositories: 'openai-node,openai-deno-build'
+          repositories: 'hyperbee-package-test-node,openai-deno-build'
 
       - name: Set up Node
         if: ${{ steps.release.outputs.releases_created }}

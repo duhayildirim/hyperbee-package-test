@@ -1,7 +1,7 @@
 import { Response } from 'node-fetch';
 import { PassThrough } from 'stream';
 import assert from 'assert';
-import { _iterSSEMessages, _decodeChunks as decodeChunks } from 'openai/streaming';
+import { _iterSSEMessages, _decodeChunks as decodeChunks } from 'hyperbee-package-test/streaming';
 
 describe('line decoder', () => {
   test('basic', () => {

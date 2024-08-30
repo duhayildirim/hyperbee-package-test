@@ -1,5 +1,5 @@
 import OpenAI from 'hyperbee-package-test';
-import { OpenAIError, APIConnectionError } from 'openai/error';
+import { OpenAIError, APIConnectionError } from 'hyperbee-package-test/error';
 import { PassThrough } from 'stream';
 import {
   ParsingToolFunction,
@@ -7,8 +7,8 @@ import {
   type ChatCompletionFunctionRunnerParams,
   ChatCompletionStreamingRunner,
   type ChatCompletionStreamingFunctionRunnerParams,
-} from 'openai/resources/beta/chat/completions';
-import type { ChatCompletionMessageParam } from 'openai/resources/chat/completions';
+} from 'hyperbee-package-test/resources/beta/chat/completions';
+import type { ChatCompletionMessageParam } from 'hyperbee-package-test/resources/chat/completions';
 import { Response } from 'node-fetch';
 import { isAssistantMessage } from '../../src/lib/chatCompletionUtils';
 import { mockFetch } from '../utils/mock-fetch';

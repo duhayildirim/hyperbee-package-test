@@ -1,6 +1,6 @@
 import OpenAI, { toFile } from 'hyperbee-package-test';
-import { TranscriptionCreateParams } from 'openai/resources/audio/transcriptions';
-import { ChatCompletion } from 'openai/resources/chat/completions';
+import { TranscriptionCreateParams } from 'hyperbee-package-test/resources/audio/transcriptions';
+import { ChatCompletion } from 'hyperbee-package-test/resources/chat/completions';
 
 /**
  * Tests uploads using various Web API data objects.

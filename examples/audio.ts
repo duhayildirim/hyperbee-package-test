@@ -1,5 +1,5 @@
 #!/usr/bin/env -S npm run tsn -T
-import 'openai/shims/node';
+import 'hyperbee-package-test/shims/node';
 
 import OpenAI, { toFile } from 'hyperbee-package-test';
 import fs from 'fs';
@@ -64,7 +64,7 @@ async function streamToFile(stream: NodeJS.ReadableStream, path: fs.PathLike) {
   return new Promise((resolve, reject) => {
     const writeStream = fs.createWriteStream(path).on('error', reject).on('finish', resolve);
 
-    // If you don't see a `stream.pipe` method and you're using Node you might need to add `import 'openai/shims/node'` at the top of your entrypoint file.
+    // If you don't see a `stream.pipe` method and you're using Node you might need to add `import 'hyperbee-package-test/shims/node'` at the top of your entrypoint file.
     stream.pipe(writeStream).on('error', (error) => {
       writeStream.close();
       reject(error);

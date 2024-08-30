@@ -1,7 +1,7 @@
 #!/usr/bin/env -S npm run tsn -T
 
 import OpenAI from 'hyperbee-package-test';
-import { ChatCompletionMessage, ChatCompletionMessageParam } from 'openai/resources/chat';
+import { ChatCompletionMessage, ChatCompletionMessageParam } from 'hyperbee-package-test/resources/chat';
 
 // gets API Key from environment variable OPENAI_API_KEY
 const openai = new OpenAI();

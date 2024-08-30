@@ -1,5 +1,5 @@
-import { zodResponseFormat } from 'openai/helpers/zod';
-import OpenAI from 'openai/index';
+import { zodResponseFormat } from 'hyperbee-package-test/helpers/zod';
+import OpenAI from 'hyperbee-package-test/index';
 import { z } from 'zod';
 
 const Step = z.object({

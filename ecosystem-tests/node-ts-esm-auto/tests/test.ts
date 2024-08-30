@@ -1,11 +1,11 @@
-import 'openai/shims/node';
+import 'hyperbee-package-test/shims/node';
 import OpenAI, { toFile } from 'hyperbee-package-test';
-import { TranscriptionCreateParams } from 'openai/resources/audio/transcriptions';
+import { TranscriptionCreateParams } from 'hyperbee-package-test/resources/audio/transcriptions';
 import fetch from 'node-fetch';
 import { File as FormDataFile, Blob as FormDataBlob } from 'formdata-node';
 import * as fs from 'fs';
 import { distance } from 'fastest-levenshtein';
-import { ChatCompletion } from 'openai/resources/chat/completions';
+import { ChatCompletion } from 'hyperbee-package-test/resources/chat/completions';
 
 const url = 'https://audio-samples.github.io/samples/mp3/blizzard_biased/sample-1.mp3';
 const filename = 'sample-1.mp3';

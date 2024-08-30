@@ -1,7 +1,7 @@
 #!/usr/bin/env -S npm run tsn -T
 
 import OpenAI from 'hyperbee-package-test';
-import { Stream } from 'openai/streaming';
+import { Stream } from 'hyperbee-package-test/streaming';
 
 // gets API Key from environment variable OPENAI_API_KEY
 const openai = new OpenAI();

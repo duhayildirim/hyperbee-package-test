@@ -1,4 +1,4 @@
-import { zodResponseFormat } from 'openai/helpers/zod';
+import { zodResponseFormat } from 'hyperbee-package-test/helpers/zod';
 import { z } from 'zod';
 
 describe('zodResponseFormat', () => {
