@@ -1,13 +1,13 @@
-import * as Core from 'hyperbee-package-test/core';
-import { type CompletionUsage } from 'hyperbee-package-test/resources/completions';
+import * as Core from 'openai/core';
+import { type CompletionUsage } from 'openai/resources/completions';
 import {
   type ChatCompletion,
   type ChatCompletionMessage,
   type ChatCompletionMessageParam,
   type ChatCompletionCreateParams,
   type ChatCompletionTool,
-} from 'hyperbee-package-test/resources/chat/completions';
-import { OpenAIError } from 'hyperbee-package-test/error';
+} from 'openai/resources/chat/completions';
+import { OpenAIError } from 'openai/error';
 import {
   type RunnableFunction,
   isRunnableFunctionWithParse,
@@ -23,7 +23,7 @@ import { isAssistantMessage, isFunctionMessage, isToolMessage } from './chatComp
 import { BaseEvents, EventStream } from './EventStream';
 import { ParsedChatCompletion } from '../resources/beta/chat/completions';
 import OpenAI from '../index';
-import { isAutoParsableTool, parseChatCompletion } from 'hyperbee-package-test/lib/parser';
+import { isAutoParsableTool, parseChatCompletion } from 'openai/lib/parser';
 
 const DEFAULT_MAX_CHAT_COMPLETIONS = 10;
 export interface RunnerOptions extends Core.RequestOptions {

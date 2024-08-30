@@ -3,10 +3,10 @@
 // This file demonstrates how to stream from the server as a text/plain
 // response with express and the stream async iterator.
 
-import OpenAI from 'hyperbee-package-test';
+import OpenAI from 'openai';
 import express, { Request, Response } from 'express';
 
-const hyperbee-package-test = new OpenAI();
+const openai = new OpenAI();
 const app = express();
 
 app.use(express.text());
@@ -32,7 +32,7 @@ app.post('/', async (req: Request, res: Response) => {
   try {
     console.log('Received request:', req.body);
 
-    const stream = await hyperbee-package-test.chat.completions.create({
+    const stream = await openai.chat.completions.create({
       model: 'gpt-3.5-turbo',
       stream: true,
       messages: [{ role: 'user', content: req.body }],

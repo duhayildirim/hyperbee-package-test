@@ -8,9 +8,9 @@ import {
   TextDelta,
   Messages,
   MessageContent,
-} from 'hyperbee-package-test/resources/beta/threads/messages';
-import * as Core from 'hyperbee-package-test/core';
-import { RequestOptions } from 'hyperbee-package-test/core';
+} from 'openai/resources/beta/threads/messages';
+import * as Core from 'openai/core';
+import { RequestOptions } from 'openai/core';
 import {
   Run,
   RunCreateParamsBase,
@@ -18,18 +18,18 @@ import {
   Runs,
   RunSubmitToolOutputsParamsBase,
   RunSubmitToolOutputsParamsStreaming,
-} from 'hyperbee-package-test/resources/beta/threads/runs/runs';
-import { type ReadableStream } from 'hyperbee-package-test/_shims/index';
-import { Stream } from 'hyperbee-package-test/streaming';
-import { APIUserAbortError, OpenAIError } from 'hyperbee-package-test/error';
+} from 'openai/resources/beta/threads/runs/runs';
+import { type ReadableStream } from 'openai/_shims/index';
+import { Stream } from 'openai/streaming';
+import { APIUserAbortError, OpenAIError } from 'openai/error';
 import {
   AssistantStreamEvent,
   MessageStreamEvent,
   RunStepStreamEvent,
   RunStreamEvent,
-} from 'hyperbee-package-test/resources/beta/assistants';
-import { RunStep, RunStepDelta, ToolCall, ToolCallDelta } from 'hyperbee-package-test/resources/beta/threads/runs/steps';
-import { ThreadCreateAndRunParamsBase, Threads } from 'hyperbee-package-test/resources/beta/threads/threads';
+} from 'openai/resources/beta/assistants';
+import { RunStep, RunStepDelta, ToolCall, ToolCallDelta } from 'openai/resources/beta/threads/runs/steps';
+import { ThreadCreateAndRunParamsBase, Threads } from 'openai/resources/beta/threads/threads';
 import { BaseEvents, EventStream } from './EventStream';
 import MessageDelta = Messages.MessageDelta;
 

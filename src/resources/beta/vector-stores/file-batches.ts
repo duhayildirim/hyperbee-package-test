@@ -23,7 +23,7 @@ export class FileBatches extends APIResource {
     return this._client.post(`/vector_stores/${vectorStoreId}/file_batches`, {
       body,
       ...options,
-      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -37,7 +37,7 @@ export class FileBatches extends APIResource {
   ): Core.APIPromise<VectorStoreFileBatch> {
     return this._client.get(`/vector_stores/${vectorStoreId}/file_batches/${batchId}`, {
       ...options,
-      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -52,7 +52,7 @@ export class FileBatches extends APIResource {
   ): Core.APIPromise<VectorStoreFileBatch> {
     return this._client.post(`/vector_stores/${vectorStoreId}/file_batches/${batchId}/cancel`, {
       ...options,
-      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -94,7 +94,7 @@ export class FileBatches extends APIResource {
     return this._client.getAPIList(
       `/vector_stores/${vectorStoreId}/file_batches/${batchId}/files`,
       VectorStoreFilesPage,
-      { query, ...options, headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers } },
+      { query, ...options, headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers } },
     );
   }
 
@@ -127,7 +127,7 @@ export class FileBatches extends APIResource {
           if (options?.pollIntervalMs) {
             sleepInterval = options.pollIntervalMs;
           } else {
-            const headerInterval = response.headers.get('hyperbee-package-test-poll-after-ms');
+            const headerInterval = response.headers.get('openai-poll-after-ms');
             if (headerInterval) {
               const headerIntervalMs = parseInt(headerInterval);
               if (!isNaN(headerIntervalMs)) {
@@ -221,8 +221,8 @@ export interface VectorStoreFileBatch {
 
   /**
    * The ID of the
-   * [vector store](https://platform.hyperbee-package-test.com/docs/api-reference/vector-stores/object)
-   * that the [File](https://platform.hyperbee-package-test.com/docs/api-reference/files) is
+   * [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object)
+   * that the [File](https://platform.openai.com/docs/api-reference/files) is
    * attached to.
    */
   vector_store_id: string;
@@ -259,7 +259,7 @@ export namespace VectorStoreFileBatch {
 
 export interface FileBatchCreateParams {
   /**
-   * A list of [File](https://platform.hyperbee-package-test.com/docs/api-reference/files) IDs that
+   * A list of [File](https://platform.openai.com/docs/api-reference/files) IDs that
    * the vector store should use. Useful for tools like `file_search` that can access
    * files.
    */

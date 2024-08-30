@@ -35,7 +35,7 @@ export type Options<Target extends Targets = 'jsonSchema7'> = {
     seen: Seen | undefined,
     forceResolution?: boolean,
   ) => JsonSchema7Type | undefined | typeof ignoreOverride;
-  hyperbee-package-testStrictMode?: boolean;
+  openaiStrictMode?: boolean;
 };
 
 const defaultOptions: Omit<Options, 'definitions' | 'basePath'> = {

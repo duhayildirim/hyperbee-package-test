@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import OpenAI from 'hyperbee-package-test';
+import OpenAI from 'openai';
 
 export const config = {
   runtime: 'edge',
@@ -12,9 +12,9 @@ export const config = {
 };
 
 export default async (request: NextRequest) => {
-  const hyperbee-package-test = new OpenAI();
+  const openai = new OpenAI();
 
-  const result = await hyperbee-package-test.beta.assistants.list({ limit: 10 });
+  const result = await openai.beta.assistants.list({ limit: 10 });
 
   return NextResponse.json(result);
 };

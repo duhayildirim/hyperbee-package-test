@@ -39,8 +39,8 @@ export default {
 		// then the test code requests /test
 		if (url.pathname !== '/test') return new Response(null, { status: 404 });
 		try {
-			console.error('importing hyperbee-package-test');
-			const { default: OpenAI } = await import('hyperbee-package-test');
+			console.error('importing openai');
+			const { default: OpenAI } = await import('openai');
 			console.error('importing test cases');
 			const { uploadWebApiTestCases } = await import('./uploadWebApiTestCases.js');
 			console.error('creating client');

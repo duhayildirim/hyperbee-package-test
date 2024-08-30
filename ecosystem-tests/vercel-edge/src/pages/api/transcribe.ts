@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import OpenAI, { toFile } from 'hyperbee-package-test';
-import { TranscriptionCreateParams } from 'hyperbee-package-test/resources/audio';
+import OpenAI, { toFile } from 'openai';
+import { TranscriptionCreateParams } from 'openai/resources/audio';
 
 export const config = {
   runtime: 'edge',
@@ -13,15 +13,15 @@ export const config = {
 };
 
 export default async (request: NextRequest) => {
-  const hyperbee-package-test = new OpenAI();
+  const openai = new OpenAI();
 
   async function typeTests() {
     // @ts-expect-error this should error if the `Uploadable` type was resolved correctly
-    await hyperbee-package-test.audio.transcriptions.create({ file: { foo: true }, model: 'whisper-1' });
+    await openai.audio.transcriptions.create({ file: { foo: true }, model: 'whisper-1' });
     // @ts-expect-error this should error if the `Uploadable` type was resolved correctly
-    await hyperbee-package-test.audio.transcriptions.create({ file: null, model: 'whisper-1' });
+    await openai.audio.transcriptions.create({ file: null, model: 'whisper-1' });
     // @ts-expect-error this should error if the `Uploadable` type was resolved correctly
-    await hyperbee-package-test.audio.transcriptions.create({ file: 'test', model: 'whisper-1' });
+    await openai.audio.transcriptions.create({ file: 'test', model: 'whisper-1' });
   }
 
   const rsp = await fetch('https://audio-samples.github.io/samples/mp3/blizzard_biased/sample-1.mp3');
@@ -30,7 +30,7 @@ export default async (request: NextRequest) => {
     model: 'whisper-1',
     file: await toFile(rsp, 'sample-1.mp3'),
   };
-  const transcription = await hyperbee-package-test.audio.transcriptions.create(params);
+  const transcription = await openai.audio.transcriptions.create(params);
 
   return NextResponse.json(transcription);
 };

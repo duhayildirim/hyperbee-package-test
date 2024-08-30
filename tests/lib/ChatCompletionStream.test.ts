@@ -1,5 +1,5 @@
-import { zodResponseFormat } from 'hyperbee-package-test/helpers/zod';
-import { ChatCompletionTokenLogprob } from 'hyperbee-package-test/resources';
+import { zodResponseFormat } from 'openai/helpers/zod';
+import { ChatCompletionTokenLogprob } from 'openai/resources';
 import { z } from 'zod';
 import { makeStreamSnapshotRequest } from '../utils/mock-snapshots';
 
@@ -7,8 +7,8 @@ jest.setTimeout(1000 * 30);
 
 describe('.stream()', () => {
   it('works', async () => {
-    const stream = await makeStreamSnapshotRequest((hyperbee-package-test) =>
-      hyperbee-package-test.beta.chat.completions.stream({
+    const stream = await makeStreamSnapshotRequest((openai) =>
+      openai.beta.chat.completions.stream({
         model: 'gpt-4o-2024-08-06',
         messages: [
           {
@@ -49,8 +49,8 @@ describe('.stream()', () => {
     var capturedLogProbs: ChatCompletionTokenLogprob[] | undefined;
 
     const stream = (
-      await makeStreamSnapshotRequest((hyperbee-package-test) =>
-        hyperbee-package-test.beta.chat.completions.stream({
+      await makeStreamSnapshotRequest((openai) =>
+        openai.beta.chat.completions.stream({
           model: 'gpt-4o-2024-08-06',
           messages: [
             {
@@ -209,8 +209,8 @@ describe('.stream()', () => {
     var capturedLogProbs: ChatCompletionTokenLogprob[] | undefined;
 
     const stream = (
-      await makeStreamSnapshotRequest((hyperbee-package-test) =>
-        hyperbee-package-test.beta.chat.completions.stream({
+      await makeStreamSnapshotRequest((openai) =>
+        openai.beta.chat.completions.stream({
           model: 'gpt-4o-2024-08-06',
           messages: [
             {

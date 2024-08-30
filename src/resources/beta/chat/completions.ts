@@ -114,7 +114,7 @@ export class Completions extends APIResource {
    * requests function calls.
    *
    * For more details and examples, see
-   * [the docs](https://github.com/hyperbee-package-test/hyperbee-package-test-node#automated-function-calls)
+   * [the docs](https://github.com/openai/openai-node#automated-function-calls)
    */
   runTools<
     Params extends ChatCompletionToolRunnerParams<any>,

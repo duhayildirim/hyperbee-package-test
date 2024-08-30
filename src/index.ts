@@ -2,31 +2,34 @@
 
 import * as Errors from './error';
 import * as Uploads from './uploads';
+
 import { type Agent, type RequestInit } from './_shims/index';
+import * as qs from 'qs';
+
 import * as Core from './core';
 import * as Pagination from './pagination';
 import * as API from './resources/index';
 
 export interface ClientOptions {
   /**
-   * Defaults to process.env['hyperbee-package-test_API_KEY'].
+   * Defaults to process.env['OPENAI_API_KEY'].
    */
   apiKey?: string | undefined;
 
   /**
-   * Defaults to process.env['hyperbee-package-test_ORG_ID'].
+   * Defaults to process.env['OPENAI_ORG_ID'].
    */
   organization?: string | null | undefined;
 
   /**
-   * Defaults to process.env['hyperbee-package-test_PROJECT_ID'].
+   * Defaults to process.env['OPENAI_PROJECT_ID'].
    */
   project?: string | null | undefined;
 
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
    *
-   * Defaults to process.env['hyperbee-package-test_BASE_URL'].
+   * Defaults to process.env['OPENAI_BASE_URL'].
    */
   baseURL?: string | null | undefined;
 
@@ -99,10 +102,10 @@ export class OpenAI extends Core.APIClient {
   /**
    * API Client for interfacing with the OpenAI API.
    *
-   * @param {string | undefined} [opts.apiKey=process.env['hyperbee-package-test_API_KEY'] ?? undefined]
-   * @param {string | null | undefined} [opts.organization=process.env['hyperbee-package-test_ORG_ID'] ?? null]
-   * @param {string | null | undefined} [opts.project=process.env['hyperbee-package-test_PROJECT_ID'] ?? null]
-   * @param {string} [opts.baseURL=process.env['hyperbee-package-test_BASE_URL'] ?? https://api.hyperbee-package-test.com/v1] - Override the default base URL for the API.
+   * @param {string | undefined} [opts.apiKey=process.env['OPENAI_API_KEY'] ?? undefined]
+   * @param {string | null | undefined} [opts.organization=process.env['OPENAI_ORG_ID'] ?? null]
+   * @param {string | null | undefined} [opts.project=process.env['OPENAI_PROJECT_ID'] ?? null]
+   * @param {string} [opts.baseURL=process.env['OPENAI_BASE_URL'] ?? https://api.openai.com/v1] - Override the default base URL for the API.
    * @param {number} [opts.timeout=10 minutes] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
    * @param {Core.Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -112,10 +115,10 @@ export class OpenAI extends Core.APIClient {
    * @param {boolean} [opts.dangerouslyAllowBrowser=false] - By default, client-side use of this library is not allowed, as it risks exposing your secret API credentials to attackers.
    */
   constructor({
-    baseURL = Core.readEnv('hyperbee-package-test_BASE_URL'),
-    apiKey = Core.readEnv('hyperbee-package-test_API_KEY'),
-    organization = Core.readEnv('hyperbee-package-test_ORG_ID') ?? null,
-    project = Core.readEnv('hyperbee-package-test_PROJECT_ID') ?? null,
+    baseURL = Core.readEnv('OPENAI_BASE_URL'),
+    apiKey = Core.readEnv('OPENAI_API_KEY'),
+    organization = Core.readEnv('OPENAI_ORG_ID') ?? null,
+    project = Core.readEnv('OPENAI_PROJECT_ID') ?? null,
     ...opts
   }: ClientOptions = {}) {
     if (apiKey === undefined) {
@@ -129,12 +132,12 @@ export class OpenAI extends Core.APIClient {
       organization,
       project,
       ...opts,
-      baseURL: baseURL || `https://api.hyperbee-package-test.com/v1`,
+      baseURL: baseURL || `https://api.openai.com/v1`,
     };
 
     if (!options.dangerouslyAllowBrowser && Core.isRunningInBrowser()) {
       throw new Errors.OpenAIError(
-        "It looks like you're running in a browser-like environment.\n\nThis is disabled by default, as it risks exposing your secret API credentials to attackers.\nIf you understand the risks and have appropriate mitigations in place,\nyou can set the `dangerouslyAllowBrowser` option to `true`, e.g.,\n\nnew OpenAI({ apiKey, dangerouslyAllowBrowser: true });\n\nhttps://help.hyperbee-package-test.com/en/articles/5112595-best-practices-for-api-key-safety\n",
+        "It looks like you're running in a browser-like environment.\n\nThis is disabled by default, as it risks exposing your secret API credentials to attackers.\nIf you understand the risks and have appropriate mitigations in place,\nyou can set the `dangerouslyAllowBrowser` option to `true`, e.g.,\n\nnew OpenAI({ apiKey, dangerouslyAllowBrowser: true });\n\nhttps://help.openai.com/en/articles/5112595-best-practices-for-api-key-safety\n",
       );
     }
 
@@ -173,14 +176,18 @@ export class OpenAI extends Core.APIClient {
   protected override defaultHeaders(opts: Core.FinalRequestOptions): Core.Headers {
     return {
       ...super.defaultHeaders(opts),
-      'hyperbee-package-test-Organization': this.organization,
-      'hyperbee-package-test-Project': this.project,
+      'OpenAI-Organization': this.organization,
+      'OpenAI-Project': this.project,
       ...this._options.defaultHeaders,
     };
   }
 
   protected override authHeaders(opts: Core.FinalRequestOptions): Core.Headers {
     return { Authorization: `Bearer ${this.apiKey}` };
+  }
+
+  protected override stringifyQuery(query: Record<string, unknown>): string {
+    return qs.stringify(query, { arrayFormat: 'brackets' });
   }
 
   static OpenAI = this;
@@ -334,12 +341,12 @@ export namespace OpenAI {
 /** API Client for interfacing with the Azure OpenAI API. */
 export interface AzureClientOptions extends ClientOptions {
   /**
-   * Defaults to process.env['hyperbee-package-test_API_VERSION'].
+   * Defaults to process.env['OPENAI_API_VERSION'].
    */
   apiVersion?: string | undefined;
 
   /**
-   * Your Azure endpoint, including the resource, e.g. `https://example-resource.azure.hyperbee-package-test.com/`
+   * Your Azure endpoint, including the resource, e.g. `https://example-resource.azure.openai.com/`
    */
   endpoint?: string | undefined;
 
@@ -369,12 +376,12 @@ export class AzureOpenAI extends OpenAI {
   /**
    * API Client for interfacing with the Azure OpenAI API.
    *
-   * @param {string | undefined} [opts.apiVersion=process.env['hyperbee-package-test_API_VERSION'] ?? undefined]
-   * @param {string | undefined} [opts.endpoint=process.env['AZURE_OPENAI_ENDPOINT'] ?? undefined] - Your Azure endpoint, including the resource, e.g. `https://example-resource.azure.hyperbee-package-test.com/`
+   * @param {string | undefined} [opts.apiVersion=process.env['OPENAI_API_VERSION'] ?? undefined]
+   * @param {string | undefined} [opts.endpoint=process.env['AZURE_OPENAI_ENDPOINT'] ?? undefined] - Your Azure endpoint, including the resource, e.g. `https://example-resource.azure.openai.com/`
    * @param {string | undefined} [opts.apiKey=process.env['AZURE_OPENAI_API_KEY'] ?? undefined]
    * @param {string | undefined} opts.deployment - A model deployment, if given, sets the base client URL to include `/deployments/{deployment}`.
-   * @param {string | null | undefined} [opts.organization=process.env['hyperbee-package-test_ORG_ID'] ?? null]
-   * @param {string} [opts.baseURL=process.env['hyperbee-package-test_BASE_URL']] - Sets the base URL for the API.
+   * @param {string | null | undefined} [opts.organization=process.env['OPENAI_ORG_ID'] ?? null]
+   * @param {string} [opts.baseURL=process.env['OPENAI_BASE_URL']] - Sets the base URL for the API.
    * @param {number} [opts.timeout=10 minutes] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
    * @param {Core.Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -384,9 +391,9 @@ export class AzureOpenAI extends OpenAI {
    * @param {boolean} [opts.dangerouslyAllowBrowser=false] - By default, client-side use of this library is not allowed, as it risks exposing your secret API credentials to attackers.
    */
   constructor({
-    baseURL = Core.readEnv('hyperbee-package-test_BASE_URL'),
+    baseURL = Core.readEnv('OPENAI_BASE_URL'),
     apiKey = Core.readEnv('AZURE_OPENAI_API_KEY'),
-    apiVersion = Core.readEnv('hyperbee-package-test_API_VERSION'),
+    apiVersion = Core.readEnv('OPENAI_API_VERSION'),
     endpoint,
     deployment,
     azureADTokenProvider,
@@ -431,7 +438,7 @@ export class AzureOpenAI extends OpenAI {
         );
       }
 
-      baseURL = `${endpoint}/hyperbee-package-test`;
+      baseURL = `${endpoint}/openai`;
     } else {
       if (endpoint) {
         throw new Errors.OpenAIError('baseURL and endpoint are mutually exclusive');
@@ -485,7 +492,13 @@ export class AzureOpenAI extends OpenAI {
   }
 
   protected override async prepareOptions(opts: Core.FinalRequestOptions<unknown>): Promise<void> {
-    if (opts.headers?.['Authorization'] || opts.headers?.['api-key']) {
+    /**
+     * The user should provide a bearer token provider if they want
+     * to use Azure AD authentication. The user shouldn't set the
+     * Authorization header manually because the header is overwritten
+     * with the Azure AD token if a bearer token provider is provided.
+     */
+    if (opts.headers?.['api-key']) {
       return super.prepareOptions(opts);
     }
     const token = await this._getAzureADToken();

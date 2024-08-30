@@ -1,7 +1,7 @@
 import {
   type ChatCompletionMessageParam,
   type ChatCompletionCreateParamsNonStreaming,
-} from 'hyperbee-package-test/resources/chat/completions';
+} from 'openai/resources/chat/completions';
 import { type RunnableFunctions, type BaseFunctionsArgs, RunnableTools } from './RunnableFunction';
 import {
   AbstractChatCompletionRunner,
@@ -9,8 +9,8 @@ import {
   RunnerOptions,
 } from './AbstractChatCompletionRunner';
 import { isAssistantMessage } from './chatCompletionUtils';
-import OpenAI from 'hyperbee-package-test/index';
-import { AutoParseableTool } from 'hyperbee-package-test/lib/parser';
+import OpenAI from 'openai/index';
+import { AutoParseableTool } from 'openai/lib/parser';
 
 export interface ChatCompletionRunnerEvents extends AbstractChatCompletionRunnerEvents {
   content: (content: string) => void;

@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import OpenAI from 'hyperbee-package-test';
+import OpenAI from 'openai';
 import { Response } from 'node-fetch';
 
 const client = new OpenAI({
@@ -23,6 +23,7 @@ describe('resource runs', () => {
   test('create: required and optional params', async () => {
     const response = await client.beta.threads.runs.create('thread_id', {
       assistant_id: 'assistant_id',
+      include: ['step_details.tool_calls[*].file_search.results[*].content'],
       additional_instructions: 'additional_instructions',
       additional_messages: [
         {

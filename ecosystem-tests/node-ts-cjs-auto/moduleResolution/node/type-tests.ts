@@ -1,4 +1,4 @@
-import OpenAI from 'hyperbee-package-test';
+import OpenAI from 'openai';
 
 const client = new OpenAI();
 

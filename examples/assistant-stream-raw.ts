@@ -1,17 +1,17 @@
 #!/usr/bin/env -S npm run tsn -T
 
-import OpenAI from 'hyperbee-package-test';
+import OpenAI from 'openai';
 
-const hyperbee-package-test = new OpenAI();
+const openai = new OpenAI();
 
 async function main() {
-  const assistant = await hyperbee-package-test.beta.assistants.create({
+  const assistant = await openai.beta.assistants.create({
     model: 'gpt-4-1106-preview',
     name: 'Math Tutor',
     instructions: 'You are a personal math tutor. Write and run code to answer math questions.',
   });
 
-  const thread = await hyperbee-package-test.beta.threads.create({
+  const thread = await openai.beta.threads.create({
     messages: [
       {
         role: 'user',
@@ -20,7 +20,7 @@ async function main() {
     ],
   });
 
-  const stream = await hyperbee-package-test.beta.threads.runs.create(thread.id, {
+  const stream = await openai.beta.threads.runs.create(thread.id, {
     assistant_id: assistant.id,
     additional_instructions: 'Please address the user as Jane Doe. The user has a premium account.',
     stream: true,

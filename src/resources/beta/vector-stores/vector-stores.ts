@@ -19,7 +19,7 @@ export class VectorStores extends APIResource {
     return this._client.post('/vector_stores', {
       body,
       ...options,
-      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -29,7 +29,7 @@ export class VectorStores extends APIResource {
   retrieve(vectorStoreId: string, options?: Core.RequestOptions): Core.APIPromise<VectorStore> {
     return this._client.get(`/vector_stores/${vectorStoreId}`, {
       ...options,
-      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -44,7 +44,7 @@ export class VectorStores extends APIResource {
     return this._client.post(`/vector_stores/${vectorStoreId}`, {
       body,
       ...options,
-      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -66,7 +66,7 @@ export class VectorStores extends APIResource {
     return this._client.getAPIList('/vector_stores', VectorStoresPage, {
       query,
       ...options,
-      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -76,7 +76,7 @@ export class VectorStores extends APIResource {
   del(vectorStoreId: string, options?: Core.RequestOptions): Core.APIPromise<VectorStoreDeleted> {
     return this._client.delete(`/vector_stores/${vectorStoreId}`, {
       ...options,
-      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 }
@@ -212,7 +212,7 @@ export interface VectorStoreCreateParams {
   expires_after?: VectorStoreCreateParams.ExpiresAfter;
 
   /**
-   * A list of [File](https://platform.hyperbee-package-test.com/docs/api-reference/files) IDs that
+   * A list of [File](https://platform.openai.com/docs/api-reference/files) IDs that
    * the vector store should use. Useful for tools like `file_search` that can access
    * files.
    */

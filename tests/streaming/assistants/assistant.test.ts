@@ -1,7 +1,7 @@
-import OpenAI from 'hyperbee-package-test';
-import { AssistantStream } from 'hyperbee-package-test/lib/AssistantStream';
+import OpenAI from 'openai';
+import { AssistantStream } from 'openai/lib/AssistantStream';
 
-const hyperbee-package-test = new OpenAI({
+const openai = new OpenAI({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });

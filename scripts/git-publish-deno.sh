@@ -6,7 +6,7 @@ cd "$(dirname "$0")/.."
 
 # This script pushes the contents of the `deno` directory to the `deno` branch,
 # and creates a `vx.x.x-deno` tag, so that Deno users can
-# import OpenAI from "https://raw.githubusercontent.com/hyperbee-package-test/hyperbee-package-test-node/vx.x.x-deno/mod.ts"
+# import OpenAI from "https://raw.githubusercontent.com/openai/openai-node/vx.x.x-deno/mod.ts"
 
 # It's also possible to publish to deno.land.  You can do this by:
 # - Creating a separate GitHub repo

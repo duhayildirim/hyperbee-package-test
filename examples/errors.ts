@@ -1,6 +1,6 @@
 #!/usr/bin/env -S npm run tsn -T
 
-import OpenAI, { NotFoundError } from 'hyperbee-package-test';
+import OpenAI, { NotFoundError } from 'openai';
 
 // gets API Key from environment variable OPENAI_API_KEY
 const client = new OpenAI();

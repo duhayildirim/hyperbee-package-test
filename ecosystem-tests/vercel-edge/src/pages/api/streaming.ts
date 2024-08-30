@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import OpenAI from 'hyperbee-package-test';
+import OpenAI from 'openai';
 
 export const config = {
   runtime: 'edge',
@@ -12,11 +12,11 @@ export const config = {
 };
 
 export default async (request: NextRequest) => {
-  const hyperbee-package-test = new OpenAI();
+  const openai = new OpenAI();
 
   const text: string[] = [];
 
-  const stream = await hyperbee-package-test.completions.create({
+  const stream = await openai.completions.create({
     prompt: 'Say this is a test',
     model: 'gpt-3.5-turbo-instruct',
     stream: true,

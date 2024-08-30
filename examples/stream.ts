@@ -1,11 +1,11 @@
 #!/usr/bin/env -S npm run tsn -T
 
-import OpenAI from 'hyperbee-package-test';
+import OpenAI from 'openai';
 
-const hyperbee-package-test = new OpenAI();
+const openai = new OpenAI();
 
 async function main() {
-  const runner = hyperbee-package-test.beta.chat.completions
+  const runner = openai.beta.chat.completions
     .stream({
       model: 'gpt-3.5-turbo',
       messages: [{ role: 'user', content: 'Say this is a test' }],

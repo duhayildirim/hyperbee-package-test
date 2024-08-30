@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { zodResponseFormat } from 'hyperbee-package-test/helpers/zod';
+import { zodResponseFormat } from 'openai/helpers/zod';
 import { makeSnapshotRequest } from '../utils/mock-snapshots';
 
 jest.setTimeout(1000 * 30);
@@ -7,8 +7,8 @@ jest.setTimeout(1000 * 30);
 describe('.parse()', () => {
   describe('zod', () => {
     it('deserialises response_format', async () => {
-      const completion = await makeSnapshotRequest((hyperbee-package-test) =>
-        hyperbee-package-test.beta.chat.completions.parse({
+      const completion = await makeSnapshotRequest((openai) =>
+        openai.beta.chat.completions.parse({
           model: 'gpt-4o-2024-08-06',
           messages: [
             {
@@ -60,8 +60,8 @@ describe('.parse()', () => {
         }),
       );
 
-      const completion = await makeSnapshotRequest((hyperbee-package-test) =>
-        hyperbee-package-test.beta.chat.completions.parse({
+      const completion = await makeSnapshotRequest((openai) =>
+        openai.beta.chat.completions.parse({
           model: 'gpt-4o-2024-08-06',
           messages: [
             {
@@ -449,8 +449,8 @@ describe('.parse()', () => {
       `);
 
       const completion = await makeSnapshotRequest(
-        (hyperbee-package-test) =>
-          hyperbee-package-test.beta.chat.completions.parse({
+        (openai) =>
+          openai.beta.chat.completions.parse({
             model: 'gpt-4o-2024-08-06',
             messages: [
               {
@@ -460,7 +460,7 @@ describe('.parse()', () => {
               {
                 role: 'user',
                 content:
-                  'jane doe, born nov 16, engineer at hyperbee-package-test, jane@hyperbee-package-test.com. john smith, born march 1, enigneer at hyperbee-package-test, john@hyperbee-package-test.com',
+                  'jane doe, born nov 16, engineer at openai, jane@openai.com. john smith, born march 1, enigneer at openai, john@openai.com',
               },
             ],
             response_format: zodResponseFormat(contactPersonSchema, 'contactPerson'),
@@ -470,10 +470,10 @@ describe('.parse()', () => {
 
       expect(completion.choices[0]?.message).toMatchInlineSnapshot(`
         {
-          "content": "{"person1":{"name":"Jane Doe","phone_number":".","roles":["other"],"description":"Engineer at OpenAI, born Nov 16, contact email: jane@hyperbee-package-test.com"},"person2":{"name":"John Smith","phone_number":"john@hyperbee-package-test.com","differentField":"Engineer at OpenAI, born March 1."}}",
+          "content": "{"person1":{"name":"Jane Doe","phone_number":".","roles":["other"],"description":"Engineer at OpenAI, born Nov 16, contact email: jane@openai.com"},"person2":{"name":"John Smith","phone_number":"john@openai.com","differentField":"Engineer at OpenAI, born March 1."}}",
           "parsed": {
             "person1": {
-              "description": "Engineer at OpenAI, born Nov 16, contact email: jane@hyperbee-package-test.com",
+              "description": "Engineer at OpenAI, born Nov 16, contact email: jane@openai.com",
               "name": "Jane Doe",
               "phone_number": ".",
               "roles": [
@@ -483,7 +483,7 @@ describe('.parse()', () => {
             "person2": {
               "differentField": "Engineer at OpenAI, born March 1.",
               "name": "John Smith",
-              "phone_number": "john@hyperbee-package-test.com",
+              "phone_number": "john@openai.com",
             },
           },
           "refusal": null,
@@ -700,8 +700,8 @@ describe('.parse()', () => {
       `);
 
       const completion = await makeSnapshotRequest(
-        (hyperbee-package-test) =>
-          hyperbee-package-test.beta.chat.completions.parse({
+        (openai) =>
+          openai.beta.chat.completions.parse({
             model: 'gpt-4o-2024-08-06',
             messages: [
               {
@@ -908,8 +908,8 @@ describe('.parse()', () => {
       `);
 
       const completion = await makeSnapshotRequest(
-        (hyperbee-package-test) =>
-          hyperbee-package-test.beta.chat.completions.parse({
+        (openai) =>
+          openai.beta.chat.completions.parse({
             model: 'gpt-4o-2024-08-06',
             messages: [
               {

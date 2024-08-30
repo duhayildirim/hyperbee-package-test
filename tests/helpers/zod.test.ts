@@ -1,4 +1,4 @@
-import { zodResponseFormat } from 'hyperbee-package-test/helpers/zod';
+import { zodResponseFormat } from 'openai/helpers/zod';
 import { z } from 'zod';
 
 describe('zodResponseFormat', () => {
@@ -130,6 +130,18 @@ describe('zodResponseFormat', () => {
         "strict": true,
       }
     `);
+  });
+
+  it('allows description field to be passed in', () => {
+    expect(
+      zodResponseFormat(
+        z.object({
+          city: z.string(),
+        }),
+        'city',
+        { description: 'A city' },
+      ).json_schema,
+    ).toHaveProperty('description', 'A city');
   });
 
   test('kitchen sink types', () => {

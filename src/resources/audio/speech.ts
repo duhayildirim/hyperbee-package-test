@@ -23,7 +23,7 @@ export interface SpeechCreateParams {
   input: string;
 
   /**
-   * One of the available [TTS models](https://platform.hyperbee-package-test.com/docs/models/tts):
+   * One of the available [TTS models](https://platform.openai.com/docs/models/tts):
    * `tts-1` or `tts-1-hd`
    */
   model: (string & {}) | SpeechModel;
@@ -32,7 +32,7 @@ export interface SpeechCreateParams {
    * The voice to use when generating the audio. Supported voices are `alloy`,
    * `echo`, `fable`, `onyx`, `nova`, and `shimmer`. Previews of the voices are
    * available in the
-   * [Text to speech guide](https://platform.hyperbee-package-test.com/docs/guides/text-to-speech/voice-options).
+   * [Text to speech guide](https://platform.openai.com/docs/guides/text-to-speech/voice-options).
    */
   voice: 'alloy' | 'echo' | 'fable' | 'onyx' | 'nova' | 'shimmer';
 

@@ -6,9 +6,9 @@
     "rootDir": "./deno",
     "lib": ["es2020", "DOM"],
     "paths": {
-      "hyperbee-package-test/_shims/auto/*": ["deno/_shims/auto/*-deno"],
-      "hyperbee-package-test/*": ["deno/*"],
-      "hyperbee-package-tests": ["deno/index.ts"],
+      "openai/_shims/auto/*": ["deno/_shims/auto/*-deno"],
+      "openai/*": ["deno/*"],
+      "openai": ["deno/index.ts"],
     },
     "noEmit": true,
     "declaration": true,

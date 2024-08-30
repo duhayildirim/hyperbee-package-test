@@ -1,6 +1,6 @@
-import { multipartFormRequestOptions, createForm } from 'hyperbee-package-test/core';
-import { Blob } from 'hyperbee-package-test/_shims/index';
-import { toFile } from 'hyperbee-package-test';
+import { multipartFormRequestOptions, createForm } from 'openai/core';
+import { Blob } from 'openai/_shims/index';
+import { toFile } from 'openai';
 
 describe('form data validation', () => {
   test('valid values do not error', async () => {

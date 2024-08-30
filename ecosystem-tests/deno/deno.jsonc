@@ -5,7 +5,7 @@
     "test": "deno test --allow-env --allow-net --allow-read --node-modules-dir"
   },
   "imports": {
-    "hyperbee-package-tests": "../../deno/mod.ts",
-    "hyperbee-package-test/": "../../deno/"
+    "openai": "../../deno/mod.ts",
+    "openai/": "../../deno/"
   }
 }

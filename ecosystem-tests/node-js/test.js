@@ -1,8 +1,8 @@
-const hyperbee-package-testKey = "a valid OpenAI key"
-const OpenAI = require('hyperbee-package-test');
+const openaiKey = "a valid OpenAI key"
+const OpenAI = require('openai');
 
 console.log(OpenAI)
 
-const hyperbee-package-test = new OpenAI({
-	apiKey: hyperbee-package-testKey,
+const openai = new OpenAI({
+	apiKey: openaiKey,
 });

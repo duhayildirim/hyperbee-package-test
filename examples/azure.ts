@@ -1,6 +1,6 @@
 #!/usr/bin/env -S npm run tsn -T
 
-import { AzureOpenAI } from 'hyperbee-package-test';
+import { AzureOpenAI } from 'openai';
 import { getBearerTokenProvider, DefaultAzureCredential } from '@azure/identity';
 
 // Corresponds to your Model deployment within your OpenAI resource, e.g. gpt-4-1106-preview
@@ -13,11 +13,11 @@ const azureADTokenProvider = getBearerTokenProvider(credential, scope);
 
 // Make sure to set AZURE_OPENAI_ENDPOINT with the endpoint of your Azure resource.
 // You can find it in the Azure Portal.
-const hyperbee-package-test = new AzureOpenAI({ azureADTokenProvider });
+const openai = new AzureOpenAI({ azureADTokenProvider });
 
 async function main() {
   console.log('Non-streaming:');
-  const result = await hyperbee-package-test.chat.completions.create({
+  const result = await openai.chat.completions.create({
     model: deployment,
     messages: [{ role: 'user', content: 'Say hello!' }],
   });
@@ -25,7 +25,7 @@ async function main() {
 
   console.log();
   console.log('Streaming:');
-  const stream = await hyperbee-package-test.chat.completions.create({
+  const stream = await openai.chat.completions.create({
     model: deployment,
     messages: [{ role: 'user', content: 'Say hello!' }],
     stream: true,

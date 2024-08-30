@@ -1,4 +1,4 @@
-import OpenAI from 'hyperbee-package-test';
+import OpenAI from 'openai';
 import { OpenAIStream, StreamingTextResponse } from 'ai';
 import { NextRequest } from 'next/server';
 
@@ -11,13 +11,13 @@ export const config = {
 };
 
 export default async (request: NextRequest) => {
-  const hyperbee-package-test = new OpenAI();
+  const openai = new OpenAI();
 
   // Extract the `messages` from the body of the request
   const { messages } = await request.json();
 
   // Ask OpenAI for a streaming chat completion given the prompt
-  const streamResponse = await hyperbee-package-test.chat.completions
+  const streamResponse = await openai.chat.completions
     .create({
       model: 'gpt-3.5-turbo',
       stream: true,

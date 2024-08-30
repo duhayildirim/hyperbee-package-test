@@ -32,7 +32,7 @@ export class Threads extends APIResource {
     return this._client.post('/threads', {
       body,
       ...options,
-      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -42,7 +42,7 @@ export class Threads extends APIResource {
   retrieve(threadId: string, options?: Core.RequestOptions): Core.APIPromise<Thread> {
     return this._client.get(`/threads/${threadId}`, {
       ...options,
-      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -53,7 +53,7 @@ export class Threads extends APIResource {
     return this._client.post(`/threads/${threadId}`, {
       body,
       ...options,
-      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -63,7 +63,7 @@ export class Threads extends APIResource {
   del(threadId: string, options?: Core.RequestOptions): Core.APIPromise<ThreadDeleted> {
     return this._client.delete(`/threads/${threadId}`, {
       ...options,
-      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -89,7 +89,7 @@ export class Threads extends APIResource {
     return this._client.post('/threads/runs', {
       body,
       ...options,
-      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
       stream: body.stream ?? false,
     }) as APIPromise<RunsAPI.Run> | APIPromise<Stream<AssistantsAPI.AssistantStreamEvent>>;
   }
@@ -97,7 +97,7 @@ export class Threads extends APIResource {
   /**
    * A helper to create a thread, start a run and then poll for a terminal state.
    * More information on Run lifecycles can be found here:
-   * https://platform.hyperbee-package-test.com/docs/assistants/how-it-works/runs-and-run-steps
+   * https://platform.openai.com/docs/assistants/how-it-works/runs-and-run-steps
    */
   async createAndRunPoll(
     body: ThreadCreateAndRunParamsNonStreaming,
@@ -120,14 +120,14 @@ export class Threads extends APIResource {
 
 /**
  * Specifies the format that the model must output. Compatible with
- * [GPT-4o](https://platform.hyperbee-package-test.com/docs/models/gpt-4o),
- * [GPT-4 Turbo](https://platform.hyperbee-package-test.com/docs/models/gpt-4-turbo-and-gpt-4),
+ * [GPT-4o](https://platform.openai.com/docs/models/gpt-4o),
+ * [GPT-4 Turbo](https://platform.openai.com/docs/models/gpt-4-turbo-and-gpt-4),
  * and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
  *
  * Setting to `{ "type": "json_schema", "json_schema": {...} }` enables Structured
  * Outputs which guarantees the model will match your supplied JSON schema. Learn
  * more in the
- * [Structured Outputs guide](https://platform.hyperbee-package-test.com/docs/guides/structured-outputs).
+ * [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
  *
  * Setting to `{ "type": "json_object" }` enables JSON mode, which guarantees the
  * message the model generates is valid JSON.
@@ -179,7 +179,7 @@ export type AssistantToolChoiceOption = 'none' | 'auto' | 'required' | Assistant
 
 /**
  * Represents a thread that contains
- * [messages](https://platform.hyperbee-package-test.com/docs/api-reference/messages).
+ * [messages](https://platform.openai.com/docs/api-reference/messages).
  */
 export interface Thread {
   /**
@@ -230,7 +230,7 @@ export namespace Thread {
   export namespace ToolResources {
     export interface CodeInterpreter {
       /**
-       * A list of [file](https://platform.hyperbee-package-test.com/docs/api-reference/files) IDs made
+       * A list of [file](https://platform.openai.com/docs/api-reference/files) IDs made
        * available to the `code_interpreter` tool. There can be a maximum of 20 files
        * associated with the tool.
        */
@@ -240,7 +240,7 @@ export namespace Thread {
     export interface FileSearch {
       /**
        * The
-       * [vector store](https://platform.hyperbee-package-test.com/docs/api-reference/vector-stores/object)
+       * [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object)
        * attached to this thread. There can be a maximum of 1 vector store attached to
        * the thread.
        */
@@ -259,7 +259,7 @@ export interface ThreadDeleted {
 
 export interface ThreadCreateParams {
   /**
-   * A list of [messages](https://platform.hyperbee-package-test.com/docs/api-reference/messages) to
+   * A list of [messages](https://platform.openai.com/docs/api-reference/messages) to
    * start the thread with.
    */
   messages?: Array<ThreadCreateParams.Message>;
@@ -350,7 +350,7 @@ export namespace ThreadCreateParams {
   export namespace ToolResources {
     export interface CodeInterpreter {
       /**
-       * A list of [file](https://platform.hyperbee-package-test.com/docs/api-reference/files) IDs made
+       * A list of [file](https://platform.openai.com/docs/api-reference/files) IDs made
        * available to the `code_interpreter` tool. There can be a maximum of 20 files
        * associated with the tool.
        */
@@ -360,7 +360,7 @@ export namespace ThreadCreateParams {
     export interface FileSearch {
       /**
        * The
-       * [vector store](https://platform.hyperbee-package-test.com/docs/api-reference/vector-stores/object)
+       * [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object)
        * attached to this thread. There can be a maximum of 1 vector store attached to
        * the thread.
        */
@@ -368,7 +368,7 @@ export namespace ThreadCreateParams {
 
       /**
        * A helper to create a
-       * [vector store](https://platform.hyperbee-package-test.com/docs/api-reference/vector-stores/object)
+       * [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object)
        * with file_ids and attach it to this thread. There can be a maximum of 1 vector
        * store attached to the thread.
        */
@@ -384,7 +384,7 @@ export namespace ThreadCreateParams {
         chunking_strategy?: VectorStore.Auto | VectorStore.Static;
 
         /**
-         * A list of [file](https://platform.hyperbee-package-test.com/docs/api-reference/files) IDs to
+         * A list of [file](https://platform.openai.com/docs/api-reference/files) IDs to
          * add to the vector store. There can be a maximum of 10000 files in a vector
          * store.
          */
@@ -475,7 +475,7 @@ export namespace ThreadUpdateParams {
   export namespace ToolResources {
     export interface CodeInterpreter {
       /**
-       * A list of [file](https://platform.hyperbee-package-test.com/docs/api-reference/files) IDs made
+       * A list of [file](https://platform.openai.com/docs/api-reference/files) IDs made
        * available to the `code_interpreter` tool. There can be a maximum of 20 files
        * associated with the tool.
        */
@@ -485,7 +485,7 @@ export namespace ThreadUpdateParams {
     export interface FileSearch {
       /**
        * The
-       * [vector store](https://platform.hyperbee-package-test.com/docs/api-reference/vector-stores/object)
+       * [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object)
        * attached to this thread. There can be a maximum of 1 vector store attached to
        * the thread.
        */
@@ -501,7 +501,7 @@ export type ThreadCreateAndRunParams =
 export interface ThreadCreateAndRunParamsBase {
   /**
    * The ID of the
-   * [assistant](https://platform.hyperbee-package-test.com/docs/api-reference/assistants) to use to
+   * [assistant](https://platform.openai.com/docs/api-reference/assistants) to use to
    * execute this run.
    */
   assistant_id: string;
@@ -539,7 +539,7 @@ export interface ThreadCreateAndRunParamsBase {
   metadata?: unknown | null;
 
   /**
-   * The ID of the [Model](https://platform.hyperbee-package-test.com/docs/api-reference/models) to
+   * The ID of the [Model](https://platform.openai.com/docs/api-reference/models) to
    * be used to execute this run. If a value is provided here, it will override the
    * model associated with the assistant. If not, the model associated with the
    * assistant will be used.
@@ -548,21 +548,21 @@ export interface ThreadCreateAndRunParamsBase {
 
   /**
    * Whether to enable
-   * [parallel function calling](https://platform.hyperbee-package-test.com/docs/guides/function-calling/parallel-function-calling)
+   * [parallel function calling](https://platform.openai.com/docs/guides/function-calling/parallel-function-calling)
    * during tool use.
    */
   parallel_tool_calls?: boolean;
 
   /**
    * Specifies the format that the model must output. Compatible with
-   * [GPT-4o](https://platform.hyperbee-package-test.com/docs/models/gpt-4o),
-   * [GPT-4 Turbo](https://platform.hyperbee-package-test.com/docs/models/gpt-4-turbo-and-gpt-4),
+   * [GPT-4o](https://platform.openai.com/docs/models/gpt-4o),
+   * [GPT-4 Turbo](https://platform.openai.com/docs/models/gpt-4-turbo-and-gpt-4),
    * and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
    *
    * Setting to `{ "type": "json_schema", "json_schema": {...} }` enables Structured
    * Outputs which guarantees the model will match your supplied JSON schema. Learn
    * more in the
-   * [Structured Outputs guide](https://platform.hyperbee-package-test.com/docs/guides/structured-outputs).
+   * [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
    *
    * Setting to `{ "type": "json_object" }` enables JSON mode, which guarantees the
    * message the model generates is valid JSON.
@@ -645,7 +645,7 @@ export namespace ThreadCreateAndRunParams {
    */
   export interface Thread {
     /**
-     * A list of [messages](https://platform.hyperbee-package-test.com/docs/api-reference/messages) to
+     * A list of [messages](https://platform.openai.com/docs/api-reference/messages) to
      * start the thread with.
      */
     messages?: Array<Thread.Message>;
@@ -736,7 +736,7 @@ export namespace ThreadCreateAndRunParams {
     export namespace ToolResources {
       export interface CodeInterpreter {
         /**
-         * A list of [file](https://platform.hyperbee-package-test.com/docs/api-reference/files) IDs made
+         * A list of [file](https://platform.openai.com/docs/api-reference/files) IDs made
          * available to the `code_interpreter` tool. There can be a maximum of 20 files
          * associated with the tool.
          */
@@ -746,7 +746,7 @@ export namespace ThreadCreateAndRunParams {
       export interface FileSearch {
         /**
          * The
-         * [vector store](https://platform.hyperbee-package-test.com/docs/api-reference/vector-stores/object)
+         * [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object)
          * attached to this thread. There can be a maximum of 1 vector store attached to
          * the thread.
          */
@@ -754,7 +754,7 @@ export namespace ThreadCreateAndRunParams {
 
         /**
          * A helper to create a
-         * [vector store](https://platform.hyperbee-package-test.com/docs/api-reference/vector-stores/object)
+         * [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object)
          * with file_ids and attach it to this thread. There can be a maximum of 1 vector
          * store attached to the thread.
          */
@@ -770,7 +770,7 @@ export namespace ThreadCreateAndRunParams {
           chunking_strategy?: VectorStore.Auto | VectorStore.Static;
 
           /**
-           * A list of [file](https://platform.hyperbee-package-test.com/docs/api-reference/files) IDs to
+           * A list of [file](https://platform.openai.com/docs/api-reference/files) IDs to
            * add to the vector store. There can be a maximum of 10000 files in a vector
            * store.
            */
@@ -842,7 +842,7 @@ export namespace ThreadCreateAndRunParams {
   export namespace ToolResources {
     export interface CodeInterpreter {
       /**
-       * A list of [file](https://platform.hyperbee-package-test.com/docs/api-reference/files) IDs made
+       * A list of [file](https://platform.openai.com/docs/api-reference/files) IDs made
        * available to the `code_interpreter` tool. There can be a maximum of 20 files
        * associated with the tool.
        */
@@ -852,7 +852,7 @@ export namespace ThreadCreateAndRunParams {
     export interface FileSearch {
       /**
        * The ID of the
-       * [vector store](https://platform.hyperbee-package-test.com/docs/api-reference/vector-stores/object)
+       * [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object)
        * attached to this assistant. There can be a maximum of 1 vector store attached to
        * the assistant.
        */
@@ -905,7 +905,7 @@ export interface ThreadCreateAndRunParamsStreaming extends ThreadCreateAndRunPar
 export interface ThreadCreateAndRunPollParams {
   /**
    * The ID of the
-   * [assistant](https://platform.hyperbee-package-test.com/docs/api-reference/assistants) to use to
+   * [assistant](https://platform.openai.com/docs/api-reference/assistants) to use to
    * execute this run.
    */
   assistant_id: string;
@@ -943,7 +943,7 @@ export interface ThreadCreateAndRunPollParams {
   metadata?: unknown | null;
 
   /**
-   * The ID of the [Model](https://platform.hyperbee-package-test.com/docs/api-reference/models) to
+   * The ID of the [Model](https://platform.openai.com/docs/api-reference/models) to
    * be used to execute this run. If a value is provided here, it will override the
    * model associated with the assistant. If not, the model associated with the
    * assistant will be used.
@@ -974,8 +974,8 @@ export interface ThreadCreateAndRunPollParams {
 
   /**
    * Specifies the format that the model must output. Compatible with
-   * [GPT-4o](https://platform.hyperbee-package-test.com/docs/models/gpt-4o),
-   * [GPT-4 Turbo](https://platform.hyperbee-package-test.com/docs/models/gpt-4-turbo-and-gpt-4),
+   * [GPT-4o](https://platform.openai.com/docs/models/gpt-4o),
+   * [GPT-4 Turbo](https://platform.openai.com/docs/models/gpt-4-turbo-and-gpt-4),
    * and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
    *
    * Setting to `{ "type": "json_object" }` enables JSON mode, which guarantees the
@@ -1052,7 +1052,7 @@ export namespace ThreadCreateAndRunPollParams {
    */
   export interface Thread {
     /**
-     * A list of [messages](https://platform.hyperbee-package-test.com/docs/api-reference/messages) to
+     * A list of [messages](https://platform.openai.com/docs/api-reference/messages) to
      * start the thread with.
      */
     messages?: Array<Thread.Message>;
@@ -1134,7 +1134,7 @@ export namespace ThreadCreateAndRunPollParams {
     export namespace ToolResources {
       export interface CodeInterpreter {
         /**
-         * A list of [file](https://platform.hyperbee-package-test.com/docs/api-reference/files) IDs made
+         * A list of [file](https://platform.openai.com/docs/api-reference/files) IDs made
          * available to the `code_interpreter` tool. There can be a maximum of 20 files
          * associated with the tool.
          */
@@ -1144,7 +1144,7 @@ export namespace ThreadCreateAndRunPollParams {
       export interface FileSearch {
         /**
          * The
-         * [vector store](https://platform.hyperbee-package-test.com/docs/api-reference/vector-stores/object)
+         * [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object)
          * attached to this thread. There can be a maximum of 1 vector store attached to
          * the thread.
          */
@@ -1152,7 +1152,7 @@ export namespace ThreadCreateAndRunPollParams {
 
         /**
          * A helper to create a
-         * [vector store](https://platform.hyperbee-package-test.com/docs/api-reference/vector-stores/object)
+         * [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object)
          * with file_ids and attach it to this thread. There can be a maximum of 1 vector
          * store attached to the thread.
          */
@@ -1162,7 +1162,7 @@ export namespace ThreadCreateAndRunPollParams {
       export namespace FileSearch {
         export interface VectorStore {
           /**
-           * A list of [file](https://platform.hyperbee-package-test.com/docs/api-reference/files) IDs to
+           * A list of [file](https://platform.openai.com/docs/api-reference/files) IDs to
            * add to the vector store. There can be a maximum of 10000 files in a vector
            * store.
            */
@@ -1195,7 +1195,7 @@ export namespace ThreadCreateAndRunPollParams {
   export namespace ToolResources {
     export interface CodeInterpreter {
       /**
-       * A list of [file](https://platform.hyperbee-package-test.com/docs/api-reference/files) IDs made
+       * A list of [file](https://platform.openai.com/docs/api-reference/files) IDs made
        * available to the `code_interpreter` tool. There can be a maximum of 20 files
        * associated with the tool.
        */
@@ -1205,7 +1205,7 @@ export namespace ThreadCreateAndRunPollParams {
     export interface FileSearch {
       /**
        * The ID of the
-       * [vector store](https://platform.hyperbee-package-test.com/docs/api-reference/vector-stores/object)
+       * [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object)
        * attached to this assistant. There can be a maximum of 1 vector store attached to
        * the assistant.
        */
@@ -1237,7 +1237,7 @@ export namespace ThreadCreateAndRunPollParams {
 export interface ThreadCreateAndRunStreamParams {
   /**
    * The ID of the
-   * [assistant](https://platform.hyperbee-package-test.com/docs/api-reference/assistants) to use to
+   * [assistant](https://platform.openai.com/docs/api-reference/assistants) to use to
    * execute this run.
    */
   assistant_id: string;
@@ -1275,7 +1275,7 @@ export interface ThreadCreateAndRunStreamParams {
   metadata?: unknown | null;
 
   /**
-   * The ID of the [Model](https://platform.hyperbee-package-test.com/docs/api-reference/models) to
+   * The ID of the [Model](https://platform.openai.com/docs/api-reference/models) to
    * be used to execute this run. If a value is provided here, it will override the
    * model associated with the assistant. If not, the model associated with the
    * assistant will be used.
@@ -1306,8 +1306,8 @@ export interface ThreadCreateAndRunStreamParams {
 
   /**
    * Specifies the format that the model must output. Compatible with
-   * [GPT-4o](https://platform.hyperbee-package-test.com/docs/models/gpt-4o),
-   * [GPT-4 Turbo](https://platform.hyperbee-package-test.com/docs/models/gpt-4-turbo-and-gpt-4),
+   * [GPT-4o](https://platform.openai.com/docs/models/gpt-4o),
+   * [GPT-4 Turbo](https://platform.openai.com/docs/models/gpt-4-turbo-and-gpt-4),
    * and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
    *
    * Setting to `{ "type": "json_object" }` enables JSON mode, which guarantees the
@@ -1384,7 +1384,7 @@ export namespace ThreadCreateAndRunStreamParams {
    */
   export interface Thread {
     /**
-     * A list of [messages](https://platform.hyperbee-package-test.com/docs/api-reference/messages) to
+     * A list of [messages](https://platform.openai.com/docs/api-reference/messages) to
      * start the thread with.
      */
     messages?: Array<Thread.Message>;
@@ -1466,7 +1466,7 @@ export namespace ThreadCreateAndRunStreamParams {
     export namespace ToolResources {
       export interface CodeInterpreter {
         /**
-         * A list of [file](https://platform.hyperbee-package-test.com/docs/api-reference/files) IDs made
+         * A list of [file](https://platform.openai.com/docs/api-reference/files) IDs made
          * available to the `code_interpreter` tool. There can be a maximum of 20 files
          * associated with the tool.
          */
@@ -1476,7 +1476,7 @@ export namespace ThreadCreateAndRunStreamParams {
       export interface FileSearch {
         /**
          * The
-         * [vector store](https://platform.hyperbee-package-test.com/docs/api-reference/vector-stores/object)
+         * [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object)
          * attached to this thread. There can be a maximum of 1 vector store attached to
          * the thread.
          */
@@ -1484,7 +1484,7 @@ export namespace ThreadCreateAndRunStreamParams {
 
         /**
          * A helper to create a
-         * [vector store](https://platform.hyperbee-package-test.com/docs/api-reference/vector-stores/object)
+         * [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object)
          * with file_ids and attach it to this thread. There can be a maximum of 1 vector
          * store attached to the thread.
          */
@@ -1494,7 +1494,7 @@ export namespace ThreadCreateAndRunStreamParams {
       export namespace FileSearch {
         export interface VectorStore {
           /**
-           * A list of [file](https://platform.hyperbee-package-test.com/docs/api-reference/files) IDs to
+           * A list of [file](https://platform.openai.com/docs/api-reference/files) IDs to
            * add to the vector store. There can be a maximum of 10000 files in a vector
            * store.
            */
@@ -1527,7 +1527,7 @@ export namespace ThreadCreateAndRunStreamParams {
   export namespace ToolResources {
     export interface CodeInterpreter {
       /**
-       * A list of [file](https://platform.hyperbee-package-test.com/docs/api-reference/files) IDs made
+       * A list of [file](https://platform.openai.com/docs/api-reference/files) IDs made
        * available to the `code_interpreter` tool. There can be a maximum of 20 files
        * associated with the tool.
        */
@@ -1537,7 +1537,7 @@ export namespace ThreadCreateAndRunStreamParams {
     export interface FileSearch {
       /**
        * The ID of the
-       * [vector store](https://platform.hyperbee-package-test.com/docs/api-reference/vector-stores/object)
+       * [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object)
        * attached to this assistant. There can be a maximum of 1 vector store attached to
        * the assistant.
        */

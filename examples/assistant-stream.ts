@@ -1,15 +1,15 @@
 #!/usr/bin/env -S npm run tsn -T
 
-import OpenAI from 'hyperbee-package-test';
+import OpenAI from 'openai';
 
 /**
  * Example of streaming a response from an assistant
  */
 
-const hyperbee-package-test = new OpenAI();
+const openai = new OpenAI();
 
 async function main() {
-  const assistant = await hyperbee-package-test.beta.assistants.create({
+  const assistant = await openai.beta.assistants.create({
     model: 'gpt-4-1106-preview',
     name: 'Math Tutor',
     instructions: 'You are a personal math tutor. Write and run code to answer math questions.',
@@ -18,7 +18,7 @@ async function main() {
   let assistantId = assistant.id;
   console.log('Created Assistant with Id: ' + assistantId);
 
-  const thread = await hyperbee-package-test.beta.threads.create({
+  const thread = await openai.beta.threads.create({
     messages: [
       {
         role: 'user',
@@ -30,7 +30,7 @@ async function main() {
   let threadId = thread.id;
   console.log('Created thread with Id: ' + threadId);
 
-  const run = hyperbee-package-test.beta.threads.runs
+  const run = openai.beta.threads.runs
     .stream(threadId, {
       assistant_id: assistantId,
     })

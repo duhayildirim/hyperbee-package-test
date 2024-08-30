@@ -4,12 +4,12 @@
  * Fine-tuning allows you to train models on your own data.
  *
  * See this guide for more information:
- * - https://platform.hyperbee-package-test.com/docs/guides/fine-tuning
+ * - https://platform.openai.com/docs/guides/fine-tuning
  */
 
 import fs from 'fs';
-import OpenAI from 'hyperbee-package-test';
-import { FineTuningJobEvent } from 'hyperbee-package-test/resources/fine-tuning';
+import OpenAI from 'openai';
+import { FineTuningJobEvent } from 'openai/resources/fine-tuning';
 
 // Gets the API Key from the environment variable `OPENAI_API_KEY`
 const client = new OpenAI();

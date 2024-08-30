@@ -1,4 +1,4 @@
-import { APIUserAbortError, OpenAIError } from 'hyperbee-package-test/error';
+import { APIUserAbortError, OpenAIError } from 'openai/error';
 
 export class EventStream<EventTypes extends BaseEvents> {
   controller: AbortController = new AbortController();

@@ -1,6 +1,6 @@
 import { assertEquals, AssertionError } from 'https://deno.land/std@0.192.0/testing/asserts.ts';
 import { distance } from 'https://deno.land/x/fastest_levenshtein/mod.ts';
-import OpenAI, { toFile } from 'hyperbee-package-test';
+import OpenAI, { toFile } from 'openai';
 
 const url = 'https://audio-samples.github.io/samples/mp3/blizzard_biased/sample-1.mp3';
 const filename = 'sample-1.mp3';
@@ -9,7 +9,7 @@ const correctAnswer =
   'It was anxious to find him no one that expectation of a man who were giving his father enjoyment. But he was avoided in sight in the minister to which indeed,';
 const model = 'whisper-1';
 
-const client = new OpenAI({ apiKey: Deno.env.get('hyperbee-package-test_API_KEY') });
+const client = new OpenAI({ apiKey: Deno.env.get('OPENAI_API_KEY') });
 
 async function _typeTests() {
   // @ts-expect-error this should error if the `Uploadable` type was resolved correctly

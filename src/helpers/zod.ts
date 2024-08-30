@@ -1,4 +1,4 @@
-import { ResponseFormatJSONSchema } from 'hyperbee-package-test/resources';
+import { ResponseFormatJSONSchema } from 'openai/resources';
 import type z from 'zod';
 import {
   AutoParseableResponseFormat,
@@ -10,7 +10,7 @@ import { zodToJsonSchema as _zodToJsonSchema } from '../_vendor/zod-to-json-sche
 
 function zodToJsonSchema(schema: z.ZodType, options: { name: string }): Record<string, unknown> {
   return _zodToJsonSchema(schema, {
-    hyperbee-package-testStrictMode: true,
+    openaiStrictMode: true,
     name: options.name,
     nameStrategy: 'duplicate-ref',
     $refStrategy: 'extract-to-root',
@@ -58,7 +58,7 @@ function zodToJsonSchema(schema: z.ZodType, options: { name: string }): Record<s
 export function zodResponseFormat<ZodInput extends z.ZodType>(
   zodObject: ZodInput,
   name: string,
-  props?: Omit<ResponseFormatJSONSchema, 'schema' | 'strict' | 'name'>,
+  props?: Omit<ResponseFormatJSONSchema.JSONSchema, 'schema' | 'strict' | 'name'>,
 ): AutoParseableResponseFormat<z.infer<ZodInput>> {
   return makeParseableResponseFormat(
     {

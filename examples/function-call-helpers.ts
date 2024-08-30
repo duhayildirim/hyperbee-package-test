@@ -1,9 +1,9 @@
 #!/usr/bin/env -S npm run tsn -T
 
-import OpenAI from 'hyperbee-package-test';
+import OpenAI from 'openai';
 
 // gets API Key from environment variable OPENAI_API_KEY
-const hyperbee-package-test = new OpenAI();
+const openai = new OpenAI();
 
 const functions = [
   {
@@ -46,7 +46,7 @@ const functions = [
 ];
 
 async function main() {
-  const runner = await hyperbee-package-test.beta.chat.completions
+  const runner = await openai.beta.chat.completions
     .runFunctions({
       model: 'gpt-3.5-turbo',
       messages: [

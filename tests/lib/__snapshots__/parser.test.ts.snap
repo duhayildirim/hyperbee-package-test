@@ -39,7 +39,7 @@ exports[`.parse() zod merged schemas 2`] = `
       "index": 0,
       "message": {
         "role": "assistant",
-        "content": "{\\"person1\\":{\\"name\\":\\"Jane Doe\\",\\"phone_number\\":\\".\\",\\"roles\\":[\\"other\\"],\\"description\\":\\"Engineer at OpenAI, born Nov 16, contact email: jane@hyperbee-package-test.com\\"},\\"person2\\":{\\"name\\":\\"John Smith\\",\\"phone_number\\":\\"john@hyperbee-package-test.com\\",\\"differentField\\":\\"Engineer at OpenAI, born March 1.\\"}}",
+        "content": "{\\"person1\\":{\\"name\\":\\"Jane Doe\\",\\"phone_number\\":\\".\\",\\"roles\\":[\\"other\\"],\\"description\\":\\"Engineer at OpenAI, born Nov 16, contact email: jane@openai.com\\"},\\"person2\\":{\\"name\\":\\"John Smith\\",\\"phone_number\\":\\"john@openai.com\\",\\"differentField\\":\\"Engineer at OpenAI, born March 1.\\"}}",
         "refusal": null
       },
       "logprobs": null,

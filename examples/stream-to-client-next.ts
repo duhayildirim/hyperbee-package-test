@@ -1,4 +1,4 @@
-import OpenAI from 'hyperbee-package-test';
+import OpenAI from 'openai';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 // This file demonstrates how to stream from a Next.JS server as
@@ -23,9 +23,9 @@ export const runtime = 'edge';
 //
 // See examples/stream-to-client-browser.ts for a more complete example.
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const hyperbee-package-test = new OpenAI();
+  const openai = new OpenAI();
 
-  const stream = hyperbee-package-test.beta.chat.completions.stream({
+  const stream = openai.beta.chat.completions.stream({
     model: 'gpt-3.5-turbo',
     stream: true,
     // @ts-ignore

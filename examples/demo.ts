@@ -1,20 +1,20 @@
 #!/usr/bin/env -S npm run tsn -T
 
-import OpenAI from 'hyperbee-package-test';
+import OpenAI from 'openai';
 
 // gets API Key from environment variable OPENAI_API_KEY
-const hyperbee-package-test = new OpenAI();
+const openai = new OpenAI();
 
 async function main() {
   // Non-streaming:
-  const completion = await hyperbee-package-test.chat.completions.create({
+  const completion = await openai.chat.completions.create({
     model: 'gpt-4',
     messages: [{ role: 'user', content: 'Say this is a test' }],
   });
   console.log(completion.choices[0]?.message?.content);
 
   // Streaming:
-  const stream = await hyperbee-package-test.chat.completions.create({
+  const stream = await openai.chat.completions.create({
     model: 'gpt-4',
     messages: [{ role: 'user', content: 'Say this is a test' }],
     stream: true,

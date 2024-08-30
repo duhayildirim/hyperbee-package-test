@@ -4,8 +4,8 @@
 /**
  * Types will get added to this namespace when you import one of the following:
  *
- *   import 'hyperbee-package-test/shims/node'
- *   import 'hyperbee-package-test/shims/web'
+ *   import 'openai/shims/node'
+ *   import 'openai/shims/web'
  *
  * Importing more than one will cause type and runtime errors.
  */

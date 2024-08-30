@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { distance } from 'fastest-levenshtein';
-import OpenAI from 'hyperbee-package-test';
+import OpenAI from 'openai';
 import { uploadWebApiTestCases } from '../../uploadWebApiTestCases';
 
 export const config = {

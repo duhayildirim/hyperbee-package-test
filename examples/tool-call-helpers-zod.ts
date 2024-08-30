@@ -1,13 +1,13 @@
 #!/usr/bin/env -S npm run tsn -T
 
-import OpenAI from 'hyperbee-package-test';
-import { RunnableToolFunctionWithParse } from 'hyperbee-package-test/lib/RunnableFunction';
-import { JSONSchema } from 'hyperbee-package-test/lib/jsonschema';
+import OpenAI from 'openai';
+import { RunnableToolFunctionWithParse } from 'openai/lib/RunnableFunction';
+import { JSONSchema } from 'openai/lib/jsonschema';
 import { ZodSchema, z } from 'zod';
 import { zodToJsonSchema } from 'zod-to-json-schema';
 
 // gets API Key from environment variable OPENAI_API_KEY
-const hyperbee-package-test = new OpenAI();
+const openai = new OpenAI();
 
 // Define your functions, alongside zod schemas.
 
@@ -36,7 +36,7 @@ async function getBook({ id }: GetParams) {
 }
 
 async function main() {
-  const runner = hyperbee-package-test.beta.chat.completions
+  const runner = openai.beta.chat.completions
     .runTools({
       model: 'gpt-4-1106-preview',
       stream: true,

@@ -3,7 +3,7 @@ import {
   type ChatCompletionFunctionMessageParam,
   type ChatCompletionMessageParam,
   type ChatCompletionToolMessageParam,
-} from 'hyperbee-package-test/resources';
+} from 'openai/resources';
 
 export const isAssistantMessage = (
   message: ChatCompletionMessageParam | null | undefined,

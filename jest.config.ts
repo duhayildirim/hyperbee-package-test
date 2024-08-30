@@ -7,9 +7,9 @@ const config: JestConfigWithTsJest = {
     '^.+\\.(t|j)sx?$': ['@swc/jest', { sourceMaps: 'inline' }],
   },
   moduleNameMapper: {
-    '^hyperbee-package-test$': '<rootDir>/src/index.ts',
-    '^hyperbee-package-test/_shims/auto/(.*)$': '<rootDir>/src/_shims/auto/$1-node',
-    '^hyperbee-package-test/(.*)$': '<rootDir>/src/$1',
+    '^openai$': '<rootDir>/src/index.ts',
+    '^openai/_shims/auto/(.*)$': '<rootDir>/src/_shims/auto/$1-node',
+    '^openai/(.*)$': '<rootDir>/src/$1',
   },
   modulePathIgnorePatterns: [
     '<rootDir>/ecosystem-tests/',

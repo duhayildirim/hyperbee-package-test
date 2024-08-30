@@ -9,9 +9,9 @@
     "esModuleInterop": true,
     "baseUrl": "./",
     "paths": {
-      "hyperbee-package-tests/_shims/auto/*": ["src/_shims/auto/*-node"],
-      "hyperbee-package-tests/*": ["src/*"],
-      "hyperbee-package-tests": ["src/index.ts"],
+      "openai/_shims/auto/*": ["src/_shims/auto/*-node"],
+      "openai/*": ["src/*"],
+      "openai": ["src/index.ts"],
     },
     "noEmit": true,
 

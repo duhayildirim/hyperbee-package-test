@@ -22,27 +22,33 @@ export class Runs extends APIResource {
   /**
    * Create a run.
    */
-  create(threadId: string, body: RunCreateParamsNonStreaming, options?: Core.RequestOptions): APIPromise<Run>;
   create(
     threadId: string,
-    body: RunCreateParamsStreaming,
+    params: RunCreateParamsNonStreaming,
+    options?: Core.RequestOptions,
+  ): APIPromise<Run>;
+  create(
+    threadId: string,
+    params: RunCreateParamsStreaming,
     options?: Core.RequestOptions,
   ): APIPromise<Stream<AssistantsAPI.AssistantStreamEvent>>;
   create(
     threadId: string,
-    body: RunCreateParamsBase,
+    params: RunCreateParamsBase,
     options?: Core.RequestOptions,
   ): APIPromise<Stream<AssistantsAPI.AssistantStreamEvent> | Run>;
   create(
     threadId: string,
-    body: RunCreateParams,
+    params: RunCreateParams,
     options?: Core.RequestOptions,
   ): APIPromise<Run> | APIPromise<Stream<AssistantsAPI.AssistantStreamEvent>> {
+    const { include, ...body } = params;
     return this._client.post(`/threads/${threadId}/runs`, {
+      query: { include },
       body,
       ...options,
-      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
-      stream: body.stream ?? false,
+      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
+      stream: params.stream ?? false,
     }) as APIPromise<Run> | APIPromise<Stream<AssistantsAPI.AssistantStreamEvent>>;
   }
 
@@ -52,7 +58,7 @@ export class Runs extends APIResource {
   retrieve(threadId: string, runId: string, options?: Core.RequestOptions): Core.APIPromise<Run> {
     return this._client.get(`/threads/${threadId}/runs/${runId}`, {
       ...options,
-      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -68,7 +74,7 @@ export class Runs extends APIResource {
     return this._client.post(`/threads/${threadId}/runs/${runId}`, {
       body,
       ...options,
-      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -92,7 +98,7 @@ export class Runs extends APIResource {
     return this._client.getAPIList(`/threads/${threadId}/runs`, RunsPage, {
       query,
       ...options,
-      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -102,14 +108,14 @@ export class Runs extends APIResource {
   cancel(threadId: string, runId: string, options?: Core.RequestOptions): Core.APIPromise<Run> {
     return this._client.post(`/threads/${threadId}/runs/${runId}/cancel`, {
       ...options,
-      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
   /**
    * A helper to create a run an poll for a terminal state. More information on Run
    * lifecycles can be found here:
-   * https://platform.hyperbee-package-test.com/docs/assistants/how-it-works/runs-and-run-steps
+   * https://platform.openai.com/docs/assistants/how-it-works/runs-and-run-steps
    */
   async createAndPoll(
     threadId: string,
@@ -136,7 +142,7 @@ export class Runs extends APIResource {
   /**
    * A helper to poll a run status until it reaches a terminal state. More
    * information on Run lifecycles can be found here:
-   * https://platform.hyperbee-package-test.com/docs/assistants/how-it-works/runs-and-run-steps
+   * https://platform.openai.com/docs/assistants/how-it-works/runs-and-run-steps
    */
   async poll(
     threadId: string,
@@ -165,7 +171,7 @@ export class Runs extends APIResource {
           if (options?.pollIntervalMs) {
             sleepInterval = options.pollIntervalMs;
           } else {
-            const headerInterval = response.headers.get('hyperbee-package-test-poll-after-ms');
+            const headerInterval = response.headers.get('openai-poll-after-ms');
             if (headerInterval) {
               const headerIntervalMs = parseInt(headerInterval);
               if (!isNaN(headerIntervalMs)) {
@@ -227,7 +233,7 @@ export class Runs extends APIResource {
     return this._client.post(`/threads/${threadId}/runs/${runId}/submit_tool_outputs`, {
       body,
       ...options,
-      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
       stream: body.stream ?? false,
     }) as APIPromise<Run> | APIPromise<Stream<AssistantsAPI.AssistantStreamEvent>>;
   }
@@ -235,7 +241,7 @@ export class Runs extends APIResource {
   /**
    * A helper to submit a tool output to a run and poll for a terminal run state.
    * More information on Run lifecycles can be found here:
-   * https://platform.hyperbee-package-test.com/docs/assistants/how-it-works/runs-and-run-steps
+   * https://platform.openai.com/docs/assistants/how-it-works/runs-and-run-steps
    */
   async submitToolOutputsAndPoll(
     threadId: string,
@@ -250,7 +256,7 @@ export class Runs extends APIResource {
   /**
    * Submit the tool outputs from a previous run and stream the run to a terminal
    * state. More information on Run lifecycles can be found here:
-   * https://platform.hyperbee-package-test.com/docs/assistants/how-it-works/runs-and-run-steps
+   * https://platform.openai.com/docs/assistants/how-it-works/runs-and-run-steps
    */
   submitToolOutputsStream(
     threadId: string,
@@ -277,7 +283,7 @@ export interface RequiredActionFunctionToolCall {
   /**
    * The ID of the tool call. This ID must be referenced when you submit the tool
    * outputs in using the
-   * [Submit tool outputs to run](https://platform.hyperbee-package-test.com/docs/api-reference/runs/submitToolOutputs)
+   * [Submit tool outputs to run](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs)
    * endpoint.
    */
   id: string;
@@ -313,7 +319,7 @@ export namespace RequiredActionFunctionToolCall {
 
 /**
  * Represents an execution run on a
- * [thread](https://platform.hyperbee-package-test.com/docs/api-reference/threads).
+ * [thread](https://platform.openai.com/docs/api-reference/threads).
  */
 export interface Run {
   /**
@@ -323,7 +329,7 @@ export interface Run {
 
   /**
    * The ID of the
-   * [assistant](https://platform.hyperbee-package-test.com/docs/api-reference/assistants) used for
+   * [assistant](https://platform.openai.com/docs/api-reference/assistants) used for
    * execution of this run.
    */
   assistant_id: string;
@@ -361,7 +367,7 @@ export interface Run {
 
   /**
    * The instructions that the
-   * [assistant](https://platform.hyperbee-package-test.com/docs/api-reference/assistants) used for
+   * [assistant](https://platform.openai.com/docs/api-reference/assistants) used for
    * this run.
    */
   instructions: string;
@@ -393,7 +399,7 @@ export interface Run {
 
   /**
    * The model that the
-   * [assistant](https://platform.hyperbee-package-test.com/docs/api-reference/assistants) used for
+   * [assistant](https://platform.openai.com/docs/api-reference/assistants) used for
    * this run.
    */
   model: string;
@@ -405,7 +411,7 @@ export interface Run {
 
   /**
    * Whether to enable
-   * [parallel function calling](https://platform.hyperbee-package-test.com/docs/guides/function-calling/parallel-function-calling)
+   * [parallel function calling](https://platform.openai.com/docs/guides/function-calling/parallel-function-calling)
    * during tool use.
    */
   parallel_tool_calls: boolean;
@@ -418,14 +424,14 @@ export interface Run {
 
   /**
    * Specifies the format that the model must output. Compatible with
-   * [GPT-4o](https://platform.hyperbee-package-test.com/docs/models/gpt-4o),
-   * [GPT-4 Turbo](https://platform.hyperbee-package-test.com/docs/models/gpt-4-turbo-and-gpt-4),
+   * [GPT-4o](https://platform.openai.com/docs/models/gpt-4o),
+   * [GPT-4 Turbo](https://platform.openai.com/docs/models/gpt-4-turbo-and-gpt-4),
    * and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
    *
    * Setting to `{ "type": "json_schema", "json_schema": {...} }` enables Structured
    * Outputs which guarantees the model will match your supplied JSON schema. Learn
    * more in the
-   * [Structured Outputs guide](https://platform.hyperbee-package-test.com/docs/guides/structured-outputs).
+   * [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
    *
    * Setting to `{ "type": "json_object" }` enables JSON mode, which guarantees the
    * message the model generates is valid JSON.
@@ -453,7 +459,7 @@ export interface Run {
   status: RunStatus;
 
   /**
-   * The ID of the [thread](https://platform.hyperbee-package-test.com/docs/api-reference/threads)
+   * The ID of the [thread](https://platform.openai.com/docs/api-reference/threads)
    * that was executed on as a part of this run.
    */
   thread_id: string;
@@ -471,7 +477,7 @@ export interface Run {
 
   /**
    * The list of tools that the
-   * [assistant](https://platform.hyperbee-package-test.com/docs/api-reference/assistants) used for
+   * [assistant](https://platform.openai.com/docs/api-reference/assistants) used for
    * this run.
    */
   tools: Array<AssistantsAPI.AssistantTool>;
@@ -617,82 +623,95 @@ export type RunCreateParams = RunCreateParamsNonStreaming | RunCreateParamsStrea
 
 export interface RunCreateParamsBase {
   /**
-   * The ID of the
-   * [assistant](https://platform.hyperbee-package-test.com/docs/api-reference/assistants) to use to
+   * Body param: The ID of the
+   * [assistant](https://platform.openai.com/docs/api-reference/assistants) to use to
    * execute this run.
    */
   assistant_id: string;
 
   /**
-   * Appends additional instructions at the end of the instructions for the run. This
-   * is useful for modifying the behavior on a per-run basis without overriding other
-   * instructions.
+   * Query param: A list of additional fields to include in the response. Currently
+   * the only supported value is
+   * `step_details.tool_calls[*].file_search.results[*].content` to fetch the file
+   * search result content.
+   *
+   * See the
+   * [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search/customizing-file-search-settings)
+   * for more information.
+   */
+  include?: Array<StepsAPI.RunStepInclude>;
+
+  /**
+   * Body param: Appends additional instructions at the end of the instructions for
+   * the run. This is useful for modifying the behavior on a per-run basis without
+   * overriding other instructions.
    */
   additional_instructions?: string | null;
 
   /**
-   * Adds additional messages to the thread before creating the run.
+   * Body param: Adds additional messages to the thread before creating the run.
    */
   additional_messages?: Array<RunCreateParams.AdditionalMessage> | null;
 
   /**
-   * Overrides the
-   * [instructions](https://platform.hyperbee-package-test.com/docs/api-reference/assistants/createAssistant)
+   * Body param: Overrides the
+   * [instructions](https://platform.openai.com/docs/api-reference/assistants/createAssistant)
    * of the assistant. This is useful for modifying the behavior on a per-run basis.
    */
   instructions?: string | null;
 
   /**
-   * The maximum number of completion tokens that may be used over the course of the
-   * run. The run will make a best effort to use only the number of completion tokens
-   * specified, across multiple turns of the run. If the run exceeds the number of
-   * completion tokens specified, the run will end with status `incomplete`. See
-   * `incomplete_details` for more info.
+   * Body param: The maximum number of completion tokens that may be used over the
+   * course of the run. The run will make a best effort to use only the number of
+   * completion tokens specified, across multiple turns of the run. If the run
+   * exceeds the number of completion tokens specified, the run will end with status
+   * `incomplete`. See `incomplete_details` for more info.
    */
   max_completion_tokens?: number | null;
 
   /**
-   * The maximum number of prompt tokens that may be used over the course of the run.
-   * The run will make a best effort to use only the number of prompt tokens
-   * specified, across multiple turns of the run. If the run exceeds the number of
-   * prompt tokens specified, the run will end with status `incomplete`. See
-   * `incomplete_details` for more info.
+   * Body param: The maximum number of prompt tokens that may be used over the course
+   * of the run. The run will make a best effort to use only the number of prompt
+   * tokens specified, across multiple turns of the run. If the run exceeds the
+   * number of prompt tokens specified, the run will end with status `incomplete`.
+   * See `incomplete_details` for more info.
    */
   max_prompt_tokens?: number | null;
 
   /**
-   * Set of 16 key-value pairs that can be attached to an object. This can be useful
-   * for storing additional information about the object in a structured format. Keys
-   * can be a maximum of 64 characters long and values can be a maxium of 512
-   * characters long.
+   * Body param: Set of 16 key-value pairs that can be attached to an object. This
+   * can be useful for storing additional information about the object in a
+   * structured format. Keys can be a maximum of 64 characters long and values can be
+   * a maxium of 512 characters long.
    */
   metadata?: unknown | null;
 
   /**
-   * The ID of the [Model](https://platform.hyperbee-package-test.com/docs/api-reference/models) to
-   * be used to execute this run. If a value is provided here, it will override the
-   * model associated with the assistant. If not, the model associated with the
-   * assistant will be used.
+   * Body param: The ID of the
+   * [Model](https://platform.openai.com/docs/api-reference/models) to be used to
+   * execute this run. If a value is provided here, it will override the model
+   * associated with the assistant. If not, the model associated with the assistant
+   * will be used.
    */
   model?: (string & {}) | ChatAPI.ChatModel | null;
 
   /**
-   * Whether to enable
-   * [parallel function calling](https://platform.hyperbee-package-test.com/docs/guides/function-calling/parallel-function-calling)
+   * Body param: Whether to enable
+   * [parallel function calling](https://platform.openai.com/docs/guides/function-calling/parallel-function-calling)
    * during tool use.
    */
   parallel_tool_calls?: boolean;
 
   /**
-   * Specifies the format that the model must output. Compatible with
-   * [GPT-4o](https://platform.hyperbee-package-test.com/docs/models/gpt-4o),
-   * [GPT-4 Turbo](https://platform.hyperbee-package-test.com/docs/models/gpt-4-turbo-and-gpt-4),
+   * Body param: Specifies the format that the model must output. Compatible with
+   * [GPT-4o](https://platform.openai.com/docs/models/gpt-4o),
+   * [GPT-4 Turbo](https://platform.openai.com/docs/models/gpt-4-turbo-and-gpt-4),
    * and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
    *
    * Setting to `{ "type": "json_schema", "json_schema": {...} }` enables Structured
    * Outputs which guarantees the model will match your supplied JSON schema. Learn
    * more in the
-   * [Structured Outputs guide](https://platform.hyperbee-package-test.com/docs/guides/structured-outputs).
+   * [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
    *
    * Setting to `{ "type": "json_object" }` enables JSON mode, which guarantees the
    * message the model generates is valid JSON.
@@ -708,48 +727,50 @@ export interface RunCreateParamsBase {
   response_format?: ThreadsAPI.AssistantResponseFormatOption | null;
 
   /**
-   * If `true`, returns a stream of events that happen during the Run as server-sent
-   * events, terminating when the Run enters a terminal state with a `data: [DONE]`
-   * message.
+   * Body param: If `true`, returns a stream of events that happen during the Run as
+   * server-sent events, terminating when the Run enters a terminal state with a
+   * `data: [DONE]` message.
    */
   stream?: boolean | null;
 
   /**
-   * What sampling temperature to use, between 0 and 2. Higher values like 0.8 will
-   * make the output more random, while lower values like 0.2 will make it more
-   * focused and deterministic.
+   * Body param: What sampling temperature to use, between 0 and 2. Higher values
+   * like 0.8 will make the output more random, while lower values like 0.2 will make
+   * it more focused and deterministic.
    */
   temperature?: number | null;
 
   /**
-   * Controls which (if any) tool is called by the model. `none` means the model will
-   * not call any tools and instead generates a message. `auto` is the default value
-   * and means the model can pick between generating a message or calling one or more
-   * tools. `required` means the model must call one or more tools before responding
-   * to the user. Specifying a particular tool like `{"type": "file_search"}` or
+   * Body param: Controls which (if any) tool is called by the model. `none` means
+   * the model will not call any tools and instead generates a message. `auto` is the
+   * default value and means the model can pick between generating a message or
+   * calling one or more tools. `required` means the model must call one or more
+   * tools before responding to the user. Specifying a particular tool like
+   * `{"type": "file_search"}` or
    * `{"type": "function", "function": {"name": "my_function"}}` forces the model to
    * call that tool.
    */
   tool_choice?: ThreadsAPI.AssistantToolChoiceOption | null;
 
   /**
-   * Override the tools the assistant can use for this run. This is useful for
-   * modifying the behavior on a per-run basis.
+   * Body param: Override the tools the assistant can use for this run. This is
+   * useful for modifying the behavior on a per-run basis.
    */
   tools?: Array<AssistantsAPI.AssistantTool> | null;
 
   /**
-   * An alternative to sampling with temperature, called nucleus sampling, where the
-   * model considers the results of the tokens with top_p probability mass. So 0.1
-   * means only the tokens comprising the top 10% probability mass are considered.
+   * Body param: An alternative to sampling with temperature, called nucleus
+   * sampling, where the model considers the results of the tokens with top_p
+   * probability mass. So 0.1 means only the tokens comprising the top 10%
+   * probability mass are considered.
    *
    * We generally recommend altering this or temperature but not both.
    */
   top_p?: number | null;
 
   /**
-   * Controls for how a thread will be truncated prior to the run. Use this to
-   * control the intial context window of the run.
+   * Body param: Controls for how a thread will be truncated prior to the run. Use
+   * this to control the intial context window of the run.
    */
   truncation_strategy?: RunCreateParams.TruncationStrategy | null;
 }
@@ -834,18 +855,18 @@ export namespace RunCreateParams {
 
 export interface RunCreateParamsNonStreaming extends RunCreateParamsBase {
   /**
-   * If `true`, returns a stream of events that happen during the Run as server-sent
-   * events, terminating when the Run enters a terminal state with a `data: [DONE]`
-   * message.
+   * Body param: If `true`, returns a stream of events that happen during the Run as
+   * server-sent events, terminating when the Run enters a terminal state with a
+   * `data: [DONE]` message.
    */
   stream?: false | null;
 }
 
 export interface RunCreateParamsStreaming extends RunCreateParamsBase {
   /**
-   * If `true`, returns a stream of events that happen during the Run as server-sent
-   * events, terminating when the Run enters a terminal state with a `data: [DONE]`
-   * message.
+   * Body param: If `true`, returns a stream of events that happen during the Run as
+   * server-sent events, terminating when the Run enters a terminal state with a
+   * `data: [DONE]` message.
    */
   stream: true;
 }
@@ -879,7 +900,7 @@ export interface RunListParams extends CursorPageParams {
 export interface RunCreateAndPollParams {
   /**
    * The ID of the
-   * [assistant](https://platform.hyperbee-package-test.com/docs/api-reference/assistants) to use to
+   * [assistant](https://platform.openai.com/docs/api-reference/assistants) to use to
    * execute this run.
    */
   assistant_id: string;
@@ -898,7 +919,7 @@ export interface RunCreateAndPollParams {
 
   /**
    * Overrides the
-   * [instructions](https://platform.hyperbee-package-test.com/docs/api-reference/assistants/createAssistant)
+   * [instructions](https://platform.openai.com/docs/api-reference/assistants/createAssistant)
    * of the assistant. This is useful for modifying the behavior on a per-run basis.
    */
   instructions?: string | null;
@@ -930,7 +951,7 @@ export interface RunCreateAndPollParams {
   metadata?: unknown | null;
 
   /**
-   * The ID of the [Model](https://platform.hyperbee-package-test.com/docs/api-reference/models) to
+   * The ID of the [Model](https://platform.openai.com/docs/api-reference/models) to
    * be used to execute this run. If a value is provided here, it will override the
    * model associated with the assistant. If not, the model associated with the
    * assistant will be used.
@@ -961,8 +982,8 @@ export interface RunCreateAndPollParams {
 
   /**
    * Specifies the format that the model must output. Compatible with
-   * [GPT-4o](https://platform.hyperbee-package-test.com/docs/models/gpt-4o),
-   * [GPT-4 Turbo](https://platform.hyperbee-package-test.com/docs/models/gpt-4-turbo-and-gpt-4),
+   * [GPT-4o](https://platform.openai.com/docs/models/gpt-4o),
+   * [GPT-4 Turbo](https://platform.openai.com/docs/models/gpt-4-turbo-and-gpt-4),
    * and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
    *
    * Setting to `{ "type": "json_object" }` enables JSON mode, which guarantees the
@@ -1087,7 +1108,7 @@ export namespace RunCreateAndPollParams {
 export interface RunCreateAndStreamParams {
   /**
    * The ID of the
-   * [assistant](https://platform.hyperbee-package-test.com/docs/api-reference/assistants) to use to
+   * [assistant](https://platform.openai.com/docs/api-reference/assistants) to use to
    * execute this run.
    */
   assistant_id: string;
@@ -1106,7 +1127,7 @@ export interface RunCreateAndStreamParams {
 
   /**
    * Overrides the
-   * [instructions](https://platform.hyperbee-package-test.com/docs/api-reference/assistants/createAssistant)
+   * [instructions](https://platform.openai.com/docs/api-reference/assistants/createAssistant)
    * of the assistant. This is useful for modifying the behavior on a per-run basis.
    */
   instructions?: string | null;
@@ -1138,7 +1159,7 @@ export interface RunCreateAndStreamParams {
   metadata?: unknown | null;
 
   /**
-   * The ID of the [Model](https://platform.hyperbee-package-test.com/docs/api-reference/models) to
+   * The ID of the [Model](https://platform.openai.com/docs/api-reference/models) to
    * be used to execute this run. If a value is provided here, it will override the
    * model associated with the assistant. If not, the model associated with the
    * assistant will be used.
@@ -1169,8 +1190,8 @@ export interface RunCreateAndStreamParams {
 
   /**
    * Specifies the format that the model must output. Compatible with
-   * [GPT-4o](https://platform.hyperbee-package-test.com/docs/models/gpt-4o),
-   * [GPT-4 Turbo](https://platform.hyperbee-package-test.com/docs/models/gpt-4-turbo-and-gpt-4),
+   * [GPT-4o](https://platform.openai.com/docs/models/gpt-4o),
+   * [GPT-4 Turbo](https://platform.openai.com/docs/models/gpt-4-turbo-and-gpt-4),
    * and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
    *
    * Setting to `{ "type": "json_object" }` enables JSON mode, which guarantees the
@@ -1295,7 +1316,7 @@ export namespace RunCreateAndStreamParams {
 export interface RunStreamParams {
   /**
    * The ID of the
-   * [assistant](https://platform.hyperbee-package-test.com/docs/api-reference/assistants) to use to
+   * [assistant](https://platform.openai.com/docs/api-reference/assistants) to use to
    * execute this run.
    */
   assistant_id: string;
@@ -1314,7 +1335,7 @@ export interface RunStreamParams {
 
   /**
    * Overrides the
-   * [instructions](https://platform.hyperbee-package-test.com/docs/api-reference/assistants/createAssistant)
+   * [instructions](https://platform.openai.com/docs/api-reference/assistants/createAssistant)
    * of the assistant. This is useful for modifying the behavior on a per-run basis.
    */
   instructions?: string | null;
@@ -1346,7 +1367,7 @@ export interface RunStreamParams {
   metadata?: unknown | null;
 
   /**
-   * The ID of the [Model](https://platform.hyperbee-package-test.com/docs/api-reference/models) to
+   * The ID of the [Model](https://platform.openai.com/docs/api-reference/models) to
    * be used to execute this run. If a value is provided here, it will override the
    * model associated with the assistant. If not, the model associated with the
    * assistant will be used.
@@ -1377,8 +1398,8 @@ export interface RunStreamParams {
 
   /**
    * Specifies the format that the model must output. Compatible with
-   * [GPT-4o](https://platform.hyperbee-package-test.com/docs/models/gpt-4o),
-   * [GPT-4 Turbo](https://platform.hyperbee-package-test.com/docs/models/gpt-4-turbo-and-gpt-4),
+   * [GPT-4o](https://platform.openai.com/docs/models/gpt-4o),
+   * [GPT-4 Turbo](https://platform.openai.com/docs/models/gpt-4-turbo-and-gpt-4),
    * and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
    *
    * Setting to `{ "type": "json_object" }` enables JSON mode, which guarantees the
@@ -1630,10 +1651,12 @@ export namespace Runs {
   export import RunStepDelta = StepsAPI.RunStepDelta;
   export import RunStepDeltaEvent = StepsAPI.RunStepDeltaEvent;
   export import RunStepDeltaMessageDelta = StepsAPI.RunStepDeltaMessageDelta;
+  export import RunStepInclude = StepsAPI.RunStepInclude;
   export import ToolCall = StepsAPI.ToolCall;
   export import ToolCallDelta = StepsAPI.ToolCallDelta;
   export import ToolCallDeltaObject = StepsAPI.ToolCallDeltaObject;
   export import ToolCallsStepDetails = StepsAPI.ToolCallsStepDetails;
   export import RunStepsPage = StepsAPI.RunStepsPage;
+  export import StepRetrieveParams = StepsAPI.StepRetrieveParams;
   export import StepListParams = StepsAPI.StepListParams;
 }

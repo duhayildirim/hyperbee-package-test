@@ -9,8 +9,8 @@ import { CursorPage, type CursorPageParams } from '../../../pagination';
 export class Files extends APIResource {
   /**
    * Create a vector store file by attaching a
-   * [File](https://platform.hyperbee-package-test.com/docs/api-reference/files) to a
-   * [vector store](https://platform.hyperbee-package-test.com/docs/api-reference/vector-stores/object).
+   * [File](https://platform.openai.com/docs/api-reference/files) to a
+   * [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object).
    */
   create(
     vectorStoreId: string,
@@ -20,7 +20,7 @@ export class Files extends APIResource {
     return this._client.post(`/vector_stores/${vectorStoreId}/files`, {
       body,
       ...options,
-      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -34,7 +34,7 @@ export class Files extends APIResource {
   ): Core.APIPromise<VectorStoreFile> {
     return this._client.get(`/vector_stores/${vectorStoreId}/files/${fileId}`, {
       ...options,
-      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -61,14 +61,14 @@ export class Files extends APIResource {
     return this._client.getAPIList(`/vector_stores/${vectorStoreId}/files`, VectorStoreFilesPage, {
       query,
       ...options,
-      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
   /**
    * Delete a vector store file. This will remove the file from the vector store but
    * the file itself will not be deleted. To delete the file, use the
-   * [delete file](https://platform.hyperbee-package-test.com/docs/api-reference/files/delete)
+   * [delete file](https://platform.openai.com/docs/api-reference/files/delete)
    * endpoint.
    */
   del(
@@ -78,7 +78,7 @@ export class Files extends APIResource {
   ): Core.APIPromise<VectorStoreFileDeleted> {
     return this._client.delete(`/vector_stores/${vectorStoreId}/files/${fileId}`, {
       ...options,
-      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -124,7 +124,7 @@ export class Files extends APIResource {
           if (options?.pollIntervalMs) {
             sleepInterval = options.pollIntervalMs;
           } else {
-            const headerInterval = fileResponse.response.headers.get('hyperbee-package-test-poll-after-ms');
+            const headerInterval = fileResponse.response.headers.get('openai-poll-after-ms');
             if (headerInterval) {
               const headerIntervalMs = parseInt(headerInterval);
               if (!isNaN(headerIntervalMs)) {
@@ -211,8 +211,8 @@ export interface VectorStoreFile {
 
   /**
    * The ID of the
-   * [vector store](https://platform.hyperbee-package-test.com/docs/api-reference/vector-stores/object)
-   * that the [File](https://platform.hyperbee-package-test.com/docs/api-reference/files) is
+   * [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object)
+   * that the [File](https://platform.openai.com/docs/api-reference/files) is
    * attached to.
    */
   vector_store_id: string;
@@ -289,7 +289,7 @@ export interface VectorStoreFileDeleted {
 
 export interface FileCreateParams {
   /**
-   * A [File](https://platform.hyperbee-package-test.com/docs/api-reference/files) ID that the
+   * A [File](https://platform.openai.com/docs/api-reference/files) ID that the
    * vector store should use. Useful for tools like `file_search` that can access
    * files.
    */

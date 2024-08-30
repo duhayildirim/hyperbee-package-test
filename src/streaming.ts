@@ -1,7 +1,7 @@
 import { ReadableStream, type Response } from './_shims/index';
 import { OpenAIError } from './error';
 
-import { APIError } from 'hyperbee-package-test/error';
+import { APIError } from 'openai/error';
 
 type Bytes = string | ArrayBuffer | Uint8Array | Buffer | null | undefined;
 

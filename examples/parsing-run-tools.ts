@@ -1,6 +1,6 @@
-import OpenAI from 'hyperbee-package-test';
+import OpenAI from 'openai';
 import z from 'zod';
-import { zodFunction } from 'hyperbee-package-test/helpers/zod';
+import { zodFunction } from 'openai/helpers/zod';
 
 const Table = z.enum(['orders', 'customers', 'products']);
 const Column = z.enum([
@@ -25,10 +25,10 @@ const Condition = z.object({
   value: z.union([z.string(), z.number(), DynamicValue]),
 });
 
-const hyperbee-package-test = new OpenAI();
+const openai = new OpenAI();
 
 async function main() {
-  const runner = hyperbee-package-test.beta.chat.completions
+  const runner = openai.beta.chat.completions
     .runTools({
       model: 'gpt-4o-2024-08-06',
       messages: [{ role: 'user', content: `What are the last 10 orders?` }],

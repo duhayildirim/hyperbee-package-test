@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import OpenAI from 'hyperbee-package-test';
+import OpenAI from 'openai';
 
 const client = new OpenAI({
   apiKey: 'My API Key',

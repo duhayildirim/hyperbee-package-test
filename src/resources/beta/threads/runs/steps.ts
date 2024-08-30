@@ -14,11 +14,29 @@ export class Steps extends APIResource {
     threadId: string,
     runId: string,
     stepId: string,
+    query?: StepRetrieveParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<RunStep>;
+  retrieve(
+    threadId: string,
+    runId: string,
+    stepId: string,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<RunStep>;
+  retrieve(
+    threadId: string,
+    runId: string,
+    stepId: string,
+    query: StepRetrieveParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
   ): Core.APIPromise<RunStep> {
+    if (isRequestOptions(query)) {
+      return this.retrieve(threadId, runId, stepId, {}, query);
+    }
     return this._client.get(`/threads/${threadId}/runs/${runId}/steps/${stepId}`, {
+      query,
       ...options,
-      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 
@@ -48,7 +66,7 @@ export class Steps extends APIResource {
     return this._client.getAPIList(`/threads/${threadId}/runs/${runId}/steps`, RunStepsPage, {
       query,
       ...options,
-      headers: { 'hyperbee-package-test-Beta': 'assistants=v2', ...options?.headers },
+      headers: { 'OpenAI-Beta': 'assistants=v2', ...options?.headers },
     });
   }
 }
@@ -92,7 +110,7 @@ export interface CodeInterpreterOutputImage {
 export namespace CodeInterpreterOutputImage {
   export interface Image {
     /**
-     * The [file](https://platform.hyperbee-package-test.com/docs/api-reference/files) ID of the
+     * The [file](https://platform.openai.com/docs/api-reference/files) ID of the
      * image.
      */
     file_id?: string;
@@ -166,7 +184,7 @@ export namespace CodeInterpreterToolCall {
     export namespace Image {
       export interface Image {
         /**
-         * The [file](https://platform.hyperbee-package-test.com/docs/api-reference/files) ID of the
+         * The [file](https://platform.openai.com/docs/api-reference/files) ID of the
          * image.
          */
         file_id: string;
@@ -229,13 +247,89 @@ export interface FileSearchToolCall {
   /**
    * For now, this is always going to be an empty object.
    */
-  file_search: unknown;
+  file_search: FileSearchToolCall.FileSearch;
 
   /**
    * The type of tool call. This is always going to be `file_search` for this type of
    * tool call.
    */
   type: 'file_search';
+}
+
+export namespace FileSearchToolCall {
+  /**
+   * For now, this is always going to be an empty object.
+   */
+  export interface FileSearch {
+    /**
+     * The ranking options for the file search.
+     */
+    ranking_options?: FileSearch.RankingOptions;
+
+    /**
+     * The results of the file search.
+     */
+    results?: Array<FileSearch.Result>;
+  }
+
+  export namespace FileSearch {
+    /**
+     * The ranking options for the file search.
+     */
+    export interface RankingOptions {
+      /**
+       * The ranker used for the file search.
+       */
+      ranker: 'default_2024_08_21';
+
+      /**
+       * The score threshold for the file search. All values must be a floating point
+       * number between 0 and 1.
+       */
+      score_threshold: number;
+    }
+
+    /**
+     * A result instance of the file search.
+     */
+    export interface Result {
+      /**
+       * The ID of the file that result was found in.
+       */
+      file_id: string;
+
+      /**
+       * The name of the file that result was found in.
+       */
+      file_name: string;
+
+      /**
+       * The score of the result. All values must be a floating point number between 0
+       * and 1.
+       */
+      score: number;
+
+      /**
+       * The content of the result that was found. The content is only included if
+       * requested via the include query parameter.
+       */
+      content?: Array<Result.Content>;
+    }
+
+    export namespace Result {
+      export interface Content {
+        /**
+         * The text content of the file.
+         */
+        text?: string;
+
+        /**
+         * The type of the content.
+         */
+        type?: 'text';
+      }
+    }
+  }
 }
 
 export interface FileSearchToolCallDelta {
@@ -296,7 +390,7 @@ export namespace FunctionToolCall {
 
     /**
      * The output of the function. This will be `null` if the outputs have not been
-     * [submitted](https://platform.hyperbee-package-test.com/docs/api-reference/runs/submitToolOutputs)
+     * [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs)
      * yet.
      */
     output: string | null;
@@ -343,7 +437,7 @@ export namespace FunctionToolCallDelta {
 
     /**
      * The output of the function. This will be `null` if the outputs have not been
-     * [submitted](https://platform.hyperbee-package-test.com/docs/api-reference/runs/submitToolOutputs)
+     * [submitted](https://platform.openai.com/docs/api-reference/runs/submitToolOutputs)
      * yet.
      */
     output?: string | null;
@@ -382,7 +476,7 @@ export interface RunStep {
 
   /**
    * The ID of the
-   * [assistant](https://platform.hyperbee-package-test.com/docs/api-reference/assistants)
+   * [assistant](https://platform.openai.com/docs/api-reference/assistants)
    * associated with the run step.
    */
   assistant_id: string;
@@ -433,7 +527,7 @@ export interface RunStep {
   object: 'thread.run.step';
 
   /**
-   * The ID of the [run](https://platform.hyperbee-package-test.com/docs/api-reference/runs) that
+   * The ID of the [run](https://platform.openai.com/docs/api-reference/runs) that
    * this run step is a part of.
    */
   run_id: string;
@@ -450,7 +544,7 @@ export interface RunStep {
   step_details: MessageCreationStepDetails | ToolCallsStepDetails;
 
   /**
-   * The ID of the [thread](https://platform.hyperbee-package-test.com/docs/api-reference/threads)
+   * The ID of the [thread](https://platform.openai.com/docs/api-reference/threads)
    * that was run.
    */
   thread_id: string;
@@ -558,6 +652,8 @@ export namespace RunStepDeltaMessageDelta {
   }
 }
 
+export type RunStepInclude = 'step_details.tool_calls[*].file_search.results[*].content';
+
 /**
  * Details of the Code Interpreter tool call the run step was involved in.
  */
@@ -602,6 +698,19 @@ export interface ToolCallsStepDetails {
   type: 'tool_calls';
 }
 
+export interface StepRetrieveParams {
+  /**
+   * A list of additional fields to include in the response. Currently the only
+   * supported value is `step_details.tool_calls[*].file_search.results[*].content`
+   * to fetch the file search result content.
+   *
+   * See the
+   * [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search/customizing-file-search-settings)
+   * for more information.
+   */
+  include?: Array<RunStepInclude>;
+}
+
 export interface StepListParams extends CursorPageParams {
   /**
    * A cursor for use in pagination. `before` is an object ID that defines your place
@@ -610,6 +719,17 @@ export interface StepListParams extends CursorPageParams {
    * fetch the previous page of the list.
    */
   before?: string;
+
+  /**
+   * A list of additional fields to include in the response. Currently the only
+   * supported value is `step_details.tool_calls[*].file_search.results[*].content`
+   * to fetch the file search result content.
+   *
+   * See the
+   * [file search tool documentation](https://platform.openai.com/docs/assistants/tools/file-search/customizing-file-search-settings)
+   * for more information.
+   */
+  include?: Array<RunStepInclude>;
 
   /**
    * Sort order by the `created_at` timestamp of the objects. `asc` for ascending
@@ -632,10 +752,12 @@ export namespace Steps {
   export import RunStepDelta = StepsAPI.RunStepDelta;
   export import RunStepDeltaEvent = StepsAPI.RunStepDeltaEvent;
   export import RunStepDeltaMessageDelta = StepsAPI.RunStepDeltaMessageDelta;
+  export import RunStepInclude = StepsAPI.RunStepInclude;
   export import ToolCall = StepsAPI.ToolCall;
   export import ToolCallDelta = StepsAPI.ToolCallDelta;
   export import ToolCallDeltaObject = StepsAPI.ToolCallDeltaObject;
   export import ToolCallsStepDetails = StepsAPI.ToolCallsStepDetails;
   export import RunStepsPage = StepsAPI.RunStepsPage;
+  export import StepRetrieveParams = StepsAPI.StepRetrieveParams;
   export import StepListParams = StepsAPI.StepListParams;
 }

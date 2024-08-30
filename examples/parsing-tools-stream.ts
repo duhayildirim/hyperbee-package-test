@@ -1,5 +1,5 @@
-import { zodFunction } from 'hyperbee-package-test/helpers/zod';
-import OpenAI from 'hyperbee-package-test/index';
+import { zodFunction } from 'openai/helpers/zod';
+import OpenAI from 'openai/index';
 import { z } from 'zod';
 
 const GetWeatherArgs = z.object({

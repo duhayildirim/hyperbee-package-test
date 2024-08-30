@@ -1,7 +1,7 @@
-import 'hyperbee-package-test/shims/web';
-import OpenAI, { toFile } from 'hyperbee-package-test';
+import 'openai/shims/web';
+import OpenAI, { toFile } from 'openai';
 import { distance } from 'fastest-levenshtein';
-import { ChatCompletion } from 'hyperbee-package-test/resources/chat/completions';
+import { ChatCompletion } from 'openai/resources/chat/completions';
 
 const url = 'https://audio-samples.github.io/samples/mp3/blizzard_biased/sample-1.mp3';
 const filename = 'sample-1.mp3';

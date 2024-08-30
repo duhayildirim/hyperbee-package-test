@@ -1,7 +1,7 @@
 import defaultFetch, { Response } from 'node-fetch';
-import OpenAI from 'hyperbee-package-test/index';
-import { RequestInit } from 'hyperbee-package-test/_shims/auto/types';
-import { RequestInfo } from 'hyperbee-package-test/_shims/auto/types';
+import OpenAI from 'openai/index';
+import { RequestInit } from 'openai/_shims/auto/types';
+import { RequestInfo } from 'openai/_shims/auto/types';
 import { mockFetch } from './mock-fetch';
 import { Readable } from 'stream';
 
@@ -18,9 +18,9 @@ export async function makeSnapshotRequest<T>(
       return new Response(capturedResponseContent, response);
     }
 
-    const hyperbee-package-test = new OpenAI({ fetch });
+    const openai = new OpenAI({ fetch });
 
-    const result = await requestFn(hyperbee-package-test);
+    const result = await requestFn(openai);
     if (!capturedResponseContent) {
       throw new Error('did not capture a response');
     }
@@ -45,8 +45,8 @@ export async function makeSnapshotRequest<T>(
 
   const { fetch, handleRequest } = mockFetch();
 
-  const hyperbee-package-test = new OpenAI({ fetch, apiKey: 'My API Key' });
-  const requestPromise = requestFn(hyperbee-package-test);
+  const openai = new OpenAI({ fetch, apiKey: 'My API Key' });
+  const requestPromise = requestFn(openai);
 
   await handleRequest(() =>
     Promise.resolve(
@@ -76,9 +76,9 @@ export async function makeStreamSnapshotRequest<T extends AsyncIterable<any>>(
       return new Response(Readable.from(capturedResponseContent), response);
     }
 
-    const hyperbee-package-test = new OpenAI({ fetch });
+    const openai = new OpenAI({ fetch });
 
-    const iterator = requestFn(hyperbee-package-test);
+    const iterator = requestFn(openai);
     for await (const _ of iterator) {
       // consume iterator
     }
@@ -107,8 +107,8 @@ export async function makeStreamSnapshotRequest<T extends AsyncIterable<any>>(
 
   const { fetch, handleRequest } = mockFetch();
 
-  const hyperbee-package-test = new OpenAI({ fetch, apiKey: 'My API Key' });
-  const requestPromise = requestFn(hyperbee-package-test);
+  const openai = new OpenAI({ fetch, apiKey: 'My API Key' });
+  const requestPromise = requestFn(openai);
 
   await handleRequest(() =>
     Promise.resolve(
