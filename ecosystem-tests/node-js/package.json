@@ -9,6 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "openai": "^4.40.1"
+    "hyperbee-package-tests": "^4.40.1"
   }
 }

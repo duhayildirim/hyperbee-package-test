@@ -536,7 +536,7 @@ By default, this library uses `node-fetch` in Node, and expects a global `fetch`
 
 If you would prefer to use a global, web-standards-compliant `fetch` function even in a Node environment,
 (for example, if you are running Node with `--experimental-fetch` or using NextJS which polyfills with `undici`),
-add the following import before your first import `from "OpenAI"`:
+add the following import before your first import `from "hyperbee-package-tests"`:
 
 ```ts
 // Tell TypeScript and the package to use the global web fetch instead of node-fetch.

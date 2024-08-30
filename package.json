@@ -63,8 +63,8 @@
     "./shims/web.mjs"
   ],
   "imports": {
-    "openai": ".",
-    "openai/*": "./src/*"
+    "hyperbee-package-tests": ".",
+    "hyperbee-package-tests/*": "./src/*"
   },
   "exports": {
     "./_shims/auto/*": {

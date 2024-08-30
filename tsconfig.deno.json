@@ -8,7 +8,7 @@
     "paths": {
       "openai/_shims/auto/*": ["deno/_shims/auto/*-deno"],
       "openai/*": ["deno/*"],
-      "openai": ["deno/index.ts"],
+      "hyperbee-package-tests": ["deno/index.ts"],
     },
     "noEmit": true,
     "declaration": true,
