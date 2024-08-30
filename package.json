@@ -1,5 +1,5 @@
 {
-  "name": "openai",
+  "name": "hyperbee-package-tests",
   "version": "4.57.0",
   "description": "The official TypeScript library for the OpenAI API",
   "author": "Duha <1duhayildirim@gmail.com",
